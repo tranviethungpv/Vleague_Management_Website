@@ -1,0 +1,548 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Sports Club
+ * @version 	1.1.7
+ * 
+ * TC Events CSS Rules
+ * Created by CMSMasters
+ * 
+ */
+/*-------------------------------------------------------------------------*/
+/*	Globally Events Styles */
+/*-------------------------------------------------------------------------*/
+.middle_content > #tickera_cart {
+  padding: 80px 0;
+}
+#tickera_cart p {
+  margin: 0;
+  padding: 0;
+}
+/***************** Event Icons ******************/
+.cmsmasters_theme_icon_tc_time:before {
+  content: '\e8ae';
+}
+.cmsmasters_theme_icon_tc_location:before {
+  content: '\e881';
+}
+/***************** Event Tickets ******************/
+.event_tickets {
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.event_tickets th,
+.event_tickets td {
+  width: 25%;
+  padding: 0 25px;
+  vertical-align: middle;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+}
+.event_tickets th {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+}
+.event_tickets td {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+}
+.event_tickets select {
+  width: auto;
+  min-width: 1px;
+}
+/***************** Event Errors ******************/
+.middle_content > .tc_cart_errors {
+  margin: 60px 0 0;
+}
+.tc_cart_errors > ul {
+  margin: 0 0 40px;
+  padding: 20px 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+}
+.tc_cart_errors > ul li:before {
+  content: none;
+}
+/*-------------------------------------------------------------------------*/
+/*	Events Page */
+/*-------------------------------------------------------------------------*/
+.cmsmasters_tc_events {
+  position: relative;
+}
+.cmsmasters_tc_event {
+  padding: 0 0 50px;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_tc_event:last-child {
+  padding-bottom: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_img {
+  outline: none;
+}
+.cmsmasters_tc_event .preloader {
+  display: block;
+  padding-bottom: 47.2%;
+}
+.cmsmasters_tc_event .preloader.highImg {
+  height: auto;
+  padding: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_cont {
+  padding: 30px 30px 40px;
+  position: relative;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  overflow: hidden;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_header {
+  padding: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_title {
+  margin: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_category {
+  padding: 7px 0 0;
+  overflow: hidden;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_category a {
+  display: inline-block;
+  margin: 0 0 0 5px;
+  padding: 0 3px;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_category a:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_info {
+  padding: 15px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_info span {
+  display: block;
+  margin-top: -3px;
+  padding: 0 0 0 25px;
+  position: relative;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_info span:before {
+  font-size: 16px;
+  line-height: 14px;
+  width: 1em;
+  height: 1em;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_content {
+  padding: 17px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_content:empty {
+  display: none;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_content p {
+  margin: 0;
+  padding: 0;
+}
+.cmsmasters_tc_event .cmsmasters_tc_event_ticket {
+  padding: 25px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+/*-------------------------------------------------------------------------*/
+/*	Single Event */
+/*-------------------------------------------------------------------------*/
+.cmsmasters_open_tc_event {
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_open_tc_event .preloader {
+  display: block;
+  padding-bottom: 47.2%;
+}
+.cmsmasters_open_tc_event .preloader.highImg {
+  height: auto;
+  padding: 0;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_cont {
+  position: relative;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  overflow: hidden;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_header_wrap {
+  padding: 35px;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_header {
+  padding: 0;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_title {
+  margin: 0;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_category {
+  padding: 10px 0 0;
+  overflow: hidden;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_category a {
+  display: inline-block;
+  margin: 0 0 0 5px;
+  padding: 0 3px;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_category a:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_info {
+  padding: 15px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_info span {
+  display: block;
+  margin-top: -3px;
+  padding: 0 0 0 25px;
+  position: relative;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_info span:before {
+  font-size: 16px;
+  line-height: 14px;
+  width: 1em;
+  height: 1em;
+  margin: auto !important;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_img {
+  padding: 30px 35px;
+  position: relative;
+  border-top-width: 1px;
+  border-top-style: dashed;
+  overflow: hidden;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_content {
+  padding: 20px 35px 30px;
+  position: relative;
+  border-top-width: 1px;
+  border-top-style: dashed;
+  overflow: hidden;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_content:empty {
+  display: none;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_content > *:last-child {
+  margin: 0;
+  padding: 0;
+}
+.cmsmasters_open_tc_event .cmsmasters_tc_event_ticket {
+  padding: 50px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+/*-------------------------------------------------------------------------*/
+/*	Cart */
+/*-------------------------------------------------------------------------*/
+.tickera_table {
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100%;
+  margin: 0 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+.tickera_table th,
+.tickera_table td {
+  width: 20%;
+  padding: 0 25px;
+  vertical-align: middle;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+}
+.tickera_table th:last-child,
+.tickera_table td:last-child {
+  text-align: right;
+}
+.tickera_table th {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+}
+.tickera_table td {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+}
+.tickera_table .ticket_total,
+.tickera_table .cart_total_price_title,
+.tickera_table .cart_total_price {
+  font-weight: bold;
+}
+.tickera_table .ticket-quantity {
+  white-space: nowrap;
+}
+.tickera_table .ticket-quantity input[type=text] {
+  display: inline-block;
+  width: 40px;
+  margin: 0 5px;
+  text-align: center;
+}
+.tickera_table .ticket-quantity .minus,
+.tickera_table .ticket-quantity .plus {
+  background-color: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  border-width: 0;
+  border-style: solid;
+}
+.tickera_table .ticket-total-all {
+  padding-bottom: 35px;
+  outline: none;
+}
+.tickera_table .ticket-total-all .total_item_title {
+  display: inline-block;
+  width: 200px;
+  padding-top: 15px;
+  padding-left: 0;
+  padding-right: 10px;
+  text-align: left;
+}
+.tickera_table .ticket-total-all .total_item_amount {
+  display: inline-block;
+  width: 80px;
+  padding-top: 15px;
+  text-align: right;
+}
+.tickera_table .actions {
+  background-color: transparent;
+  padding: 45px 0 0;
+  border-width: 0;
+  border-style: solid;
+}
+.tickera_table .actions .coupon-code {
+  margin-left: 0;
+  margin-right: 5px;
+  float: left;
+}
+.tickera_table .actions .tickera-button {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.tickera_table .actions .tickera-button.apply_coupon {
+  float: left;
+}
+.owner-info-wrap {
+  margin: 0 -1.4%;
+  overflow: hidden;
+}
+.owner-info-wrap > p {
+  display: none;
+}
+.fields-wrap {
+  width: 30.53%;
+  margin: 0 1.4% 40px;
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+.fields-wrap label {
+  display: block;
+}
+.fields-wrap label span {
+  display: block;
+  padding: 0 0 10px;
+}
+.tickera_buyer_info {
+  margin: 0 -1.4%;
+  padding: 0 0 20px;
+  overflow: hidden;
+}
+.tickera_buyer_info > p {
+  display: none;
+}
+.tickera_buyer_info > h3 {
+  padding: 0 0 40px;
+  margin: 0 1.4%;
+}
+.tickera_owner_info {
+  padding: 0 0 30px;
+}
+.tickera_owner_info > h2 {
+  margin: 0 0 40px;
+}
+.tickera_owner_info > h5 {
+  margin: 0 0 30px;
+}
+/*-------------------------------------------------------------------------*/
+/*	Payment */
+/*-------------------------------------------------------------------------*/
+#tc_payment_form {
+  padding: 35px 30px;
+  position: relative;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+  overflow: hidden;
+}
+.middle_content #tc_payment_form {
+  margin: 80px 0;
+}
+.tickera-payment-gateways {
+  padding: 5px 0;
+  position: relative;
+}
+.tickera-payment-gateways .plugin-title {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+.tickera-payment-gateways .plugin-title label {
+  display: inline-block;
+}
+.tickera-payment-gateways .plugin-title input {
+  margin-left: 0;
+  margin-right: 10px;
+  position: relative;
+  top: -1px;
+}
+.tickera-payment-gateways .plugin-title img {
+  margin-left: 10px;
+  margin-right: 0;
+  position: relative;
+  top: -3px;
+}
+.tickera-payment-gateways .tc_gateway_form {
+  padding: 0 0 20px;
+  display: none;
+  overflow: hidden;
+}
+.tickera-payment-gateways .tc_gateway_form.tickera-height {
+  display: block;
+}
+.tickera-payment-gateways .tc_gateway_form > p:last-child {
+  margin: 0;
+  padding: 0;
+}
+.tickera-payment-gateways .tc_cart_direct_checkout {
+  display: none;
+}
+.tickera-payment-gateways .tc_redirect_message {
+  padding: 25px 0 15px;
+}
+/*-------------------------------------------------------------------------*/
+/*	Order */
+/*-------------------------------------------------------------------------*/
+.tickera > p {
+  margin: 80px 0 0;
+  padding: 35px 30px 25px;
+}
+.tickera > p:empty {
+  display: none;
+}
+.tickera > p > label {
+  display: block;
+  margin: 15px 0 0;
+}
+.tickera > p > label:first-child {
+  margin-top: 0;
+}
+.tickera > p > br {
+  display: none;
+}
+.tickera > label {
+  display: block;
+  margin: 0 0 80px;
+  padding: 25px 30px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+}
+.tickera > hr {
+  margin: 0;
+  padding: 0;
+}
+.tickera .order_details_title {
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  width: 210px;
+}
+/*-------------------------------------------------------------------------*/
+/*	Widgets */
+/*-------------------------------------------------------------------------*/
+.tc_cart_widget {
+  position: relative;
+  overflow: hidden;
+}
+.tc_cart_widget .tc_cart_contents {
+  padding: 0 0 20px;
+}
+.tc_cart_widget .tc_cart_ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tc_cart_widget .tc_cart_ul li {
+  margin: 0;
+  padding: 25px 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: dashed;
+}
+.tc_cart_widget .tc_cart_ul li:first-child {
+  border-top-width: 1px;
+  border-top-style: dashed;
+}
+.tc_cart_widget .tc_cart_ul li:before {
+  content: none;
+}
+.tc_cart_widget .tc_widget_cart_button {
+  padding-left: 15px;
+  padding-right: 15px;
+  float: right;
+}
+/*-------------------------------------------------------------------------*/
+/*	CSS3 Animations */
+/*-------------------------------------------------------------------------*/
+html.csstransitions .tc_events_color {
+  -webkit-transition: color .3s ease-in-out;
+  -moz-transition: color .3s ease-in-out;
+  -ms-transition: color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
+}
+html.csstransitions .cmsmasters_tc_event .cmsmasters_tc_event_category a,
+html.csstransitions .cmsmasters_open_tc_event .cmsmasters_tc_event_category a {
+  -webkit-transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  -moz-transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  -ms-transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out, background-color .3s ease-in-out;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out;
+}
+html.csstransitions .cmsmasters_tc_event .cmsmasters_tc_event_title a {
+  -webkit-transition: text-shadow .3s ease-in-out;
+  -moz-transition: text-shadow .3s ease-in-out;
+  -ms-transition: text-shadow .3s ease-in-out;
+  -o-transition: text-shadow .3s ease-in-out;
+  transition: text-shadow .3s ease-in-out;
+}
