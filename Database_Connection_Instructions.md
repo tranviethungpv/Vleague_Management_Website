@@ -5,8 +5,8 @@ Phần kết nối CSDL của cái ASP.NET Core này có vẻ không hợp lí c
 <code>setx DATABASE_CONNECTION_STRING "<b>connectionString</b>"</code>  
 trong đó <b>connectionString</b> là chuỗi kết nối database của máy.  
 Ví dụ <code>setx DATABASE_CONNECTION_STRING "<b>Data Source=LAPTOP-31LR8ADC\SQLEXPRESS;Initial Catalog=QLBanVaLi;Integrated Security=True;TrustServerCertificate=True</b>"</code>
-* Sau đó cần Scaffold-DbContext, để làm điều này, chạy lệnh sau:  
+* Sau đó cần <b>Scaffold-DbContext</b>, để làm điều này, chạy lệnh sau:  
 <code>Scaffold-DbContext "Data Source=<b>connectionString</b>" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force</code>  
 trong đó <b>connectionString</b> là chuỗi kết nối database của máy, tuy nhiên bắt buộc thêm <b>TrustServerCertificate=True</b> vào chuỗi kết nối (điều này quan trọng).  
 Ví dụ <code>Scaffold-DbContext "Data Source=LAPTOP-31LR8ADC\SQLEXPRESS;Initial Catalog=QLBanVaLi;Integrated Security=True;<b>TrustServerCertificate=True</b>" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force</code>  
-* Làm và push lên như thường, mỗi lần pull về có lẽ cũng phải làm lại 2 bước trên.
+* Làm và push lên như thường, mỗi lần pull về chỉ cần làm lại bước <b>Scaffold-DbContext</b>.
