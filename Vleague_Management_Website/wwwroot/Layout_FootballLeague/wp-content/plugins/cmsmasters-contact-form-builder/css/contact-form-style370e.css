@@ -1,0 +1,131 @@
+/**
+ * @package 	WordPress Plugin
+ * @subpackage 	CMSMasters Contact Form Builder
+ * @version 	1.4.2
+ * 
+ * Contact Form Shortcode & Widget Styles
+ * Created by CMSMasters
+ * 
+ */
+
+
+/* ---------- Contact Form Default Styles ---------- */
+
+.cmsmasters-form-builder label {
+	display:inline-block;
+	padding-bottom:6px;
+}
+
+.cmsmasters-form-builder label span.color_3 {
+	font-size:12px;
+}
+
+.cmsmasters-form-builder .form_info, 
+.widget .cmsmasters-form-builder .form_info {
+	padding-bottom:10px;
+}
+
+.cmsmasters-form-builder .cmsmasters-form-builder-captcha {
+	display:inline-block;
+	padding:0;
+	margin-bottom:10px;
+}
+
+.form_info .button {
+	vertical-align:bottom;
+}
+
+.cmsmasters-form-builder small.db {
+	display:block;
+	padding-top:5px;
+}
+
+.cmsmasters-form-builder textarea {
+	min-height:200px;
+	resize:vertical;
+}
+
+.widget .cmsmasters-form-builder textarea {
+	min-height:70px;
+}
+
+.cmsmasters-form-builder .check_parent {
+	padding:5px 0;
+	position:relative;
+}
+
+.cmsmasters-form-builder .check_parent:after {
+	content:'.';
+	display:block;
+	clear:both;
+	height:0;
+	visibility:hidden;
+	overflow:hidden;
+}
+
+.cmsmasters-form-builder .check_parent label {
+	padding:0;
+}
+
+.cmsmasters-form-builder .check_parent input[type="checkbox"], 
+.cmsmasters-form-builder .check_parent input[type="radio"] {
+	float:left;
+}
+
+.cmsmasters-form-builder .check_parent input[type="checkbox"] + label, 
+.cmsmasters-form-builder .check_parent input[type="radio"] + label {
+	display:block;
+	float:left;
+	padding:0 0 0 5px;
+	margin:0;
+	overflow:hidden;
+	position:relative;
+	cursor:pointer;
+	z-index:1;
+}
+
+.cmsmasters-form-builder .cmsmasters_checkbox .db, 
+.cmsmasters-form-builder .cmsmasters_radio .db, 
+.cmsmasters-form-builder .cmsmasters_checkboxes .db {
+	display:block;
+	padding-bottom:15px;
+}
+
+.loading {
+	position:relative;
+	opacity:0;
+}
+
+.recaptchatable {
+	background-color:#ffffff;
+}
+
+
+/* ---------- Contact Form Validation Error Styles ---------- */
+
+.inputContainer {
+	position:relative;
+	float:left;
+}
+
+.formError {
+	display:block;
+	margin-left:-100px;
+	position:absolute;
+	top:300px;
+	left:300px;
+	cursor:pointer;
+	z-index:15;
+}
+
+.formError .formErrorContent {
+	background:#000000;
+	color:#ffffff;
+	font-size:11px;
+	width:150px;
+	padding:5px 10px;
+	margin:10px 0;
+	position:relative;
+	z-index:16;
+}
+

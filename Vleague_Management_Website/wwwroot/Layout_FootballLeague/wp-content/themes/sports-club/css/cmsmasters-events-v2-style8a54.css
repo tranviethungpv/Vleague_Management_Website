@@ -1,0 +1,568 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Sports Club
+ * @version 	1.2.2
+ * 
+ * Tribe Events CSS Rules
+ * Created by CMSMasters
+ * 
+ */
+#tribe-events-pg-template,
+.tribe-events-l-container {
+  max-width: none;
+  padding: 0;
+}
+.cmsmasters_tribe_events_views_v2 .content_wrap.fullwidth #tribe-events-pg-template {
+  padding: 20px 0 0;
+}
+.cmsmasters_tribe_events_views_v2 .content_wrap .tribe-events-l-container {
+  padding: 70px 0 50px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events ol:after,
+.cmsmasters_tribe_events_views_v2 .tribe-events ul:after,
+.cmsmasters_tribe_events_views_v2 .tribe-events ol li:before,
+.cmsmasters_tribe_events_views_v2 .tribe-events ul li:before {
+  content: none !important;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-c-ical__link {
+  webkit-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, bortder-color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, bortder-color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, bortder-color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, bortder-color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, bortder-color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-c-ical__link path,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-c-top-bar__nav-link path {
+  webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-c-nav {
+  height: auto;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-c-nav button {
+  border: 0;
+  line-height: 15px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__search-container .tribe-events-c-search__input-control {
+  display: flex;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__search-container .tribe-events-c-search__input-control input:not([type=button]):not([type=checkbox]):not([type=file]):not([type=hidden]):not([type=image]):not([type=radio]):not([type=reset]):not([type=submit]):not([type=color]):not([type=range]) {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  height: auto;
+  padding: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__search-container .tribe-events-c-search__input-control svg {
+  order: -1;
+  transform: none;
+  margin: 20px 15px 20px 20px;
+  position: relative;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+}
+.cmsmasters_tribe_events_style_mode_skeleton.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__search-container .tribe-events-c-search__input-control svg {
+  display: block;
+  margin: 0 15px 0 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__search-container button {
+  line-height: 40px;
+  padding: 0 30px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .datepicker-months .datepicker-switch,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .datepicker-years .datepicker-switch,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .datepicker-months .next,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .datepicker-years .next,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .datepicker-months .prev,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .datepicker-years .prev {
+  background: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__button {
+  line-height: 40px;
+  padding: 0 30px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__content {
+  outline: none;
+}
+.cmsmasters_tribe_events_style_mode_skeleton.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__content {
+  border-width: 1px;
+  border-style: solid;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__content .tribe-events-c-view-selector__list-item:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__content .tribe-events-c-view-selector__list-item:focus {
+  background: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__content .tribe-events-c-view-selector__list-item:hover span,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__content .tribe-events-c-view-selector__list-item:focus span {
+  opacity: 1;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__top-bar .tribe-events-c-top-bar__nav button {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__top-bar .datepicker thead th {
+  background-color: #ffffff;
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__top-bar .datepicker tbody td {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__top-bar .tribe-events-c-top-bar__today-button {
+  margin-right: 30px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__top-bar .tribe-events-c-top-bar__datepicker > button {
+  line-height: 40px;
+  padding: 0;
+}
+.cmsmasters_tribe_events_style_mode_skeleton.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__top-bar .tribe-events-c-top-bar__datepicker > button {
+  padding: 0 30px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-list__event-title a,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-day__event-title a,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-latest-past__event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-list__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-day__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-latest-past__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-list__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-day__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-latest-past__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-list__event-title a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-day__event-title a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-latest-past__event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-week-grid__events-time-tag {
+  font-size: 10px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-date-tag {
+  align-self: center;
+  margin-top: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-datetime-wrapper {
+  align-self: center;
+  margin: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-title {
+  display: flex;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-summary__event-cost {
+  align-self: center;
+  margin: 0 0 0 20px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-photo__event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-photo__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-photo__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-photo__event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro .tribe-events-pro-map__event-column:after:before,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro .tribe-events-pro-map__event-column:before:before,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro .tribe-events-pro-map__event-column:after:after,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro .tribe-events-pro-map__event-column:before:after {
+  content: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-map__event-card-button {
+  white-space: normal;
+  display: block;
+  webkit-transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
+  -ms-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-c-small-cta__link {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-map__nav {
+  height: auto;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single ol:after,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single ul:after,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single ol li:before,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single ul li:before {
+  content: none !important;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta {
+  background: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary {
+  float: left;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue {
+  clear: right;
+  float: left;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary:before,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue:before {
+  content: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue {
+  border: 0;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary > div,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary > div,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue > div {
+  order: 0;
+  width: 50%;
+  margin: 0;
+  padding: 30px 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary > div .tribe-events-single-section-title,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary > div .tribe-events-single-section-title,
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue > div .tribe-events-single-section-title {
+  margin-top: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta .tribe-events-venue-map {
+  background: none;
+  border: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-organizer__meta .tribe-events-pro-organizer__meta-title {
+  outline: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-organizer__meta .tribe-events-pro-organizer__meta-row .tribe-events-pro-organizer__meta-email {
+  outline: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-organizer__meta .tribe-events-pro-organizer__meta-row .tribe-events-pro-organizer__meta-email a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-organizer__meta .tribe-events-pro-organizer__meta-row .tribe-events-pro-organizer__meta-email a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-organizer__meta .tribe-events-pro-organizer__meta-row .tribe-events-pro-organizer__meta-email a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-organizer__meta .tribe-events-pro-organizer__meta-row .tribe-events-pro-organizer__meta-email a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-venue__meta .tribe-events-pro-venue__meta-title {
+  outline: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-venue__meta .tribe-events-pro-venue__meta-details .tribe-events-pro-venue__meta-address-details {
+  outline: none;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-venue__meta .tribe-events-pro-venue__meta-details .tribe-events-pro-venue__meta-address-details a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-venue__meta .tribe-events-pro-venue__meta-details .tribe-events-pro-venue__meta-address-details a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-venue__meta .tribe-events-pro-venue__meta-details .tribe-events-pro-venue__meta-address-details a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-pro-venue__meta .tribe-events-pro-venue__meta-details .tribe-events-pro-venue__meta-address-details a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar > .tribe-compatibility-container {
+  float: left;
+  margin: 0 1.4%;
+  padding: 0 0 40px;
+}
+.cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_14141414 > .tribe-compatibility-container {
+  width: 22.2%;
+}
+.cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_131313 > .tribe-compatibility-container {
+  width: 30.53%;
+}
+.cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_1212 > .tribe-compatibility-container {
+  width: 47.2%;
+}
+.cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_11 > .tribe-compatibility-container {
+  width: 97.2%;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week.tribe-events-view--shortcode,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week.tribe-events-view--shortcode {
+  padding: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-header,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-header {
+  margin: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-widget-events-week__view-more a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-widget-events-week__view-more a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-pro-week-mobile-events__event-title a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-pro-week-mobile-events__event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-widget-events-week__view-more a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-widget-events-week__view-more a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-pro-week-mobile-events__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-pro-week-mobile-events__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-widget-events-week__view-more a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-widget-events-week__view-more a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-pro-week-mobile-events__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-pro-week-mobile-events__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-widget-events-week__view-more a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-widget-events-week__view-more a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-pro-week-mobile-events__event-title a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-pro-week-mobile-events__event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-c-top-bar__nav-list,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-c-top-bar__nav-list {
+  margin: 0 -8px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-week .tribe-events-c-top-bar__nav-list li,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-shortcode-events-week .tribe-events-c-top-bar__nav-list li {
+  margin: 0 8px;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month.tribe-events-view--shortcode,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month.tribe-events-view--shortcode {
+  padding: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month.tribe-events-view--shortcode .tribe-common-l-container,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month.tribe-events-view--shortcode .tribe-common-l-container {
+  padding: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-widget-events-month__view-more a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-widget-events-month__view-more a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-calendar-month-mobile-events__mobile-event-title a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-calendar-month-mobile-events__mobile-event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-widget-events-month__view-more a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-widget-events-month__view-more a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-calendar-month-mobile-events__mobile-event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-calendar-month-mobile-events__mobile-event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-widget-events-month__view-more a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-widget-events-month__view-more a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-calendar-month-mobile-events__mobile-event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-calendar-month-mobile-events__mobile-event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-widget-events-month__view-more a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-widget-events-month__view-more a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-month .tribe-events-calendar-month-mobile-events__mobile-event-title a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-widget-events-shortcode-month .tribe-events-calendar-month-mobile-events__mobile-event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-countdown .tribe-events-widget-countdown__event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-countdown .tribe-events-widget-countdown__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-countdown .tribe-events-widget-countdown__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-countdown .tribe-events-widget-countdown__event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__view-more a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-name a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__event-title a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__view-more a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-name a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__view-more a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-name a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__view-more a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-name a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__event-title a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-info-group--website a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-info-group--website a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-info-group--website a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-featured-venue .tribe-events-widget-featured-venue__venue-info-group--website a:hover {
+  border: 0;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list address {
+  display: block;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__view-more a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-title a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-venue a,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-organizer-title-wrapper a {
+  border: 0;
+  webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
+}
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__view-more a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-title a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-venue a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-organizer-title-wrapper a:active,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__view-more a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-title a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-venue a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-organizer-title-wrapper a:focus,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__view-more a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-title a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-venue a:hover,
+.cmsmasters_tribe_events_views_v2 .tribe-events-widget.tribe-common.tribe-events.tribe-events-view--widget-events-list .tribe-events-widget-events-list__event-organizer-title-wrapper a:hover {
+  border: 0;
+}
+/*-------------------------------------------------------------------------*/
+/* Tablet Monitor
+/*-------------------------------------------------------------------------*/
+@media (max-width: 1024px) {
+  .cmsmasters_sidebar.sidebar_layout_14141414 > .tribe-compatibility-container {
+    width: 47.2%;
+  }
+  .cmsmasters_sidebar.sidebar_layout_14141414 > .tribe-compatibility-container:nth-child( 2n+1 ) {
+    clear: left;
+  }
+}
+/*-------------------------------------------------------------------------*/
+/* Small Tablet Monitor
+/*-------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .cmsmasters_tribe_events_views_v2 .content_wrap.fullwidth #tribe-events-pg-template {
+    padding: 10px 0 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .content_wrap .tribe-events-l-container {
+    padding: 60px 0 50px;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector {
+    display: flex;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__views .tribe-events-c-view-selector__button {
+    line-height: 0;
+    justify-content: flex-end;
+    padding: 0;
+    border-width: 0;
+    border-style: solid;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-header__events-bar .tribe-events-c-events-bar__search-button {
+    line-height: 0;
+    border-width: 0;
+    border-style: solid;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-list__event-date-tag {
+    width: auto;
+    padding-right: 30px;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-calendar-day__event {
+    padding-left: 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-week-mobile-events__day {
+    margin-left: -10px;
+    margin-right: -10px;
+    overflow: hidden;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-week-mobile-events__day .tribe-events-pro-week-mobile-events__event {
+    width: 50%;
+    margin-left: 0;
+    margin-right: 0;
+    float: left;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-week-mobile-events__day .tribe-common-g-row--gutters > .tribe-common-g-col {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-week-mobile-events__event {
+    padding-left: 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary {
+    float: none;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary,
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary,
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue {
+    width: 100%;
+  }
+  .cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_14141414 > .tribe-compatibility-container,
+  .cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_131313 > .tribe-compatibility-container,
+  .cmsmasters_tribe_events_views_v2 .cmsmasters_sidebar.sidebar_layout_1212 > .tribe-compatibility-container {
+    width: 97.2% !important;
+  }
+}
+/*-------------------------------------------------------------------------*/
+/* Phone Monitor
+/*-------------------------------------------------------------------------*/
+@media (max-width: 540px) {
+  .cmsmasters_tribe_events_views_v2 .content_wrap.fullwidth #tribe-events-pg-template {
+    padding: 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .content_wrap .tribe-events-l-container {
+    padding: 50px 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events .tribe-events-pro .tribe-events-pro-summary__event-date-tag {
+    width: auto;
+    margin: 0 30px 0 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-pro .tribe-events-pro-week-mobile-events__day .tribe-events-pro-week-mobile-events__event {
+    float: none;
+    width: 100%;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary > div:first-child {
+    padding-top: 30px;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary,
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary,
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue {
+    flex-direction: column;
+    margin: 0;
+  }
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.primary > div,
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta.secondary > div,
+  .cmsmasters_tribe_events_views_v2 .tribe-events-single .tribe-events-event-meta + .tribe-block__venue > div {
+    width: 100%;
+    padding: 0 0 30px;
+  }
+}

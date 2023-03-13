@@ -1,0 +1,69 @@
+body{overflow: auto !important;}
+.tc-title-wrap h3{font-size: 1.3em;font-weight: 600;}
+#tc-shortcode-builder select,#tc-shortcode-builder input{font-size: 14px;line-height: 1.4;min-height: 30px; border: 1px solid #7e8993;}
+.tc-shortcode-atts h3{color: #23282d;font-size: 1.3em;margin: 1em 0;}
+#tc-shortcode-builder .submit{padding: 1.5em 0;margin: 5px 0;}
+#tc-shortcode-builder .submit input{background: #007cba;border-color: #007cba;color: #fff;width: auto;}
+#tc-shortcode-builder .color-option{display: inline-block;
+    width: 24%;
+    padding: 5px 15px 15px;
+    box-sizing: border-box;
+    margin-bottom: 3px;
+    cursor: pointer;}
+#tc-shortcode-builder .color-palette{width:100%}
+#tc-shortcode-builder label {
+    vertical-align: middle;
+}
+
+
+#tc-shortcode-builder input[type=checkbox],#tc-shortcode-builder input[type=radio]{
+	border: 1px solid #7e8993 !important;
+    border-radius: 4px;
+    background: #fff;
+    color: #555;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0 !important;
+    height: 1rem !important;
+    margin: -.25rem .25rem 0 0;
+    padding: 0!important;
+    text-align: center;
+    vertical-align: middle;
+    width: 1rem !important;
+    min-width: 1rem;
+    -webkit-appearance: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    transition: .05s border-color ease-in-out;
+    min-height: inherit !important;
+}
+
+#tc-shortcode-builder input[type=checkbox]:checked::before {
+	content: url(data:image/svg+xml;utf8,<svg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27><path%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%231e8cbe%27%2F><%2Fsvg>);
+    margin: -.1875rem 0 0 -.25rem;
+    height: 1.3125rem;
+    width: 1.3125rem !important;
+}
+#tc-shortcode-builder input[type=checkbox]:checked::before,#tc-shortcode-builder input[type=radio]:checked::before {
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+    width: 1rem;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#tc-shortcode-builder input[type=radio]:checked::before {
+    content: "";
+    border-radius: 50%;
+    width: .5rem;
+    height: .5rem;
+    margin: .1875rem;
+    background-color: #1e8cbe;
+    line-height: 1.14285714;
+}
+#tc-shortcode-builder input[type=radio] {
+    border-radius: 50%;
+    margin-right: .25rem;
+    line-height: .71428571;
+}

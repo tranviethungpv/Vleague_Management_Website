@@ -1,0 +1,119 @@
+/**
+ * @package 	WordPress
+ * @subpackage 	Sports Club
+ * @version 	1.1.7
+ * 
+ * Responsive TC Events CSS Rules
+ * Created by CMSMasters
+ * 
+ */
+@media only screen {
+  /*-------------------------------------------------------------------------*/
+  /*	Medium Monitor
+/*-------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------*/
+  /*	Tablet Monitor
+/*-------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------*/
+  /*	Small Tablet Monitor
+/*-------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------*/
+  /*	Tablet Monitor 600
+/*-------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------*/
+  /*	Phone Monitor
+/*-------------------------------------------------------------------------*/
+}
+@media only screen and (min-width: 1025px) {
+  .tickera_table {
+    outline: none;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .tickera_table {
+    outline: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .tickera_table {
+    display: block;
+    width: auto;
+  }
+  .tickera_table thead {
+    display: none;
+  }
+  .tickera_table tbody,
+  .tickera_table tr,
+  .tickera_table th,
+  .tickera_table td {
+    display: block;
+    width: auto;
+  }
+  .tickera_table tr {
+    margin: 0 0 30px;
+    overflow: hidden;
+  }
+  .tickera_table tr:last-child {
+    margin-bottom: 0;
+  }
+  .tickera_table td,
+  .tickera_table td.ticket-total,
+  .tickera_table td.ticket-total-all {
+    text-align: center;
+  }
+  .tickera_table .actions:last-child {
+    text-align: center;
+  }
+  .tickera_table .actions .coupon-code {
+    display: block;
+    float: none;
+    margin: 0 0 10px;
+  }
+  .tickera_table .actions .tickera-button.apply_coupon {
+    float: none;
+    clear: both;
+  }
+  .tickera_table .actions .coupon-code-message {
+    display: block;
+    margin: 15px 0;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .event_tickets {
+    display: block;
+    width: auto;
+  }
+  .event_tickets tbody,
+  .event_tickets tr {
+    display: block;
+    width: auto;
+  }
+  .event_tickets tr {
+    margin: 0 0 30px;
+  }
+  .event_tickets tr:first-child,
+  .event_tickets tr:last-child {
+    margin-bottom: 0;
+  }
+  .event_tickets th {
+    display: none;
+  }
+  .event_tickets td {
+    display: block;
+    width: auto;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .tickera_table .ticket-total-all .total_item_title {
+    width: 50%;
+  }
+  .tickera_table .ticket-total-all .total_item_amount {
+    width: 50%;
+  }
+  .fields-wrap {
+    width: 97.2%;
+    float: none;
+    clear: both;
+  }
+}
