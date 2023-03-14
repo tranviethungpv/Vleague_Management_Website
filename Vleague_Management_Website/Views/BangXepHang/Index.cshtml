@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Leaderboard Page";
+    Layout = "~/Views/Shared/_Layout_Leaderboard.cshtml";
+}
+<div id="cmsmasters_row_6406e5d57478d4_68782024"
+     class="cmsmasters_row cmsmasters_color_scheme_default">
+    <div class="cmsmasters_row_outer_parent">
+        <div class="cmsmasters_row_outer">
+            <div class="cmsmasters_row_inner">
+                <div class="cmsmasters_row_margin">
+                    <div class="cmsmasters_column one_first">
+                        <div class="cmsmasters_wrap_table">
+                            <table class="cmsmasters_table">
+                                <caption></caption>
+                                <thead>
+                                    <tr class="cmsmasters_table_row_header">
+                                        <th class="cmsmasters_table_cell_aligncenter">
+                                            POSITION
+                                        </th>
+                                        <th class="cmsmasters_table_cell_aligncenter">
+                                            TEAM
+                                        </th>
+                                        <th class="cmsmasters_table_cell_aligncenter">
+                                            WINS
+                                        </th>
+                                        <th class="cmsmasters_table_cell_aligncenter">
+                                            DRAWS
+                                        </th>
+                                        <th class="cmsmasters_table_cell_aligncenter">
+                                            LOSSES
+                                        </th>
+                                        <th class="cmsmasters_table_cell_aligncenter">
+                                            POINTS
+                                        </th>
+                                    </tr>
+                                </thead>
+                                @for(var i = 1; i< Model.Count; i++)
+                                {
+                                    <tr>
+                                        <td class="cmsmasters_table_cell_aligncenter">
+                                            @i
+                                        </td>
+                                        <td class="cmsmasters_table_cell_aligncenter">
+                                            @Model[i].TenClb
+                                        </td>
+                                        <td class="cmsmasters_table_cell_aligncenter">
+                                            @Model[i].SoTranThang
+                                        </td>
+                                        <td class="cmsmasters_table_cell_aligncenter">
+                                            @Model[i].SoTranHoa
+                                        </td>
+                                        <td class="cmsmasters_table_cell_aligncenter">
+                                            @Model[i].SoTranHoa
+                                        </td>
+                                        <td class="cmsmasters_table_cell_aligncenter">
+                                            @Model[i].Diem
+                                        </td>
+                                    </tr>
+                                }
+                                @*@foreach (var item in Model)
+                                {
+                                    
+                                }*@
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
