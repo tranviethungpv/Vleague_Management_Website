@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Vleague_Management_Website.Models;
+using X.PagedList;
 
 namespace Vleague_Management_Website.Controllers
 {
@@ -13,7 +14,7 @@ namespace Vleague_Management_Website.Controllers
         {
             _logger = logger;
         }
-
+        
         public IActionResult Index()
         {
             List<Caulacbo> lstCauLacBo = db.Caulacbos.ToList();
@@ -28,9 +29,9 @@ namespace Vleague_Management_Website.Controllers
 
                 foreach (var item1 in lstTranDau)
                 {
-                    string[] ketqua = item1.KetQua.Split("-");
-                    var banThangDoiNha = int.Parse(ketqua[0]);
-                    var banThangDoiKhach = int.Parse(ketqua[1]);
+                    string[] ketqua = item1.KetQua.Split("-"); // tách chuỗi bằng dấu '-' vd: 2-1
+                    var banThangDoiNha = int.Parse(ketqua[0]); // gán 2 cho banthangdoinha
+                    var banThangDoiKhach = int.Parse(ketqua[1]); // gán 1 cho doikhach
                     if (banThangDoiNha > banThangDoiKhach)
                     {
                         soTranThang += 1;
@@ -76,7 +77,7 @@ namespace Vleague_Management_Website.Controllers
         }
     }
 }
-public class LeaderBoard
+public class LeaderBoard // để hứng giá tri
 {
     public String TenClb;
     public int SoTranThang;
