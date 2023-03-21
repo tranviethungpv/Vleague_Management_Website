@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_Club.cshtml";
+}
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Caulacbo>
+	<div id="cmsmasters_row_6406e5d37e5604_20293535"
+		 class="cmsmasters_row cmsmasters_color_scheme_default">
+		<div class="cmsmasters_row_outer_parent">
+			<div class="cmsmasters_row_outer">
+				<div class="cmsmasters_row_inner">
+					<div class="cmsmasters_row_margin">
+						<div class="cmsmasters_column three_fourth">
+							<p>
+								<script type="text/javascript">jQuery(document).ready(function () { jQuery("#cmsmasters_hover_slider_6406e5d37e6332_96251689").cmsmastersHoverSlider({ sliderBlock: "#cmsmasters_hover_slider_6406e5d37e6332_96251689", sliderItems: ".cmsmasters_hover_slider_items", thumbWidth: "100", thumbHeight: "60", activeSlide: 1, pauseTime: 5000, pauseOnHover: true }); });</script>
+								<div id="cmsmasters_hover_slider_6406e5d37e6332_96251689"
+									 class="cmsmasters_hover_slider">
+									<ul class="cmsmasters_hover_slider_items">
+										@*@foreach (var item in ViewBag.imageProduct)
+										{*@
+											<li>
+												<figure class="cmsmasters_hover_slider_full_img">
+													<img width="860" height="406"
+														 src="../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-860x406.jpg"
+														 class="attachment-post-thumbnail size-post-thumbnail"
+														 alt="" loading="lazy" />
+												</figure>
+											</li>
+										@*}*@
+									</ul>
+								</div>
+						</div>
+						<div class="cmsmasters_column one_fourth">
+							@foreach(var item in Model)
+							{
+							<div id="cmsmasters_heading_6406e5d3885303_32507373"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h3 class="cmsmasters_heading">Club Name</h3>
+							</div>
+							<div id="cmsmasters_heading_6406e5d38857d0_85284693"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h5 class="cmsmasters_heading">@item.TenClb</h5>
+							</div>
+							<div id="cmsmasters_divider_6406e5d3885ae3_41278770"
+								 class="cmsmasters_divider cmsmasters_divider_width_long cmsmasters_divider_pos_center">
+							</div>
+							<div id="cmsmasters_heading_6406e5d3885d82_21553747"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h3 class="cmsmasters_heading">Tên gọi</h3>
+							</div>
+							<div id="cmsmasters_heading_6406e5d3886000_14060347"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h5 class="cmsmasters_heading">@item.TenGoi</h5>
+							</div>
+							<div id="cmsmasters_divider_6406e5d3886296_57567277"
+								 class="cmsmasters_divider cmsmasters_divider_width_long cmsmasters_divider_pos_center">
+							</div>
+							<div id="cmsmasters_heading_6406e5d3886532_89559027"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h3 class="cmsmasters_heading">Stadium</h3>
+							</div>
+							<div id="cmsmasters_heading_6406e5d38867f5_46731653"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h5 class="cmsmasters_heading">@item.SanVanDongId</h5>
+							</div>
+							<div id="cmsmasters_divider_6406e5d3886ac7_51087735"
+								 class="cmsmasters_divider cmsmasters_divider_width_long cmsmasters_divider_pos_center">
+							</div>
+							<div id="cmsmasters_heading_6406e5d3886d35_85428221"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h3 class="cmsmasters_heading">Current Manager</h3>
+							</div>
+							<div id="cmsmasters_heading_6406e5d3886fc9_70419417"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h5 class="cmsmasters_heading">@item.HuanLuyenVienId</h5>
+							</div>
+							<div id="cmsmasters_divider_6406e5d3887242_16805383"
+								 class="cmsmasters_divider cmsmasters_divider_width_long cmsmasters_divider_pos_center">
+							</div>
+							<div id="cmsmasters_heading_6406e5d38873e1_01664106"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h3 class="cmsmasters_heading">Location</h3>
+							</div>
+							<div id="cmsmasters_heading_6406e5d3887638_87736685"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h5 class="cmsmasters_heading">Sydney, Australia</h5>
+							</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+@*    <aside class="post_nav">
+        <span class="cmsmasters_next_post cmsmasters_theme_icon_slide_next">
+            <a href="../rocky-thunder/index.html" rel="next">Name</a>
+        </span><span class="cmsmasters_prev_post cmsmasters_theme_icon_slide_prev">
+            <a href="../ronny-the-lion/index.html" rel="prev">Ronny The Lion</a>
+        </span>
+    </aside>*@
+	</div>
+@*<div class="pagination d-flex justify-content-center">
+	@Html.PagedListPager(Model, page=> Url.Action("Index",new{page=page}))
+</div>*@
+
