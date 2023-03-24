@@ -1,10 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Vleague_Management_Website.Models;
+using Vleague_Management_Website.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("QlbongDaContext");
+builder.Services.AddDbContext<QlbongDaContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddScoped<ICauThuRepository, CauThuRepository>();
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
     .AddEnvironmentVariables();
 
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTION_STRING") ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+
 
 //builder.Services.AddDbContext<>(options =>
 //    options.UseSqlServer(connectionString));
