@@ -1,8 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Leaderboard Page";
+﻿
+@{
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout_Leaderboard.cshtml";
 }
 
+@{
+    int i = 1; 
+}
 <div id="cmsmasters_row_6406e5d57478d4_68782024"
      class="cmsmasters_row cmsmasters_color_scheme_default">
     <div class="cmsmasters_row_outer_parent">
@@ -19,45 +23,37 @@
                                             POSITION
                                         </th>
                                         <th class="cmsmasters_table_cell_aligncenter">
-                                            TEAM
+                                            PLAYERR
                                         </th>
                                         <th class="cmsmasters_table_cell_aligncenter">
-                                            WINS
+                                            REDCARD
                                         </th>
                                         <th class="cmsmasters_table_cell_aligncenter">
-                                            DRAWS
+                                            YELLOWCARD
                                         </th>
-                                        <th class="cmsmasters_table_cell_aligncenter">
-                                            LOSSES
-                                        </th>
-                                        <th class="cmsmasters_table_cell_aligncenter">
-                                            POINTS
-                                        </th>
+                                     
                                     </tr>
                                 </thead>
-                                @for(var i = 1; i< Model.Count; i++)
+                                @foreach (var item in Model)
                                 {
                                     <tr>
                                         <td class="cmsmasters_table_cell_aligncenter">
                                             @i
                                         </td>
                                         <td class="cmsmasters_table_cell_aligncenter">
-                                            @Model[i].TenClb
+                                            @item.tencauthu
                                         </td>
                                         <td class="cmsmasters_table_cell_aligncenter">
-                                            @Model[i].SoTranThang
+                                            @item.sothevang
                                         </td>
                                         <td class="cmsmasters_table_cell_aligncenter">
-                                            @Model[i].SoTranHoa
+                                            @item.sothedo
                                         </td>
-                                        <td class="cmsmasters_table_cell_aligncenter">
-                                            @Model[i].SoTranHoa
-                                        </td>
-                                        <td class="cmsmasters_table_cell_aligncenter">
-                                            @Model[i].Diem
-                                        </td>
+                                      @{i++;}
                                     </tr>
                                 }
+                           
+
                             </table>
                         </div>
                     </div>
