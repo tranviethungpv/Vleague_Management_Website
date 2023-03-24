@@ -16,7 +16,7 @@ namespace Vleague_Management_Website.Controllers
                                  TenClbNha = b.TenClb,
                                  TenClbKhach = c.TenClb,
                                  StartTime = a.NgayThiDau
-                             }).Take(10).ToList();
+                             }).OrderByDescending(x => x.StartTime).Take(10).ToList();
             return View(listMatch);
         }
     }
