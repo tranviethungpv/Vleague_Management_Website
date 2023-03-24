@@ -3,13 +3,13 @@ using Vleague_Management_Website.Models;
 
 namespace Vleague_Management_Website.Controllers
 {
-	public class BangXepHang : Controller
+	public class BangXepHangController : Controller
 	{
         QlbongDaContext db = new QlbongDaContext();
         public IActionResult Index()
 		{
             List<Caulacbo> lstCauLacBo = db.Caulacbos.ToList();
-            List<global::BangXepHang> lstBangXepHang = new List<global::BangXepHang>();
+            List<BangXepHang> lstBangXepHang = new List<BangXepHang>();
 			foreach(var item in lstCauLacBo)
 			{
 				List<Trandau> lstTranDau = db.Trandaus.Where(x => x.Clbnha == item.CauLacBoId).ToList();
