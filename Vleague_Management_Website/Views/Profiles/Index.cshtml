@@ -97,7 +97,7 @@
 									<div class="pl_img_with_caption">
 										<div class="pl_img">
 											<figure>
-													<a asp-area="" asp-controller="Profiles" asp-action="ChiTietCauThu">
+													<a href="@Url.Action("ChiTietCauThu", "Profiles", new { Cauthu = @item.CauThuId })">
 													<img width="580"
 														 height="360"
 														 src="../Layout_FootballLeague/wp-content/uploads/2015/04/4-580x360.jpg"
@@ -110,7 +110,7 @@
 									<div class="pl_content">
 										<div class="pl_content_leftside">
 											<h4 class="entry-title">
-													<a asp-area="" asp-controller="Profiles" asp-action="ChiTietCauThu">
+													<a href="@Url.Action("ChiTietCauThu", "Profiles", new { Cauthu = @item.CauThuId })">
 													@item.HoVaTen
 												</a>
 											</h4>
@@ -164,87 +164,6 @@
 			</div>
 		</div>
 	</div>
-	<div id="cmsmasters_row_6406e5eba60cf5_50996272" class="cmsmasters_row cmsmasters_color_scheme_default">
-		<div class="cmsmasters_row_outer_parent">
-			<div class="cmsmasters_row_outer">
-				<div class="cmsmasters_row_inner">
-					<div class="cmsmasters_row_margin">
-						<div class="cmsmasters_column one_first">
-
-							<div id="cmsmasters_heading_6406e5eba61268_24726581"
-								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
-								<h1 class="cmsmasters_heading">Profiles Vertical Layout</h1>
-							</div>
-							<div id="6406e5eba61414_41286419" class="cmsmasters_profile vertical">
-
-								<!-- Start Vertical Profile -->
-								@foreach(var item in Model)
-								{
-								<article id="post-446"
-										 class="post-446 profile type-profile status-publish has-post-thumbnail hentry pl-categs-number-3">
-									<div class="pl_img">
-										<figure>
-												<a asp-area="" asp-controller="Profiles" asp-action="ChiTietCauThu">
-												<img width="580" height="360"
-													 src="../Layout_FootballLeague/wp-content/uploads/2015/04/1-580x360.jpg"
-													 class="attachment-project-thumb size-project-thumb wp-post-image"
-													 alt="Bob Bobster" loading="lazy" title="Bob Bobster" />
-											</a>
-										</figure>
-									</div>
-									<div class="pl_content">
-										<div class="pl_content_leftside">
-											<h4 class="entry-title">
-													<a asp-area="" asp-controller="Profiles" asp-action="ChiTietCauThu">
-													@item.HoVaTen
-												</a>
-											</h4>
-											<div class="pl_subtitle_wrap">
-												<h5 class="pl_subtitle">@item.ViTri</h5>
-											</div>
-										</div>
-										<div class="pl_content_rightside">
-											<div class="pl_social">
-												<ul class="pl_social_list">
-													<li>
-														<a href="#" class="cmsmasters-icon-instagramm" title=""></a>
-													</li>
-													<li>
-														<a href="#" class="cmsmasters-icon-skype" title=""></a>
-													</li>
-													<li>
-														<a href="#" class="cmsmasters-icon-twitter" title=""></a>
-													</li>
-													<li>
-														<a href="#" class="cmsmasters-icon-facebook-squared"
-														   title=""></a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-									<div class="entry-content">
-										Maecenas tempus leo ac nisi iaculis porta. Sed sapien tortor,
-										aliquet a velit ut, lacinia molestie velit. Maecenas ornare
-										consequat massa ullamcorper dapibus. Aliquam auctor, sapien sit
-										amet accumsan facilisis, enim enim aliquet arcu, tincidunt
-										pellentesque justo turpis id neque. Duis eleifend nunc sit amet
-										mi dapibus ornare. Suspendisse vel libero se Maecenas ornare
-										consequat massa ullamcorper dapibus.
-									</div>
-									<div class="cl"></div>
-								</article>
-								}
-								<!-- Finish Vertical Profile -->
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div class="cl"></div>
 	<div class="content_wrap fullwidth">
 

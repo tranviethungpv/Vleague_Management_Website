@@ -15,7 +15,7 @@ namespace Vleague_Management_Website.Controllers
 			PagedList<Cauthu> lst = new PagedList<Cauthu>(listCT, pageNumber, pageSize);
 			return View(lst);
 		}
-		public IActionResult ThongTinCauThu(string CauThu)
+		public IActionResult ChiTietCauThu(string CauThu)
 		{
 			var product = db.Cauthus.SingleOrDefault(x => x.CauThuId == CauThu);
 			//var imageProduct = db.Cauthus.Where(x => x.CauThuId == CauThu).ToList();
