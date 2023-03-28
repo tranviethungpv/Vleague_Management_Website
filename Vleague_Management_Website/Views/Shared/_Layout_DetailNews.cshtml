@@ -376,7 +376,171 @@ cmsmasters_layer_button {
 <div id="main">
 	
 <!-- Start Header -->
-			@await Html.PartialAsync("_Partial_Header")
+			<header id="header">
+				<div class="header_top" data-height="32">
+					<div class="header_top_outer">
+						<div class="header_top_inner">
+							<div class="header_top_right">
+								<div class="header_top_aligner"></div>
+								<div class="social_wrap">
+									<div class="social_wrap_inner">
+										<ul class="clear">
+											<li>
+												<a href="#"
+												   class="cmsmasters_social_icon cmsmasters_social_icon_1 cmsmasters-icon-facebook-1 cmsmasters_social_icon_color"
+												   title="Facebook" target="_blank"></a>
+											</li>
+											<li>
+												<a href="#"
+												   class="cmsmasters_social_icon cmsmasters_social_icon_2 cmsmasters-icon-gplus-2 cmsmasters_social_icon_color"
+												   title="Google+" target="_blank"></a>
+											</li>
+											<li>
+												<a href="#"
+												   class="cmsmasters_social_icon cmsmasters_social_icon_3 cmsmasters-icon-twitter-1 cmsmasters_social_icon_color"
+												   title="Wordpress" target="_blank"></a>
+											</li>
+											<li>
+												<a href="#"
+												   class="cmsmasters_social_icon cmsmasters_social_icon_4 cmsmasters-icon-youtube-play cmsmasters_social_icon_color"
+												   title="Youtube" target="_blank"></a>
+											</li>
+											<li>
+												<a href="#"
+												   class="cmsmasters_social_icon cmsmasters_social_icon_5 cmsmasters-icon-rss cmsmasters_social_icon_color"
+												   title="RSS" target="_blank"></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="header_top_left">
+								<div class="header_top_aligner"></div>
+								<div class="meta_wrap">
+									<span class="cmsmasters-icon-location-2">
+										Số 3 Cầu Giấy, Láng Thượng, Đống Đa, Hà Nội
+									</span>
+									<span class="cmsmasters-icon-phone-1">+84916001328</span>
+									<a href="mailto:tranviethungpv@icloud.com"
+									   class="cmsmasters-icon-mail-2">Email to us</a>
+								</div>
+							</div>
+							<div class="cl"></div>
+						</div>
+					</div>
+					<div class="header_top_but closed">
+						<span class="cmsmasters_bot_arrow">
+							<span></span>
+						</span>
+					</div>
+				</div>
+				<div class="header_mid" data-height="150">
+					<div class="header_mid_outer">
+						<div class="header_mid_inner ">
+							<div class="logo_wrap">
+								<a href="/Home/" title="Sports Club" class="logo">
+									<img src="../../Images/Logo/logo-mini.png"
+										 alt="Sports Club" />
+									<img class="logo_mini"
+										 src="../../Images/Logo/logo.png"
+										 alt="Sports Club" />
+									<img class="logo_retina"
+										 src="../../Images/Logo/logo.png"
+										 alt="Sports Club" width="120" height="113" />
+								</a>
+							</div>
+							<div class="header_mid_right_wrap">
+								<div class="header_mid_right_wrap_aligner">
+									<div class="search_wrap">
+										<div class="search_wrap_inner">
+
+											<div class="search_bar_wrap">
+												<form method="get" action="https://sports-club.cmsmasters.net/">
+													<p class="search_field">
+														<input name="s" placeholder="enter keywords..." value=""
+															   type="search" />
+													</p>
+													<p class="search_button">
+														<button type="submit">Search</button>
+													</p>
+												</form>
+											</div>
+
+										</div>
+									</div>
+									<div class="resp_nav_wrap">
+										<div class="resp_nav_wrap_inner">
+											<div class="resp_nav_content">
+												<a class="responsive_nav cmsmasters_theme_icon_resp_nav"
+												   href="javascript:void(0);"></a>
+											</div>
+										</div>
+									</div>
+
+									<!-- Start Navigation -->
+									<nav role="navigation">
+										<div class="menu-primary-navigation-container">
+											<ul id="navigation" class="navigation">
+												<li id="menu-item-5106"
+													class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-20 current_page_item menu-item-5106 menu-item-depth-0">
+													<a href="/Home/"><span>Trang chủ</span></a>
+												</li>
+												<li id="menu-item-7055"
+													class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7055 menu-item-depth-0">
+													<a href="@Url.Action("Index","BangXepHang")"><span>Bảng xếp hạng</span></a>
+												</li>
+												<li id="menu-item-5037"
+													class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5037 menu-item-depth-0">
+													<a href="@Url.Action("Index", "LichThiDau")"><span>Lịch thi đấu</span></a>
+												</li>
+												<li id="menu-item-7079"
+													class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7079 menu-item-depth-0">
+													<a href="@Url.Action("Index", "Clubs")"><span>Câu lạc bộ</span></a>
+												</li>
+												<li id="menu-item-7056"
+													class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7056 menu-item-mega menu-item-mega-cols-four menu-item-depth-0">
+													<a href="@Url.Action("Index", "Profiles")"><span>Cầu thủ</span></a>
+												</li>
+												<li id="menu-item-7061"
+													class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7061 menu-item-mega menu-item-mega-cols-five menu-item-depth-0">
+													<a href="#"><span>Thống kê</span></a>
+													<div class="menu-item-mega-container">
+														<ul class="sub-menu">
+															<li id="menu-item-5039"
+																class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5039 menu-item-depth-1">
+																<ul class="sub-menu">
+																	<li id="menu-item-5040"
+																		class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5040 menu-item-depth-subitem">
+																		<a href="@Url.Action("Index","GhiBan")"><span>Vua phá lưới</span></a>
+																	</li>
+																	<li id="menu-item-5041"
+																		class="menu-item menu-item-type-custom menu-item-object-custom menu-item-5041 menu-item-depth-subitem">
+																		<a href="@Url.Action("Index", "DanhSachAnThe")"><span>Vua phạm lỗi</span></a>
+																	</li>
+																</ul>
+															</li>
+														</ul>
+													</div>
+												</li>
+												<li id="menu-item-7056"
+													class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7056 menu-item-mega menu-item-mega-cols-four menu-item-depth-0">
+													<a href="@Url.Action("Index", "News")"><span>Tin tức</span></a>
+												</li>
+												<li id="menu-item-5112"
+													class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5112 menu-item-depth-0">
+													<a href="#"><span>Đăng nhập/Đăng kí</span></a>
+												</li>
+											</ul>
+										</div>
+									</nav>
+									<!-- Finish Navigation -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cl"></div>
+			</header>
 <!-- Finish Header -->
 
 	

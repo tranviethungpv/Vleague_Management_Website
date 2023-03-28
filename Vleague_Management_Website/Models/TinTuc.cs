@@ -15,5 +15,7 @@ public partial class TinTuc
 
     public string? NguoiDungId { get; set; }
 
+    public string? Anhdaidien { get; set; }
+
     public virtual NguoiDung? NguoiDung { get; set; }
 }

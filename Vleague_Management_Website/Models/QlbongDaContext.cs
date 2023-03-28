@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -62,7 +62,8 @@ public partial class QlbongDaContext : DbContext
 
         modelBuilder.Entity<Caulacbo>(entity =>
         {
-            entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB43E92E35A6");
+            entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB434E4D8A2F");
+
             entity.ToTable("CAULACBO");
 
             entity.Property(e => e.CauLacBoId)
@@ -135,7 +136,8 @@ public partial class QlbongDaContext : DbContext
 
         modelBuilder.Entity<Huanluyenvien>(entity =>
         {
-            entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB2145DD0528");
+            entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB21F433762B");
+
             entity.ToTable("HUANLUYENVIEN");
 
             entity.Property(e => e.HuanLuyenVienId)
@@ -202,6 +204,7 @@ public partial class QlbongDaContext : DbContext
             entity.Property(e => e.TinTucId)
                 .HasMaxLength(10)
                 .HasColumnName("TinTucID");
+            entity.Property(e => e.Anhdaidien).HasMaxLength(200);
             entity.Property(e => e.NgayTao).HasColumnType("datetime");
             entity.Property(e => e.NguoiDungId)
                 .HasMaxLength(10)

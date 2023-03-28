@@ -25,7 +25,17 @@
                     <!-- Start Image Article -->
                     <article id="post-2965" class="post-2965 post type-post status-publish format-image has-post-thumbnail hentry category-featured category-news post_format-post-format-image">
                         <div class="cmsmasters_post_cont">
-                            <figure class="cmsmasters_img_wrap"><a href="../Layout_FootballLeague/wp-content/uploads/2015/04/1-1.jpg" title="Texas Rangers Finish In Second Place" rel="ilightbox[img_2965_6406e5d8f3231]" class="cmsmasters_img_link"><img width="1000" height="667" src="../Layout_FootballLeague/wp-content/uploads/2015/04/1-1.jpg" class=" wp-post-image" alt="Texas Rangers Finish In Second Place" loading="lazy" title="Texas Rangers Finish In Second Place" srcset="https://sports-club.cmsmasters.net/wp-content/uploads/2015/04/1-1.jpg 1000w, https://sports-club.cmsmasters.net/wp-content/uploads/2015/04/1-1-300x200.jpg 300w, https://sports-club.cmsmasters.net/wp-content/uploads/2015/04/1-1-768x512.jpg 768w, https://sports-club.cmsmasters.net/wp-content/uploads/2015/04/1-1-600x400.jpg 600w, https://sports-club.cmsmasters.net/wp-content/uploads/2015/04/1-1-580x387.jpg 580w, https://sports-club.cmsmasters.net/wp-content/uploads/2015/04/1-1-860x574.jpg 860w" sizes="(max-width: 1000px) 100vw, 1000px" /></a></figure>
+                            <figure class="cmsmasters_img_wrap">
+                                <a href="@Url.Content("../../Images/News/"+Model.Anhdaidien)"
+                                   title="Texas Rangers Finish In Second Place" rel="ilightbox[img_2965_6406e5d8f3231]"
+                                   class="cmsmasters_img_link">
+                                    <img width="1000" height="667"
+                                         src="../Layout_FootballLeague/wp-content/uploads/2015/04/1-1.jpg" class=" wp-post-image"
+                                         alt="Texas Rangers Finish In Second Place" loading="lazy" title="Texas Rangers Finish In Second Place"
+                                         srcset="@Url.Content("../../Images/News/"+Model.Anhdaidien)" 1000w
+                                         sizes="(max-width: 1000px) 100vw, 1000px" />
+                                </a>
+                            </figure>
                             <div class="cmsmasters_post_cont_info_rightside">
                                 <header class="cmsmasters_post_header entry-header">
                                     <h2 class="cmsmasters_post_title entry-title">@Model.TieuDe</h2>
