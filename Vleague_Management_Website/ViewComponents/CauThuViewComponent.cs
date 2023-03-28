@@ -13,7 +13,7 @@ namespace Vleague_Management_Website.ViewComponents
 		}
 		public IViewComponentResult Invoke()
 		{
-			var cauthu = _cauThuRepository.GetAllCauthu().OrderBy(x => x.CauThuId).Take(4);
+			var cauthu = _cauThuRepository.GetAllTinTuc().OrderBy(x => x.CauThuId).Take(4);
 			return View(cauthu);
 		}
 	}

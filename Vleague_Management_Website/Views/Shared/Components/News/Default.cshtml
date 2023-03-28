@@ -1,0 +1,120 @@
+﻿@model IEnumerable<TinTuc>
+
+@{
+    Layout = null;
+}
+
+<div class="cmsmasters_column three_third">
+
+	<div id="cmsmasters_heading_6406e5b3b11ae5_01183851"
+		 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+		<h2 class="cmsmasters_heading">TIN MỚI</h2>
+	</div>
+	<div class="cmsmasters_posts_slider">
+		<script type="text/javascript">
+			jQuery(document).ready(function () {
+				var container = jQuery('.cmsmasters_slider_6406e5b3b1250');
+				containerWidth = container.width(),
+					firstPost = container.find('article'),
+					postMinWidth = Number(firstPost.css('minWidth').replace('px', '')),
+					postThreeColumns = (postMinWidth * 4) - 1;
+				postTwoColumns = (postMinWidth * 3) - 1;
+				postOneColumns = (postMinWidth * 2) - 1;
+
+
+				jQuery('.cmsmasters_slider_6406e5b3b1250').owlCarousel({
+					items: 1,
+					itemsDesktop: false,
+					itemsDesktopSmall: [postThreeColumns, 1],
+					itemsTablet: [postTwoColumns, 1],
+					itemsMobile: [postOneColumns, 1],
+					transitionStyle: false,
+					rewindNav: true,
+					slideSpeed: 200,
+					paginationSpeed: 800,
+					rewindSpeed: 1000, autoPlay: false, stopOnHover: true,
+					autoHeight: true,
+					addClassActive: true,
+					mouseDrag: false,
+					touchDrag: false,
+					responsiveBaseWidth: '.cmsmasters_slider_6406e5b3b1250',
+					pagination: false,
+					navigation: true,
+					navigationText: ["<span class=\"cmsmasters_prev_arrow\"><span></span></span>", "<span class=\"cmsmasters_next_arrow\"><span></span></span>"]
+				});
+			});
+		</script>
+		<div id="cmsmasters_owl_carousel_6406e5b3b1250"
+			 class="cmsmasters_owl_slider cmsmasters_slider_6406e5b3b1250">
+			<div>
+				<!-- Start Image Article -->
+				@foreach(var item in Model)
+				{
+					<article id="post-6674"
+							 class="post-6674 post type-post status-publish format-image has-post-thumbnail hentry category-hot-news post_format-post-format-image">
+						<div class="cmsmasters_slider_post_cont">
+							<div class="thumb_wrap">
+								<figure class="cmsmasters_img_wrap">
+									<a href="eagles-suffer-1-0-defeat-to-beavers-despite-dominating-performance/index.html"
+									   title="Eagles Suffer 1-0 Defeat to Beavers Despite Dominating Performance!"
+									   class="cmsmasters_img_link preloader">
+										<img width="300" height="300"
+											 src="../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-300x300.jpg"
+											 class="full-width wp-post-image"
+											 alt="Eagles Suffer 1-0 Defeat to Beavers Despite Dominating Performance!"
+											 loading="lazy"
+											 title="Eagles Suffer 1-0 Defeat to Beavers Despite Dominating Performance!"
+											 srcset="https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-300x300.jpg 300w, https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-150x150.jpg 150w, https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-55x55.jpg 55w, https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-580x580.jpg 580w, https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-180x180.jpg 180w, https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-600x600.jpg 600w, https://sports-club.cmsmasters.net/../Layout_FootballLeague/wp-content/uploads/2015/04/bjgl-100x100.jpg 100w"
+											 sizes="(max-width: 300px) 100vw, 300px" />
+									</a>
+								</figure>
+							</div>
+							<div class="cmsmasters_slider_post_cont_wrap">
+								<header class="cmsmasters_slider_post_header cmsmasters_slider_post_header_with_date entry-header">
+									<span class="cmsmasters_post_date">
+										<abbr class="published"
+											  title="October 28, 2015">@item.NgayTao</abbr><abbr class="dn date updated"
+																							  title="November 4, 2015">
+											November 4,
+											2015
+										</abbr>
+									</span>
+									<h4 class="cmsmasters_slider_post_title entry-title">
+										<a href="eagles-suffer-1-0-defeat-to-beavers-despite-dominating-performance/index.html">
+											@item.TieuDe
+										</a>
+									</h4>
+								</header>
+								<div class="cmsmasters_post_cont_info entry-meta">
+									<span class="cmsmasters_slider_post_user_name">
+										By
+										<a href="author/cmsmasters/index.html"
+										   title="Posts by cmsmasters"
+										   class="vcard author" rel="author">
+											<span class="fn">cmsmasters</span>
+										</a>
+									</span><span>In</span><span class="cmsmasters_slider_post_category">
+										<a href="category/hot-news/index.html"
+										   rel="category tag">Hot news</a>
+									</span>
+								</div>
+								<div class="cmsmasters_slider_post_content entry-content">
+									<p>
+										
+									</p>
+								</div>
+								<footer class="cmsmasters_slider_post_footer entry-meta">
+									<a class="cmsmasters_post_read_more"
+									   href="eagles-suffer-1-0-defeat-to-beavers-despite-dominating-performance/index.html">
+										Read
+										More
+									</a>
+								</footer>
+							</div>
+						</div>
+					</article>
+				}
+			</div>
+		</div>
+	</div>
+</div>

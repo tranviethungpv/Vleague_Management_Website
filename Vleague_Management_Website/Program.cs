@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("QlbongDaContext");
 builder.Services.AddDbContext<QlbongDaContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddScoped<ICauThuRepository, CauThuRepository>();
+builder.Services.AddScoped<NewsRepository>();
+builder.Services.AddScoped<KetQuaThiDauRepository>();
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)

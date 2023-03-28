@@ -9,7 +9,7 @@ namespace Vleague_Management_Website.Repository
 			_context = context;
 		}
 
-		public IEnumerable<Cauthu> GetAllCauthu()
+		public IEnumerable<Cauthu> GetAllTinTuc()
 		{
 			return _context.Cauthus;
 		}
