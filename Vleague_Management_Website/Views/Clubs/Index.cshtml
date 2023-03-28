@@ -1,0 +1,175 @@
+﻿@{
+	ViewData["Title"] = "Clubs Page";
+	Layout = "~/Views/Shared/_Layout_Profiles.cshtml";
+}
+<div class="middle_inner">
+	<div class="content_wrap fullwidth">
+
+		<!-- Start Content -->
+		<div class="middle_content entry" role="main"></div>
+	</div>
+	<style type="text/css">
+		#cmsmasters_row_6406e5eba21b77_17923319 .cmsmasters_row_outer_parent {
+			padding-top: 70px;
+		}
+
+
+		#cmsmasters_heading_6406e5eba22244_64979632 {
+			text-align: left;
+			margin-top: 0px;
+			margin-bottom: 50px;
+		}
+
+			#cmsmasters_heading_6406e5eba22244_64979632 .cmsmasters_heading {
+				text-align: left;
+			}
+
+				#cmsmasters_heading_6406e5eba22244_64979632 .cmsmasters_heading,
+				#cmsmasters_heading_6406e5eba22244_64979632 .cmsmasters_heading a {
+					font-weight: bold;
+					font-style: normal;
+				}
+
+			#cmsmasters_heading_6406e5eba22244_64979632 .cmsmasters_heading_divider {
+			}
+
+
+		#cmsmasters_row_6406e5eba60411_25373396 .cmsmasters_row_outer_parent {
+			padding-top: 0px;
+		}
+
+
+		#cmsmasters_divider_6406e5eba60ad9_13849406 {
+			border-bottom-width: 1px;
+			border-bottom-style: dashed;
+			padding-top: 60px;
+			margin-bottom: 80px;
+		}
+
+		#cmsmasters_row_6406e5eba60cf5_50996272 .cmsmasters_row_outer_parent {
+			padding-top: 0px;
+		}
+
+		#cmsmasters_row_6406e5eba60cf5_50996272 .cmsmasters_row_outer_parent {
+			padding-bottom: 50px;
+		}
+
+
+		#cmsmasters_heading_6406e5eba61268_24726581 {
+			text-align: left;
+			margin-top: 0px;
+			margin-bottom: 50px;
+		}
+
+			#cmsmasters_heading_6406e5eba61268_24726581 .cmsmasters_heading {
+				text-align: left;
+			}
+
+				#cmsmasters_heading_6406e5eba61268_24726581 .cmsmasters_heading,
+				#cmsmasters_heading_6406e5eba61268_24726581 .cmsmasters_heading a {
+					font-weight: bold;
+					font-style: normal;
+				}
+
+			#cmsmasters_heading_6406e5eba61268_24726581 .cmsmasters_heading_divider {
+			}
+	</style>
+	<div id="cmsmasters_row_6406e5eba21b77_17923319" class="cmsmasters_row cmsmasters_color_scheme_default">
+		<div class="cmsmasters_row_outer_parent">
+			<div class="cmsmasters_row_outer">
+				<div class="cmsmasters_row_inner">
+					<div class="cmsmasters_row_margin">
+						<div class="cmsmasters_column one_first">
+
+							<div id="cmsmasters_heading_6406e5eba22244_64979632"
+								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
+								<h1 class="cmsmasters_heading">Profiles Horizontal Layout</h1>
+							</div>
+							<div id="6406e5eba22443_02447938" class="cmsmasters_profile horizontal">
+
+								<!-- Start Horizontal Profile -->
+								@foreach (var item in Model)
+								{
+									<article id="post-6042"
+											 class="one_fourth post-6042 profile type-profile status-publish has-post-thumbnail hentry pl-categs-number-26">
+										<div class="pl_img_with_caption">
+											<div class="pl_img">
+												<figure>
+													<a href="@Url.Action("ChiTietClub", "Clubs", new { clubid = @item.CauLacBoId })">
+														<img width="580"
+															 height="360"
+															 src=@Url.Content("../Images/Clubs/"+item.AnhDaiDien)
+															 class="attachment-project-thumb size-project-thumb wp-post-image"
+															 alt="Rocky Thunder" loading="lazy" title="Rocky Thunder" />
+													</a>
+												</figure>
+											</div>
+										</div>
+										<div class="pl_content">
+											<div class="pl_content_leftside">
+												<h4 class="entry-title">
+													<a href="@Url.Action("ChiTietCauThu", "Profiles", new { clubid = @item.CauLacBoId })">
+														@item.TenClb
+													</a>
+												</h4>
+												<h5 class="pl_subtitle">@item.TenGoi</h5>
+											</div>
+											<div class="pl_content_rightside">
+												<div class="pl_social">
+													<ul class="pl_social_list">
+														<li>
+															<a href="#" class="cmsmasters-icon-instagramm" title=""></a>
+														</li>
+														<li>
+															<a href="#" class="cmsmasters-icon-skype" title=""></a>
+														</li>
+														<li>
+															<a href="#" class="cmsmasters-icon-twitter" title=""></a>
+														</li>
+														<li>
+															<a href="#" class="cmsmasters-icon-facebook-squared"
+															   title=""></a>
+														</li>
+													</ul>
+												</div>
+												<div class="cl"></div>
+											</div>
+										</div>
+									</article>
+								}
+								<!-- Finish Horizontal Profile -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="cmsmasters_row_6406e5eba60411_25373396" class="cmsmasters_row cmsmasters_color_scheme_default">
+		<div class="cmsmasters_row_outer_parent">
+			<div class="cmsmasters_row_outer">
+				<div class="cmsmasters_row_inner">
+					<div class="cmsmasters_row_margin">
+						<div class="cmsmasters_column one_first">
+
+							<div id="cmsmasters_divider_6406e5eba60ad9_13849406"
+								 class="cmsmasters_divider cmsmasters_divider_width_long cmsmasters_divider_pos_center">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cl"></div>
+	<div class="content_wrap fullwidth">
+
+		<div class="middle_content entry" role="main"></div>
+		<!-- Finish Content -->
+
+	</div>
+</div>
+@*<div class="pagination d-flex justify-content-center">
+	@Html.PagedListPager(Model, page=> Url.Action("Index",new{page=page}))
+</div>*@

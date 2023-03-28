@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +14,8 @@ public partial class QlbongDaContext : DbContext
         : base(options)
     {
     }
+
+    public virtual DbSet<Anhcaulacbo> Anhcaulacbos { get; set; }
 
     public virtual DbSet<Caulacbo> Caulacbos { get; set; }
 
@@ -41,10 +43,26 @@ public partial class QlbongDaContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Anhcaulacbo>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("ANHCAULACBO");
+
+            entity.Property(e => e.CauLacBoId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.TenFileAnh).HasMaxLength(400);
+
+            entity.HasOne(d => d.CauLacBo).WithMany()
+                .HasForeignKey(d => d.CauLacBoId)
+                .HasConstraintName("FK_ANHCAULACBO_CAULACBO");
+        });
+
         modelBuilder.Entity<Caulacbo>(entity =>
         {
             entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB43E92E35A6");
-
             entity.ToTable("CAULACBO");
 
             entity.Property(e => e.CauLacBoId)
@@ -52,6 +70,7 @@ public partial class QlbongDaContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("CauLacBoID");
+            entity.Property(e => e.AnhDaiDien).HasMaxLength(400);
             entity.Property(e => e.HuanLuyenVienId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -89,6 +108,7 @@ public partial class QlbongDaContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("CauThuID");
+            entity.Property(e => e.Anhdaidien).HasMaxLength(200);
             entity.Property(e => e.CauLacBoId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -116,7 +136,6 @@ public partial class QlbongDaContext : DbContext
         modelBuilder.Entity<Huanluyenvien>(entity =>
         {
             entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB2145DD0528");
-
             entity.ToTable("HUANLUYENVIEN");
 
             entity.Property(e => e.HuanLuyenVienId)

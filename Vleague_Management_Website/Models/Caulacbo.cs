@@ -15,6 +15,8 @@ public partial class Caulacbo
 
     public string? HuanLuyenVienId { get; set; }
 
+    public string? AnhDaiDien { get; set; }
+
     public virtual ICollection<Cauthu> Cauthus { get; } = new List<Cauthu>();
 
     public virtual Huanluyenvien? HuanLuyenVien { get; set; }

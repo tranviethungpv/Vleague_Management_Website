@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Cauthu>
+
+<div id="6406e5b3bedf96_69081564" class="cmsmasters_profile horizontal">
+
+	<!-- Start Horizontal Profile -->
+	@foreach(var item in Model)
+	{
+		<article id="post-6038"
+			 class="one_fourth post-6038 profile type-profile status-publish has-post-thumbnail hentry pl-categs-number-8">
+			<div class="pl_img_with_caption">
+				<div class="pl_img">
+					<figure>
+						<a href="profile/gary-rocket/index.html">
+							<img width="580" height="360"
+								 src=@Url.Content("../Images/Players/"+@item.Anhdaidien)
+							 class="attachment-project-thumb size-project-thumb wp-post-image"
+							 alt="Gary Rocket" loading="lazy"
+							 title="Gary Rocket" />
+						</a>
+					</figure>
+				</div>
+			</div>
+			<div class="pl_content">
+				<div class="pl_content_leftside">
+					<h4 class="entry-title">
+						<a asp-controller="Home" asp-action="ChiTietCauThu"
+						asp-route-macauthu="@item.CauThuId">@item.HoVaTen</a>
+					</h4>
+					<h5 class="pl_subtitle">@item.ViTri</h5>
+				</div>
+				<div class="pl_content_rightside">
+					<div class="pl_social">
+						<ul class="pl_social_list">
+							<li>
+								<a href="#" class="cmsmasters-icon-instagramm"
+							   title=""></a>
+							</li>
+							<li>
+								<a href="#" class="cmsmasters-icon-skype"
+							   title=""></a>
+							</li>
+							<li>
+								<a href="http://xn--m2g/"
+							   class="cmsmasters-icon-twitter"
+							   title=""></a>
+							</li>
+							<li>
+								<a href="#"
+							   class="cmsmasters-icon-facebook-squared"
+							   title=""></a>
+							</li>
+						</ul>
+					</div>
+					<div class="cl"></div>
+				</div>
+			</div>
+		</article>
+	}
+
+</div>	
