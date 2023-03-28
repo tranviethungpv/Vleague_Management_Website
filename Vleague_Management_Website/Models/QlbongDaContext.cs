@@ -15,13 +15,21 @@ public partial class QlbongDaContext : DbContext
     {
     }
 
+    public virtual DbSet<Anhcaulacbo> Anhcaulacbos { get; set; }
+
     public virtual DbSet<Caulacbo> Caulacbos { get; set; }
 
     public virtual DbSet<Cauthu> Cauthus { get; set; }
 
     public virtual DbSet<Huanluyenvien> Huanluyenviens { get; set; }
 
+    public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
+
     public virtual DbSet<Sanvandong> Sanvandongs { get; set; }
+
+    public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
+
+    public virtual DbSet<TinTuc> TinTucs { get; set; }
 
     public virtual DbSet<Trandau> Trandaus { get; set; }
 
@@ -32,11 +40,29 @@ public partial class QlbongDaContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=TVHUNG-LATITUDE\\SQLEXPRESS;Initial Catalog=QLBongDa;Integrated Security=True;TrustServerCertificate=True");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Anhcaulacbo>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("ANHCAULACBO");
+
+            entity.Property(e => e.CauLacBoId)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.TenFileAnh).HasMaxLength(400);
+
+            entity.HasOne(d => d.CauLacBo).WithMany()
+                .HasForeignKey(d => d.CauLacBoId)
+                .HasConstraintName("FK_ANHCAULACBO_CAULACBO");
+        });
+
         modelBuilder.Entity<Caulacbo>(entity =>
         {
-            entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB43378310D2");
+            entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB434E4D8A2F");
 
             entity.ToTable("CAULACBO");
 
@@ -45,6 +71,7 @@ public partial class QlbongDaContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("CauLacBoID");
+            entity.Property(e => e.AnhDaiDien).HasMaxLength(400);
             entity.Property(e => e.HuanLuyenVienId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -82,6 +109,7 @@ public partial class QlbongDaContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("CauThuID");
+            entity.Property(e => e.Anhdaidien).HasMaxLength(200);
             entity.Property(e => e.CauLacBoId)
                 .HasMaxLength(20)
                 .IsUnicode(false)
@@ -108,7 +136,7 @@ public partial class QlbongDaContext : DbContext
 
         modelBuilder.Entity<Huanluyenvien>(entity =>
         {
-            entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB2161269F71");
+            entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB21F433762B");
 
             entity.ToTable("HUANLUYENVIEN");
 
@@ -121,6 +149,25 @@ public partial class QlbongDaContext : DbContext
             entity.Property(e => e.TenHlv)
                 .HasMaxLength(40)
                 .HasColumnName("TenHLV");
+        });
+
+        modelBuilder.Entity<NguoiDung>(entity =>
+        {
+            entity.ToTable("NguoiDung");
+
+            entity.Property(e => e.NguoiDungId)
+                .HasMaxLength(10)
+                .HasColumnName("NguoiDungID");
+            entity.Property(e => e.Email).HasMaxLength(50);
+            entity.Property(e => e.HoTen).HasMaxLength(50);
+            entity.Property(e => e.Sđt)
+                .HasMaxLength(50)
+                .HasColumnName("SĐT");
+            entity.Property(e => e.TenDangNhap).HasMaxLength(50);
+
+            entity.HasOne(d => d.TenDangNhapNavigation).WithMany(p => p.NguoiDungs)
+                .HasForeignKey(d => d.TenDangNhap)
+                .HasConstraintName("FK_NguoiDung_TaiKhoan");
         });
 
         modelBuilder.Entity<Sanvandong>(entity =>
@@ -138,6 +185,35 @@ public partial class QlbongDaContext : DbContext
             entity.Property(e => e.ThanhPho)
                 .HasMaxLength(30)
                 .IsFixedLength();
+        });
+
+        modelBuilder.Entity<TaiKhoan>(entity =>
+        {
+            entity.HasKey(e => e.TenDangNhap);
+
+            entity.ToTable("TaiKhoan");
+
+            entity.Property(e => e.TenDangNhap).HasMaxLength(50);
+            entity.Property(e => e.MatKhau).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TinTuc>(entity =>
+        {
+            entity.ToTable("TinTuc");
+
+            entity.Property(e => e.TinTucId)
+                .HasMaxLength(10)
+                .HasColumnName("TinTucID");
+            entity.Property(e => e.NgayTao).HasColumnType("datetime");
+            entity.Property(e => e.NguoiDungId)
+                .HasMaxLength(10)
+                .HasColumnName("NguoiDungID");
+            entity.Property(e => e.NoiDung).HasColumnType("text");
+            entity.Property(e => e.TieuDe).HasMaxLength(200);
+
+            entity.HasOne(d => d.NguoiDung).WithMany(p => p.TinTucs)
+                .HasForeignKey(d => d.NguoiDungId)
+                .HasConstraintName("FK_TinTuc_NguoiDung");
         });
 
         modelBuilder.Entity<Trandau>(entity =>

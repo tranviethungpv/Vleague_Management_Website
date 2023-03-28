@@ -10,13 +10,10 @@ namespace Vleague_Management_Website.Controllers
 	public class ClubsController : Controller
 	{
 		QlbongDaContext db = new QlbongDaContext();
-		public IActionResult Index(int? page)
+		public IActionResult Index()
 		{
-			int pageSize = 8;
-			int pageNumber = page == null || page < 0 ? 1 : page.Value;
 			var listClb = db.Caulacbos.OrderBy(x => x.CauLacBoId).ToList();
-			PagedList<Caulacbo> lst = new PagedList<Caulacbo>(listClb, pageNumber, pageSize);
-			return View(lst);
+			return View(listClb);
 		}
 		public IActionResult ChiTietClub(string clubid)
 		{
@@ -29,7 +26,8 @@ namespace Vleague_Management_Website.Controllers
 								 TenClb = a.TenClb,
 								 TenGoi = a.TenGoi,
 								 Sanvandong = b.TenSan,
-								 Huanluyenvien = c.TenHlv
+								 Huanluyenvien = c.TenHlv,
+								 Anhdaidien = a.AnhDaiDien
 							 }).ToList();
 			return View(listClub);
 		}
@@ -39,6 +37,7 @@ namespace Vleague_Management_Website.Controllers
 			public String? TenGoi;
 			public String? Sanvandong;
 			public String? Huanluyenvien;
+			public String? Anhdaidien;
 		}
 	}
 }

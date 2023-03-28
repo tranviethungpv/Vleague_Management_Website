@@ -23,6 +23,8 @@ public partial class Cauthu
 
     public double? ChieuCao { get; set; }
 
+    public string? Anhdaidien { get; set; }
+
     public virtual Caulacbo? CauLacBo { get; set; }
 
     public virtual ICollection<TrandauCauthu> TrandauCauthus { get; } = new List<TrandauCauthu>();

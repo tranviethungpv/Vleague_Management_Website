@@ -9,7 +9,7 @@ namespace Vleague_Management_Website.Controllers
 		QlbongDaContext db = new QlbongDaContext();
 		public IActionResult Index(int ? page)
 		{
-			int pageSize = 8;
+			int pageSize = 16;
 			int pageNumber = page == null || page < 0 ? 1 : page.Value;
 			var listCT = db.Cauthus.OrderBy(x => x.CauThuId).ToList();
 			PagedList<Cauthu> lst = new PagedList<Cauthu>(listCT, pageNumber, pageSize);

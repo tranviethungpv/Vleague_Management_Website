@@ -42,7 +42,7 @@
 													<div class="cmsmasters_img  cmsmasters_image_n">
 														<a href="../Layout_FootballLeauge/wp-content/uploads/2015/04/4.jpg"
 														   rel="ilightbox">
-															<img src="../Layout_FootballLeauge/wp-content/uploads/2015/04/4.jpg" />
+															<img src=@Url.Content("../Images/Players/"+Model.Anhdaidien) />
 														</a>
 													</div>
 												</div>
@@ -60,22 +60,7 @@
 												<div class="cmsmasters_column one_first">
 													<div class="cmsmasters_text">
 														<p>
-															Etiam eu molestie eros, commodo hendrerit
-															sapien. Maecenas tempus leo ac nisi iaculis
-															porta. Sed sapien tortor, aliquet a velit
-															ut, lacinia molestie velit. Maecenas ornare
-															consequat massa ullamcorper dapibus. Aliquam
-															auctor, sapien sit amet accumsan facilisis,
-															enim enim aliquet arcu, tincidunt
-															pellentesque justo turpis id neque. Duis
-															eleifend nunc sit amet mi dapibus ornare.
-															Suspendisse vel libero se Maecenas ornare
-															consequat massa ullamcorper dapibus. Aliquam
-															auctor, sapien sit amet accumsan facilisis,
-															enim enim aliquet arcu, tincidunt
-															pellentesque justo turpis id neque. Duis
-															eleifend nunc sit amet mi dapibus ornare.
-															Suspendisse vel libero se
+															
 														</p>
 													</div>
 												</div>
@@ -102,7 +87,7 @@
 							<div class="profile_details_item">
 								<div class="profile_details_item_title">Quốc Tịch:</div>
 								<div class="profile_details_item_desc">
-									34 Anywhere Road Coventry CV6 7RF @Model.QuocTich
+									@Model.QuocTich
 								</div>
 							</div>
 							<div class="profile_details_item">
@@ -115,29 +100,11 @@
 							</div>
 							<div class="profile_details_item">
 								<div class="profile_details_item_title">Số áo:</div>
-								<div class="profile_details_item_desc">
-									<span class="cmsmasters_profile_category">
-										<a href="../../pl-categs/number-5/index.html" rel="tag">
-											@Model.SoAo
-										</a>
-									</span>
-								</div>
+								<div class="profile_details_item_desc">@Model.SoAo</div>
 							</div>
 							<div class="profile_details_item">
-								<div class="profile_details_item_title">Like:</div>
-								<div class="profile_details_item_desc details_item_desc_like">
-									<a href="#" onclick="cmsmasters_like(406); return false;"
-									   id="cmsmastersLike-406"
-									   class="cmsmastersLike cmsmasters_theme_icon_heart"><span>7</span></a>
-								</div>
-							</div>
-						</div>
-						<div class="profile_features entry-meta">
-							<div class="profile_features_item">
-								<div class="profile_features_item_title">Chiều Cao:</div>
-								<div class="profile_features_item_desc">
-									@Model.ChieuCao
-								</div>
+								<div class="profile_details_item_title">Chiều cao:</div>
+								<div class="profile_details_item_desc">@Model.ChieuCao</div>
 							</div>
 						</div>
 						<div class="profile_social_icons">
@@ -156,12 +123,6 @@
 				</article>
 				@*}*@
 				<!-- Finish Standard Profile -->
-				<aside class="post_nav">
-					<span class="cmsmasters_next_post cmsmasters_theme_icon_slide_next">
-						<a href="../tommy-tomson/index.html" rel="next">Tommy Tomson</a>
-					</span>
-				</aside>
-
 			</div>
 		</div>
 		<!-- Finish Content -->
