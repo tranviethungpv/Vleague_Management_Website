@@ -17,7 +17,9 @@ namespace Vleague_Management_Website.Controllers
 		}
 		public IActionResult ChiTietClub(string clubid)
 		{
-			var listClub = (from a in db.Caulacbos
+            var imageClub = db.Anhcaulacbos.Where(x => x.CauLacBoId == clubid).ToList();
+            ViewBag.imageClub = imageClub;
+            var listClub = (from a in db.Caulacbos
 							 join b in db.Sanvandongs on a.SanVanDongId equals b.SanVanDongId
 							 join c in db.Huanluyenviens on a.HuanLuyenVienId equals c.HuanLuyenVienId
 							 where a.CauLacBoId == clubid

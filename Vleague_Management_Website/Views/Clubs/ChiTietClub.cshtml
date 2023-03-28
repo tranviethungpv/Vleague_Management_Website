@@ -11,7 +11,7 @@
     </div>
     <style type="text/css">
         #cmsmasters_row_6406e5d37b4821_69113939 {
-            background-image: url(../Layout_FootballLeague/wp-content/uploads/2015/05/KUUUKJ.jpg);
+            background-image: url(@Url.Content("../Images/Clubs/"+Model[0].Anhdaidien));
             background-position: center center;
             background-repeat: no-repeat;
             background-attachment: scroll;
@@ -431,41 +431,16 @@
                                                      class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
                                             </figure>
                                         </li>
-                                        <li>
-                                            <figure class="cmsmasters_hover_slider_full_img">
-                                                <img width="860" height="406"
-                                                     src="../Layout_FootballLeague/wp-content/uploads/2014/05/Untitled-1-860x406.jpg"
-                                                     class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure class="cmsmasters_hover_slider_full_img">
-                                                <img width="860" height="406"
-                                                     src="../Layout_FootballLeague/wp-content/uploads/2015/04/xdfyhfgm-860x406.jpg"
-                                                     class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure class="cmsmasters_hover_slider_full_img">
-                                                <img width="860" height="406"
-                                                     src="../Layout_FootballLeague/wp-content/uploads/2014/05/fcjuh-860x406.jpg"
-                                                     class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure class="cmsmasters_hover_slider_full_img">
-                                                <img width="860" height="406"
-                                                     src="../Layout_FootballLeague/wp-content/uploads/2015/04/photodune-8177824-american-football-dog-s-860x406.jpg"
-                                                     class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
-                                            </figure>
-                                        </li>
-                                        <li>
-                                            <figure class="cmsmasters_hover_slider_full_img">
-                                                <img width="860" height="406"
-                                                     src="../Layout_FootballLeague/wp-content/uploads/2015/04/kgch-860x406.jpg"
-                                                     class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
-                                            </figure>
-                                        </li>
+                                        @foreach (var image in ViewBag.imageClub)
+                                        {
+                                            <li>
+                                                <figure class="cmsmasters_hover_slider_full_img">
+                                                    <img width="860" height="406"
+                                                         src=@Url.Content("../Images/Clubs/"+image.TenFileAnh)
+                                                         class="attachment-post-thumbnail size-post-thumbnail" alt="" loading="lazy" />
+                                                </figure>
+                                            </li>
+                                        }
                                     </ul>
                                 </div>
                         </div>
