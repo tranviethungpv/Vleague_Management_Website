@@ -18,6 +18,7 @@ namespace Vleague_Management_Website.Repository
             var lstmatch = (from a in db.Trandaus
                             join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
                             join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+                            where a.TrangThai == true
                             select new
                             {
                                 Time = a.NgayThiDau,
