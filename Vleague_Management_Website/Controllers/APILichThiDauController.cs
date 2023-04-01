@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 using Vleague_Management_Website.InputModelsAPI;
 using Vleague_Management_Website.Models;
 
@@ -10,6 +12,58 @@ namespace Vleague_Management_Website.Controllers
     public class APILichThiDauController : ControllerBase
     {
         QlbongDaContext db = new QlbongDaContext();
+        [HttpGet]
+        public IActionResult GetAllTranDau([Range(1, 100)] int pageSize = 20,
+            [Range(1, int.MaxValue)] int pageNumber = 1)
+        {
+            var listTranDau = (from a in db.Trandaus
+                               join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
+                               join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+                               join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
+                               orderby a.NgayThiDau descending
+                              select new
+                              {
+                                  a.TranDauId,
+                                  a.NgayThiDau,
+                                  clbkhach = b.TenClb,
+                                  clbnha = c.TenClb,
+                                  d.TenSan,
+                                  a.Vong,
+                                  a.HiepPhu,
+                                  a.KetQua,
+                                  a.TrangThai
+                              })
+                              .Skip((pageNumber - 1) * pageSize)
+                              .Take(pageSize)
+                              .ToList();
+            return Ok(listTranDau);
+        }
+
+        [Route("getById")]
+        [HttpGet]
+        public IActionResult GetTranDauById(string id)
+        {
+            var TranDau = (from a in db.Trandaus
+                           join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
+                           join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+                           join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
+                           where a.TranDauId == id
+                           select new
+                           {
+                               a.TranDauId,
+                               a.NgayThiDau,
+                               clbkhach = b.TenClb,
+                               clbnha = c.TenClb,
+                               d.TenSan,
+                               a.Vong,
+                               a.HiepPhu,
+                               a.KetQua,
+                               a.TrangThai
+                           })
+                              .FirstOrDefault();
+            return Ok(TranDau);
+        }
+
         [HttpPost]
         public IActionResult AddLichThiDau([FromBody] LichThiDauCreateInputModel input)
         {
@@ -103,7 +157,6 @@ namespace Vleague_Management_Website.Controllers
                 return BadRequest("Khong tim thay tran dau");
             }
             
-            tranDau.HiepPhu = input.HiepPhu;
             tranDau.KetQua = input.KetQua;
             tranDau.TrangThai = true;
 
