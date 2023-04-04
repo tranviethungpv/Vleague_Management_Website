@@ -159,8 +159,10 @@ namespace Vleague_Management_Website.Controllers
             {
                 return BadRequest("Khong tim thay tran dau");
             }
+
+            var ketQuaString = input.DoiNha + "-" + input.DoiKhach;
             
-            tranDau.KetQua = input.KetQua;
+            tranDau.KetQua = ketQuaString;
             tranDau.TrangThai = true;
 
             db.Trandaus.Update(tranDau);

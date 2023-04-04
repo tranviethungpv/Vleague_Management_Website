@@ -29,6 +29,19 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View(objectModel);
         }
 
+        [Route("SetKetQua")]
+        public IActionResult SetKetQua()
+        {
+            var listClb = db.Caulacbos.Select(x => x).ToList();
+            var listSVD = db.Sanvandongs.Select(x => x).ToList();
+            var objectModel = new
+            {
+                listClb,
+                listSVD
+            };
+            return View(objectModel);
+        }
+
 
     }
 }
