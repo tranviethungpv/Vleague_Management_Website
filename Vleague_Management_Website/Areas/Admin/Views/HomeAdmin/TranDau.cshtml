@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "TranDau";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Quản lý trận đấu </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Trận đấu</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Danh sách trận đấu</h4>
+                    @*<p class="card-description">
+                        Add class <code>.table-bordered</code>
+                    </p>*@
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ngày thi đấu</th>
+                                <th>Đội khách</th>
+                                <th>Đội nhà</th>
+                                <th>Địa điểm</th>
+                                <th>Vòng</th>
+                                <th>Kết quả</th>
+                                <th>Status</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-trandau">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Trận đấu</h4>
+                    <p class="card-description" id="card-action"></p>
+                    <form class="forms-sample" id="form-trandau">
+                        <div class="form-group">
+                            <label for="TranDauId">Mã trận đấu</label>
+                            <input type="text" class="form-control" id="TranDauId" placeholder="Mã trận đấu">
+                        </div>
+                        <div class="form-group">
+                            <label for="ngaythidau">Ngày thi đấu</label>
+                            <input type="text" class="form-control" id="ngaythidau" placeholder="2023-05-29T08:00:00">
+                        </div>
+                        <div class="form-group">
+                            <label for="ClbNha">Đội nhà</label>
+                            <select class="form-control form-control-lg" id="ClbNha">
+                                @foreach (var item in Model.listClb)
+                                {
+                                    <option value=@item.CauLacBoId>@item.TenClb</option>
+                                }
+                                
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ClbKhach">Đội khách</label>
+                            <select class="form-control form-control-lg" id="ClbKhach">
+                                @foreach (var item in Model.listClb)
+                                {
+                                    <option value=@item.CauLacBoId>@item.TenClb</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sanvandong">Sân vận động</label>
+                            <select class="form-control form-control-lg" id="sanvandong">
+                                @foreach (var item in Model.listSVD)
+                                {
+                                    <option value=@item.SanVanDongId>@item.TenSan</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="vong">Vòng</label>
+                            <input type="text" class="form-control" id="vong" placeholder="Vòng đấu">
+                        </div>
+                        <button class="btn btn-gradient-primary me-2" onclick="InsertTranDau()">Thêm</button>
+                        <button class="btn btn-gradient-primary me-2" onclick="UpdateTranDau()">Sửa</button>
+                        <button class="btn btn-light" onclick="resetInput()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

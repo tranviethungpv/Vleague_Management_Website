@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Vleague_Management_Website.Models;
 
 namespace Vleague_Management_Website.Areas.Admin.Controllers
 {
@@ -7,11 +8,27 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
     [Route("admin/homeadmin")]
     public class HomeAdminController : Controller
     {
+        QlbongDaContext db = new QlbongDaContext();
         [Route("")]
         [Route("index")]
         public IActionResult Index()
         {
             return View();
         }
+
+        [Route("TranDau")]
+        public IActionResult TranDau()
+        {
+            var listClb = db.Caulacbos.Select(x => x).ToList();
+            var listSVD = db.Sanvandongs.Select(x => x).ToList();
+            var objectModel = new
+            {
+                listClb,
+                listSVD
+            };
+            return View(objectModel);
+        }
+
+
     }
 }

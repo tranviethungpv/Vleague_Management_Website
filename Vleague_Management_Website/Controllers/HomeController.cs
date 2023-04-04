@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
 using Vleague_Management_Website.Models;
 using X.PagedList;
@@ -21,7 +22,12 @@ namespace Vleague_Management_Website.Controllers
             List<global::LeaderBoard> lstBangXepHang = new List<global::LeaderBoard>();
             foreach (var item in lstCauLacBo)
             {
-                List<Trandau> lstTranDau = db.Trandaus.Where(x => x.Clbnha == item.CauLacBoId).ToList();
+                var lstTranDau = (from a in db.Trandaus
+                                  where
+                                    a.Clbnha == item.CauLacBoId &&
+                                    a.TrangThai == true
+                                  select a
+                                  ).ToList();
                 var soTranThang = 0;
                 var soTranThua = 0;
                 var soTranHoa = 0;
