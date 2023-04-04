@@ -4,6 +4,8 @@
     {
         public string TranDauId { get; set; } = null!;
 
-        public string? KetQua { get; set; }
+        public string? DoiNha { get; set; }
+
+        public string? DoiKhach { get; set; }
     }
 }
