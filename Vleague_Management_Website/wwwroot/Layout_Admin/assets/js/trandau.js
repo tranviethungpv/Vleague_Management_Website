@@ -9,11 +9,10 @@ function getAllTrandau() {
         contentType: 'json',
         dataType: 'json',
         error: function (response) {
-            console.log(response);
+            console.log("error");
         },
         success: function (response) {
             const len = response.length;
-            console.log(response);
             let table = '';
             for (var i = 0; i < len; ++i) {
                 const date = new Date(response[i].ngayThiDau);
@@ -37,7 +36,7 @@ function getAllTrandau() {
             document.getElementById('tbody-trandau').innerHTML = table;
         },
         fail: function (response) {
-            console.log(response);
+            console.log("fail");
         }
     });
 }
@@ -45,6 +44,15 @@ function getAllTrandau() {
 $("#form-trandau").submit(function (e) {
     e.preventDefault();
 })
+
+function resetInput() {
+    $("#TranDauId").val("")
+    $("#ClbNha").val("").change()
+    $("#ClbKhach").val("").change()
+    $("#ngaythidau:text").val("")
+    $("#sanvandong").val("").change()
+    $("#vong").val("")
+}
 
 function InsertTranDau() {
     
@@ -56,7 +64,6 @@ function InsertTranDau() {
         SanVanDongId: $("#sanvandong").val(),
         Vong: parseInt($("#vong").val()),
     }
-    console.log(dataSend);
     var url = 'https://localhost:7239/api/APILichThiDau';
     $.ajax({
         url: url,
@@ -69,7 +76,35 @@ function InsertTranDau() {
         },
         success: function (response) {
             alert("Thêm mới thành công");
+            resetInput()
             getAllTrandau(); //Gọi đến hàm lấy dữ liệu lên bảng
+        }
+    });
+}
+
+function UpdateTranDau() {
+    var dataSend = {
+        TranDauId: $("#TranDauId").val(),
+        Clbnha: $("#ClbNha").val(),
+        Clbkhach: $("#ClbKhach").val(),
+        NgayThiDau: $("#ngaythidau").val(),
+        SanVanDongId: $("#sanvandong").val(),
+        Vong: parseInt($("#vong").val()),
+    }
+    var url = 'https://localhost:7239/api/APILichThiDau';
+    $.ajax({
+        url: url,
+        method: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(dataSend),
+        dataType: 'json',
+        error: function (response) {
+            alert("Cập nhật không thành công");
+        },
+        success: function (response) {
+            alert("Cập nhật thành công");
+            resetInput()
+            getAllTrandau();
         }
     });
 }
@@ -85,12 +120,12 @@ function updateTranDauFill(id) {
             alert("Cập nhật không thành công");
         },
         success: function (response) {
-            $('input').eq(0).val(response.MaSP);
-            $('input').eq(1).val(response.TenSP);
-            $('input').eq(2).val(response.MoTa);
-            $('input').eq(3).val(response.GiaNhap);
-            $('input').eq(4).val(response.GiaBan);
-            $('input').eq(5).val(response.SoLuong);
+                $("#TranDauId").val(response.tranDauId.trim())
+                $("#ClbNha").val(response.clbnhaId.trim()).change()
+                $("#ClbKhach").val(response.clbkhachId.trim()).change()
+                $("#ngaythidau:text").val(response.ngayThiDau)
+                $("#sanvandong").val(response.sanvandongId.trim()).change()
+                $("#vong").val(response.vong)
         }
     });
 }

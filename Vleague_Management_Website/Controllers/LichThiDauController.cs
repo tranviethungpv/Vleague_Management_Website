@@ -16,7 +16,7 @@ namespace Vleague_Management_Website.Controllers
                              select new LichThiDau
                              {
                                  TenClbNha = b.TenClb,
-                                 TenClbKhach = c.TenClb,
+                                 TenClbKhach = c.TenClb, 
                                  StartTime = a.NgayThiDau
                              }).OrderByDescending(a => a.StartTime).Take(10).ToList();
             return View(listMatch);
