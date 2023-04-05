@@ -42,6 +42,12 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View(objectModel);
         }
 
+        [Route("HLV")]
+        public IActionResult HLV()
+        {
+            return View();
+        }
+
 
     }
 }
