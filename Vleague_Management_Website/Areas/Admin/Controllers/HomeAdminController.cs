@@ -42,6 +42,11 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View(objectModel);
         }
 
-
+        [Route("CauThu")]
+        public IActionResult CauThu()
+        {
+            var listCLB = db.Caulacbos.ToList();
+            return View(listCLB);
+        }
     }
 }
