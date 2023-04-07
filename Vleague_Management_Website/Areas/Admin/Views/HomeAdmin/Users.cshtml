@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="card-body">
+    <h4 class="card-title">Danh sách trận đấu</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Họ và tên</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Tên đăng nhập</th>
+            </tr>
+        </thead>
+     <tbody id="tbody-nguoidung"></tbody>
+    </table>
+</div>
+
+
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Người dùng</h4>
+            <p class="card-description" id="card-action"></p>
+            <form class="forms-sample" id="form-nguoidung">
+                <div class="form-group">
+                    <label for="TranDauId">Id người dùng</label>
+                    <input type="text" class="form-control" id="nguoidungid" placeholder="Mã người dùng">
+                </div>
+                <div class="form-group">
+                    <label >họ và tên</label>
+                    <input type="text" class="form-control" id="hovaten" placeholder="Họ tên">
+                </div>
+                <div class="form-group">
+                    <label for="">Số điện thoại</label>
+                    <input type="text" class="form-control" id="sodienthoai" placeholder="So dien thoai">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="">Tên đăng nhập </label>
+                    <input type="text" class="form-control" id="tendangnhap" placeholder="account">
+                </div>
+
+
+
+                <button class="btn btn-gradient-primary me-2" onclick="Insert()">Thêm</button>
+                <button class="btn btn-gradient-primary me-2" onclick="UpdateUser()">Sửa</button>
+                <button class="btn btn-light" onclick="resetInput()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="~/Layout_Admin/assets/js/users.js"></script>
+<script>
+    $(document).ready(function () {
+        getAllUsers();
+    });
+
+    function getAllUsers() {
+        $.ajax({
+            url: "https://localhost:7239/api/APIUser?pageSize=10&pagenumber=1",
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                console.log("error");
+            },
+            success: function (response) {
+                const len = response.length;
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+
+                    table = table + '<tr>';
+                    table = table + '<td>' + response[i].nguoiDungId + '</td>';
+                    table = table + '<td>' + response[i].hoTen + '</td>';
+                    table = table + '<td>' + response[i].sđt + '</td>';
+                    table = table + '<td>' + response[i].email + '</td>';
+                    table = table + '<td>' + response[i].tenDangNhap + '</td>';
+                    table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateTranDauFill(\'' + response[i].nguoiDungId + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
+                    table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon"  onclick="deleteUser(\'' + response[i].nguoiDungId + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
+
+                }
+                document.getElementById('tbody-nguoidung').innerHTML = table;
+            },
+            fail: function (response) {
+                console.log("fail");
+            }
+        });
+    }
+
+
+    function updateTranDauFill(id) {
+        var url = 'https://localhost:7239/api/APIUser/getById?id=' + id;
+        $.ajax({
+            url: url,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                alert("Cập nhật không thành công");
+            },
+            success: function (response) {
+                $("#nguoidungid:text").val(response.nguoiDungId.trim())
+                $("#hovaten:text").val(response.hoTen.trim())
+                $("#sodienthoai:text").val(response.sđt.trim())
+                $("#email:text").val(response.email.trim())
+                $("#tendangnhap:text").val(response.tenDangNhap.trim())
+                
+            }
+        });
+    }
+
+
+    function UpdateUser() {
+        var dataSend = {
+            NguoiDungId: $("#nguoidungid").val(),
+            HoTen: $("#hovaten").val(),
+            Sđt: $("#sodienthoai").val(),
+            Email: $("#email").val(),
+            TenDangNhap: $("#tendangnhap").val()
+            
+        }
+        var url = 'https://localhost:7239/api/APIUser';
+        $.ajax({
+            url: url,
+            method: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(dataSend),
+            dataType: 'json',
+            error: function (response) {
+                alert("Cập nhật không thành công");
+            },
+            success: function (response) {
+                alert("Cập nhật thành công");
+                resetInput()
+                getAllUsers();
+            }
+        });
+    }
+
+    function deleteUser(id) {
+        var url = 'https://localhost:7239/api/APIUser/deleteUs?id=' + id;
+        $.ajax({
+            url: url,
+            method: 'DELETE',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            success: function (response) {
+                alert("Xóa thành công");
+                getAllUsers(); //Gọi đến hàm lấy dữ liệu lên bảng
+            },
+            error: function () {
+                console.log("ko xoa dc");
+            }
+        });
+    }
+
+
+
+    function Insert() {
+        var url = 'https://localhost:7239/api/APIUser/AddUser/';
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: JSON.stringify({
+                NguoiDungId: $("#nguoidungid").val(),
+                HoTen: $("#hovaten").val(),
+                Sđt: $("#sodienthoai").val(),
+                Email: $("#email").val(),
+                TenDangNhap: $("#tendangnhap").val()
+            }), // Thông tin trong body của request
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (data) {
+                alert("Them ok!")
+                console.log(data); // Xử lý dữ liệu trả về khi thành công
+                getAllUsers();
+            },
+            error: function (error) {
+                console.log(error); // Xử lý lỗi khi thất bại
+            }
+        });
+    }
+
+    $("#form-nguoidung").submit(function (e) {
+        e.preventDefault();
+    })
+
+
+    function resetInput() {
+        $("#nguoidungid:text").val("")
+        $("#hovaten:text").val("")
+        $("#sodienthoai:text").val("")
+        $("#email:text").val("")
+        $("#tendangnhap:text").val("")
+    }
+    
+
+</script>

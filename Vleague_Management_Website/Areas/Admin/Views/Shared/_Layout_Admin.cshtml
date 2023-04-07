@@ -160,7 +160,7 @@
                         </div>
                     </li>
                     <li class="nav-item nav-logout d-none d-lg-block">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="@Url.Action("Logout", "Access")">
                             <i class="mdi mdi-power"></i>
                         </a>
                     </li>
@@ -204,6 +204,18 @@
                         <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="TranDau">
                             <span class="menu-title">Trận đấu</span>
                             <i class="mdi mdi-run menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="TranDauCauThu">
+                            <span class="menu-title">Trận đấu - cầu thủ</span>
+                            <i class="mdi mdi-keyboard-variant menu-icon"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="admin" asp-controller="HomeAdmin" asp-action="Users">
+                            <span class="menu-title">Nguời dùng</span>
+                            <i class="mdi mdi-keyboard-variant menu-icon"></i>
                         </a>
                     </li>
 

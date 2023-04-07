@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Vleague_Management_Website.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Vleague_Management_Website.Areas.Admin.Controllers
 {
@@ -42,6 +43,19 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View(objectModel);
         }
 
+        [Route("TranDauCauThu")]
+        public IActionResult TranDauCauThu()
+        {
+            var listtrandauactive = db.Trandaus.Where(x => x.TrangThai == false);
+            return View(listtrandauactive);
+        }
 
+
+        [Route("Users")]
+        public IActionResult Users()
+        {
+            var user = db.NguoiDungs.Select(x => x).ToList();
+            return View(user);
+        }
     }
 }
