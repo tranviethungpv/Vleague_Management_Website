@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Vleague_Management_Website.Models;
 
 namespace Vleague_Management_Website.Areas.Admin.Controllers
@@ -42,6 +43,18 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View(objectModel);
         }
 
+        [Route("CLB")]
+        public IActionResult CLB()
+        {
+            var lstCLB = db.Caulacbos.ToList();
+            return View(lstCLB);
+        }
 
+        [Route("SVD")]
+        public IActionResult SVD()
+        {
+            var lstSVD = db.Sanvandongs.ToList();
+            return View(lstSVD);
+        }
     }
 }
