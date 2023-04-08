@@ -67,7 +67,8 @@ namespace Vleague_Management_Website.Controllers
             var trandaucauthunotdone = (from a in db.TrandauCauthus
                                         join b in db.Trandaus on a.TranDauId equals b.TranDauId
                                         where b.TrangThai == false
-                                        select a).ToList();
+                                        select a).Skip((pageNumber - 1) * pageSize)
+							  .Take(pageSize).ToList();
             return Ok(trandaucauthunotdone);
         }
         [HttpDelete]

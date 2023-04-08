@@ -57,5 +57,12 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             var user = db.NguoiDungs.Select(x => x).ToList();
             return View(user);
         }
+        [Route("Accounts")]
+        public IActionResult Accounts()
+        {
+            
+            return View();
+        }
+
     }
 }
