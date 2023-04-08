@@ -25,7 +25,7 @@ function getAllTinTuc() {
                 table = table + '<td>' + response[i].tinTucId.trim() + '</td>';
                 table = table + '<td>' + day + "/" + month + "/" + year + " " + hour + ':' + minute + '</td>';
                 table = table + '<td>' + response[i].tieuDe + '</td>';;
-                table = table + '<td>' + response[i].nguoiDungId + '</td>';
+                table = table + '<td>' + response[i].hoTen + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateTinTucFill(\'' + response[i].tinTucId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" onclick="deleteTinTuc(\'' + response[i].tinTucId.trim() + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
             }
@@ -49,61 +49,87 @@ function resetInput() {
 }
 
 function InsertTinTuc() {
-    var dataSend = {
-        TranDauId: $("#TranDauId").val(),
-        Clbnha: $("#ClbNha").val(),
-        Clbkhach: $("#ClbKhach").val(),
-        NgayThiDau: $("#ngaythidau").val(),
-        SanVanDongId: $("#sanvandong").val(),
-        Vong: parseInt($("#vong").val()),
-    }
-    var url = 'https://localhost:7239/api/APILichThiDau';
+    var tintucid = $("#tintucid").val();
+    var ngaytao = new Date().toISOString();
+    var tieude = $("#tieude").val();
+    var noidung = $("#noidung").val();
+   
+    var formData = new FormData();
+
+    formData.append("tinTucId", tintucid);
+    formData.append("ngayTao", ngaytao);
+    formData.append("tieuDe", tieude);
+    formData.append("noiDung", noidung);
+    formData.append("image", $('#anhdaidien')[0].files[0]);
+
+    var url = 'https://localhost:7239/api/APITinTuc/themtintuc';
     $.ajax({
         url: url,
         method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(dataSend),
-        dataType: 'json',
+        processData: false,
+        contentType: false,
+        data: formData,
         error: function (error) {
-            alert(JSON.stringify(error))
+            alert("Có lỗi xảy ra");
         },
         success: function (response) {
             alert("Thêm mới thành công");
-            resetInput()
-            getAllTrandau(); //Gọi đến hàm lấy dữ liệu lên bảng
+            resetInput();
+            getAllTinTuc(); //Gọi đến hàm lấy dữ liệu lên bảng
         }
     });
+
+    //Đây cũng là 1 cách nữa để upload ảnh, Sử dụng XMLHttpRequest.
+    //var xhr = new XMLHttpRequest();
+    //xhr.open('POST', 'https://localhost:7239/api/APITinTuc/themtintuc');
+    //xhr.setRequestHeader('Accept', 'application/json');
+    ////xhr.setRequestHeader('Content-Type', 'multipart/form-data'); // Set content type
+
+    //xhr.onload = function () {
+    //    if (xhr.status === 200) {
+    //        alert('Tin tức đã được tạo thành công!');
+    //    } else {
+    //        alert('Đã xảy ra lỗi khi tạo tin tức.');
+    //    }
+    //};
+    //console.log(xhr);
+    //xhr.send(formData);
 }
 
-function UpdateTranDau() {
-    var dataSend = {
-        TranDauId: $("#TranDauId").val(),
-        Clbnha: $("#ClbNha").val(),
-        Clbkhach: $("#ClbKhach").val(),
-        NgayThiDau: $("#ngaythidau").val(),
-        SanVanDongId: $("#sanvandong").val(),
-        Vong: parseInt($("#vong").val()),
-    }
-    var url = 'https://localhost:7239/api/APILichThiDau';
+function UpdateTinTuc() {
+    var tintucid = $("#tintucid").val();
+    var ngaytao = new Date().toISOString();
+    var tieude = $("#tieude").val();
+    var noidung = $("#noidung").val();
+
+    var formData = new FormData();
+
+    formData.append("tinTucId", tintucid);
+    formData.append("ngayTao", ngaytao);
+    formData.append("tieuDe", tieude);
+    formData.append("noiDung", noidung);
+    formData.append("image", $('#anhdaidien')[0].files[0]);
+
+    var url = 'https://localhost:7239/api/APITinTuc/capnhattintuc';
     $.ajax({
         url: url,
         method: 'PUT',
-        contentType: 'application/json',
-        data: JSON.stringify(dataSend),
-        dataType: 'json',
-        error: function (response) {
-            alert("Cập nhật không thành công");
+        processData: false,
+        contentType: false,
+        data: formData,
+        error: function (error) {
+            alert("Có lỗi xảy ra");
         },
         success: function (response) {
             alert("Cập nhật thành công");
-            resetInput()
-            getAllTrandau();
+            resetInput();
+            getAllTinTuc(); //Gọi đến hàm lấy dữ liệu lên bảng
         }
     });
 }
 
-function updateTranDauFill(id) {
-    var url = 'https://localhost:7239/api/APILichThiDau/getById?id=' + id;
+function updateTinTucFill(id) {
+    var url = 'https://localhost:7239/api/APITinTuc/getById?id=' + id;
     $.ajax({
         url: url,
         method: 'GET',
@@ -113,18 +139,17 @@ function updateTranDauFill(id) {
             alert("Cập nhật không thành công");
         },
         success: function (response) {
-                $("#TranDauId").val(response.tranDauId.trim())
-                $("#ClbNha").val(response.clbnhaId.trim()).change()
-                $("#ClbKhach").val(response.clbkhachId.trim()).change()
-                $("#ngaythidau:text").val(response.ngayThiDau)
-                $("#sanvandong").val(response.sanvandongId.trim()).change()
-                $("#vong").val(response.vong)
+                $("#tintucid").val(response.tinTucId.trim())
+                //$("#ngaytao").val(ngaytao).change()
+                $("#tieude").val(response.tieuDe.trim()).change()
+                $("#noidung").val(response.noiDung.trim()).change()
+                $("#anhdaidien").val(response.anhdaidien.trim()).change()
         }
     });
 }
 
-function deleteTranDau(id) {
-    var url = 'https://localhost:7239/api/APILichThiDau?input=' + id;
+function deleteTinTuc(id) {
+    var url = 'https://localhost:7239/api/APITinTuc?input=' + id;
     $.ajax({
         url: url,
         method: 'DELETE',
@@ -135,52 +160,7 @@ function deleteTranDau(id) {
         },
         success: function (response) {
             alert("Xóa thành công");
-            getAllTrandau(); //Gọi đến hàm lấy dữ liệu lên bảng
-        }
-    });
-}
-
-function addTinTuc() {
-    var url = 'https://localhost:7239/api/APILichThiDau';
-    var tintucid = $("#TinTucId").val();
-    var tieude = $("#TieuDe").val();
-    var noidung = $("#NoiDung").val();
-    var anhdaidien = $("#Anhdaidien").get(0).files[0];
-    var ngaytao = new Date().toISOString();
-    // Validate form fields
-    if (!tintucid || !tieude || !noidung || !anhdaidien) {
-        console.log("Không được bỏ trống");
-        return;
-    }
-    if (!anhdaidien.type.match(/^image\/(jpeg|png|gif)$/)) {
-        console.log("Định dạng không hợp lệ. Chỉ hỗ trợ định dạng JPEG, PNG, or GIF file.");
-        return;
-    }
-    if (anhdaidien.size > 10 * 1024 * 1024) {
-        console.log("Dung lượng file tối đa là 10 MB.");
-        return;
-    }
-
-    var formData = new FormData();
-    formData.append("TinTucId", tintucid);
-    formData.append("NgayTao", ngaytao);
-    formData.append("TieuDe", tieude);
-    formData.append("NoiDung", noidung);
-    formData.append("Anhdaidien", anhdaidien);
-
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function () {
-            alert("Thêm bài đăng thành công!");
-            resetInput();
-            getAllTinTuc();
-        },
-        error: function (xhr, textStatus, errorThrown) {
-            alert("Lỗi xảy ra khi thêm bài đăng " + errorThrown);
+            getAllTinTuc(); //Gọi đến hàm lấy dữ liệu lên bảng
         }
     });
 }
