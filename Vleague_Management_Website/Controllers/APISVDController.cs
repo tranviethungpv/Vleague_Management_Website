@@ -16,14 +16,12 @@ namespace Vleague_Management_Website.Controllers
             [Range(1, int.MaxValue)] int pageNumber = 1)
         {
             var listSVD = (from a in db.Sanvandongs
-                              join b in db.Caulacbos on a.SanVanDongId equals b.SanVanDongId
                               select new
                               {
-                                  SanVanDongId = b.SanVanDongId,
+                                  a.SanVanDongId,
                                   a.TenSan,
                                   a.ThanhPho,
                                   a.NamBatDau,
-          
                               })
                               .Skip((pageNumber - 1) * pageSize)
                               .Take(pageSize)
@@ -36,11 +34,10 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult GetSVDId(string id)
         {
             var SanVanDong = (from a in db.Sanvandongs
-                          join b in db.Caulacbos on a.SanVanDongId equals b.SanVanDongId
                               where a.SanVanDongId == id
                           select new
                           {
-                              SanVanDongId = b.SanVanDongId,
+                              a.SanVanDongId,
                               a.TenSan,
                               a.ThanhPho,
                               a.NamBatDau,
@@ -62,7 +59,7 @@ namespace Vleague_Management_Website.Controllers
 
             var newSanvandong = new Sanvandong
             {
-                SanVanDongId = input.SanVanDongId,
+                SanVanDongId = input.SanVanDongId.Trim(),
                 TenSan = input.TenSan,
                 ThanhPho = input.ThanhPho,
                 NamBatDau = input.NamBatDau,
@@ -76,14 +73,12 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult UpdateSVD([FromBody] SVDUpdateInputModel input)
         {
             var sanvandong = (from a in db.Sanvandongs
-                          join b in db.Caulacbos on a.SanVanDongId equals b.SanVanDongId
                           where a.SanVanDongId == input.SanVanDongId
                           select a).FirstOrDefault();
             if (sanvandong == null)
             {
                 return BadRequest("Khong tim thay SVD");
             }
-
             sanvandong.TenSan = input.TenSan;
             sanvandong.ThanhPho = input.ThanhPho;
             sanvandong.NamBatDau = input.NamBatDau;
@@ -97,13 +92,12 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult DeleteSVD(string input)
         {
             var SVDCheck = (from a in db.Sanvandongs
-                               join b in db.Caulacbos on a.SanVanDongId equals b.SanVanDongId
                                where a.SanVanDongId == input
                                select a).FirstOrDefault();
 
             if (SVDCheck == null)
             {
-                return BadRequest("Khong tim thay Cau Thu!");
+                return BadRequest("Khong tim thay san van dong!");
             }
 
             db.Sanvandongs.Remove(SVDCheck);

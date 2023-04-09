@@ -16,12 +16,15 @@ namespace Vleague_Management_Website.Controllers
             [Range(1, int.MaxValue)] int pageNumber = 1)
         {
             var listCLB = (from a in db.Caulacbos
+                           join b in db.Huanluyenviens on a.HuanLuyenVienId equals b.HuanLuyenVienId
+                           join c in db.Sanvandongs on a.SanVanDongId equals c.SanVanDongId
                            select new
                            {
                                a.CauLacBoId,
                                a.TenClb,
                                a.TenGoi,
-                               a.HuanLuyenVienId,
+                               c.TenSan,
+                               b.TenHlv,
                                //a.AnhDaiDien
                            })
                               .Skip((pageNumber - 1) * pageSize)
@@ -34,13 +37,18 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult GetCLBId(string id)
         {
             var CLB = (from a in db.Caulacbos
+                       join b in db.Huanluyenviens on a.HuanLuyenVienId equals b.HuanLuyenVienId
+                       join c in db.Sanvandongs on a.SanVanDongId equals c.SanVanDongId
                        where a.CauLacBoId == id
                        select new
                        {
                            a.CauLacBoId,
                            a.TenClb,
                            a.TenGoi,
+                           c.TenSan,
+                           b.TenHlv,
                            a.HuanLuyenVienId,
+                           a.SanVanDongId,
                            //a.AnhDaiDien
                        })
                               .FirstOrDefault();
@@ -64,6 +72,7 @@ namespace Vleague_Management_Website.Controllers
                 CauLacBoId = input.CauLacBoId,
                 TenClb = input.TenClb,
                 TenGoi = input.TenGoi,
+                SanVanDongId = input.SanVanDongId,
                 HuanLuyenVienId = input.HuanLuyenVienId,
                 //AnhDaiDien = input.AnhDaiDien,
             };
@@ -87,6 +96,7 @@ namespace Vleague_Management_Website.Controllers
             CLBForUpdate.TenClb = input.TenClb;
             CLBForUpdate.TenGoi = input.TenGoi;
             CLBForUpdate.HuanLuyenVienId = input.HuanLuyenVienId;
+            CLBForUpdate.SanVanDongId = input.SanVanDongId;
             //CLBForUpdate.AnhDaiDien = input.AnhDaiDien;
             db.Caulacbos.Update(CLBForUpdate);
             db.SaveChanges();

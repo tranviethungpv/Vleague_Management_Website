@@ -26,13 +26,7 @@
                                 <th>SVD Id</th>
                                 <th>Tên Sân</th>
                                 <th>Thành Phố</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>Năm thành lập</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -55,26 +49,16 @@
                         </div>
                         <div class="form-group">
                             <label for="TenSan">Tên Sân</label>
-                            <input type="text" class="form-control" id="TenSan" placeholder="La Cảnh Kỳ">
+                            <input type="text" class="form-control" id="TenSan" placeholder="OldTrafford">
                         </div>
                         <div class="form-group">
                             <label for="ThanhPho">Thành Phố</label>
-                            <input type="text" class="form-control" id="ThanhPho" placeholder="La Cảnh Kỳ">
-                        </div>
-                        @*<div class="form-group">
-                            <label for="NamBatDau">Năm bắt đầu</label>
-                            <input type="text" class="form-control" id="NamBatDau" placeholder="La Cảnh Kỳ">
+                            <input type="text" class="form-control" id="ThanhPho" placeholder="Manchester">
                         </div>
                         <div class="form-group">
-                            <label for="clbid">CLUB</label>
-                            <select class="form-control form-control-lg" id="clbid">
-                                @foreach (var item in Model)
-                                {
-                                    <option value=@item.CauLacBoId>@item.TenClb</option>
-                                }
-                            </select>
+                            <label for="NamBatDau">Năm thành lập</label>
+                            <input type="text" class="form-control" id="NamBatDau" placeholder="0000">
                         </div>
-                        *@
                         <button class="btn btn-gradient-primary me-2" onclick="InsertSVD()">Thêm</button>
                         <button class="btn btn-gradient-primary me-2" onclick="UpdateSVD()">Sửa</button>
                         <button class="btn btn-light" onclick="resetInput()">Cancel</button>

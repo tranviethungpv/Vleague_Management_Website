@@ -26,13 +26,8 @@
                                 <th>CLB Id</th>
                                 <th>Tên CLB</th>
                                 <th>Tên Gọi</th>
-                                <th>HLV Id</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>Sân vận động</th>
+                                <th>HLV</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -55,15 +50,29 @@
                         </div>
                         <div class="form-group">
                             <label for="TenCLB">Tên CLB</label>
-                            <input type="text" class="form-control" id="TenCLB" placeholder="La Cảnh Kỳ">
+                            <input type="text" class="form-control" id="TenCLB" placeholder="ManUtd">
                         </div>
                         <div class="form-group">
                             <label for="TenGoi">Tên Gọi</label>
-                            <input type="text" class="form-control" id="TenGoi" placeholder="La Cảnh Kỳ">
+                            <input type="text" class="form-control" id="TenGoi" placeholder="MUN">
                         </div>
                         <div class="form-group">
-                            <label for="HuanLuyenVienId">HLV Id</label>
-                            <input type="text" class="form-control" id="HuanLuyenVienId" placeholder="La Cảnh Kỳ">
+                            <label for="TenSVD">Sân vận động</label>
+                            <select class="form-control form-control-lg" id="TenSVD">
+                                @foreach (var item in Model.lstSvd)
+                                {
+                                    <option value=@item.SanVanDongId.Trim()>@item.TenSan</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="TenHLV">Tên HLV</label>
+                            <select class="form-control form-control-lg" id="TenHLV">
+                                @foreach (var item in Model.lstHlv)
+                                {
+                                    <option value=@item.HuanLuyenVienId>@item.TenHlv</option>
+                                }
+                            </select>
                         </div>
                         <button class="btn btn-gradient-primary me-2" onclick="InsertCLB()">Thêm</button>
                         <button class="btn btn-gradient-primary me-2" onclick="UpdateCLB()">Sửa</button>

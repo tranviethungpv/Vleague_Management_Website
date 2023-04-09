@@ -19,7 +19,8 @@ function getAllCLB() {
                 table = table + '<td>' + response[i].cauLacBoId.trim() + '</td>';
                 table = table + '<td>' + response[i].tenClb.trim() + '</td>';
                 table = table + '<td>' + response[i].tenGoi.trim() + '</td>';
-                table = table + '<td>' + response[i].huanLuyenVienId.trim() + '</td>';
+                table = table + '<td>' + response[i].tenSan.trim() + '</td>';
+                table = table + '<td>' + response[i].tenHlv.trim() + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateCLBFill(\'' + response[i].cauLacBoId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" onclick="deleteCLB(\'' + response[i].cauLacBoId.trim() + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
             }
@@ -36,19 +37,21 @@ $("#form-CLB").submit(function (e) {
 })
 
 function resetInput() {
-    $("#CauLacBoId").val("")
-    $("#TenClb").val("").change()
-    $("#TenGoi").val("").change()
-    $("#HuanLuyenVienId").val("").change()
+    $("#CauLacBoId").val("");
+    $("#TenCLB").val("").change();
+    $("#TenGoi").val("").change();
+    $("#TenSan").val("").change();
+    $("#TenHLV").val("").change();
 }
 
-function InsertCauThu() {
+function InsertCLB() {
 
     var dataSend = {
         cauLacBoId: $("#CauLacBoId").val(),
-        tenClb: $("#TenClb").val(),
+        tenClb: $("#TenCLB").val(),
         tenGoi: $("#TenGoi").val(),
-        huanLuyenVienId: $("#HuanLuyenVienId").val(),
+        sanVanDongId: $("#TenSVD").val(),
+        huanLuyenVienId: $("#TenHLV").val(),
     }
     var url = 'https://localhost:7239/api/APICLB';
     $.ajax({
@@ -71,9 +74,10 @@ function InsertCauThu() {
 function UpdateCLB() {
     var dataSend = {
         cauLacBoId: $("#CauLacBoId").val(),
-        tenClb: $("#TenClb").val(),
+        tenClb: $("#TenCLB").val(),
         tenGoi: $("#TenGoi").val(),
-        huanLuyenVienId: $("#HuanLuyenVienId").val(),
+        sanVanDongId: $("#TenSVD").val(),
+        huanLuyenVienId: $("#TenHLV").val(),
     }
     var url = 'https://localhost:7239/api/APICLB';
     $.ajax({
@@ -105,10 +109,10 @@ function updateCLBFill(id) {
         },
         success: function (response) {
             $("#CauLacBoId").val(response.cauLacBoId.trim())
-            $("#TenClb").val(response.tenClb.trim()).change()
-            $("#TenGoi").val(response.tenGoi.trim()).change()
-            $("#HuanLuyenVienId").val(response.huanLuyenVienId.trim()).change()
-            
+            $("#TenCLB").val(response.tenClb.trim())
+            $("#TenGoi").val(response.tenGoi.trim())
+            $("#TenSVD").val(response.sanVanDongId.trim()).change()
+            $("#TenHLV").val(response.huanLuyenVienId.trim()).change()
         }
     });
 }

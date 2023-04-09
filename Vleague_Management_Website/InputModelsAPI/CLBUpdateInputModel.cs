@@ -8,6 +8,7 @@ namespace Vleague_Management_Website.InputModelsAPI
         public string? TenClb { get; set; }
 
         public string? TenGoi { get; set; }
+        public string? SanVanDongId { get; set; }
 
         public string? HuanLuyenVienId { get; set; }
 

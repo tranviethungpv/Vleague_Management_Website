@@ -107,7 +107,7 @@ function updateSVDFill(id) {
             $("#SanVanDongId").val(response.sanVanDongId.trim())
             $("#TenSan").val(response.tenSan.trim()).change()
             $("#ThanhPho").val(response.thanhPho.trim()).change()
-            $("#NamBatDau").val(response.namBatDau.trim()).change()
+            $("#NamBatDau").val(response.namBatDau).change()
         }
     });
 }
@@ -117,14 +117,12 @@ function deleteSVD(id) {
     $.ajax({
         url: url,
         method: 'DELETE',
-        contentType: 'application/json',
-        dataType: 'json',
-        error: function (response) {
-            alert("Xóa không thành công");
-        },
         success: function (response) {
             alert("Xóa thành công");
             getAllSVD(); //Gọi đến hàm lấy dữ liệu lên bảng
+        },
+        error: function (response) {
+            alert("Xóa không thành công");
         }
     });
 }

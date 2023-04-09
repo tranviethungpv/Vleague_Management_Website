@@ -46,8 +46,15 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Route("CLB")]
         public IActionResult CLB()
         {
-            var lstCLB = db.Caulacbos.ToList();
-            return View(lstCLB);
+            //var lstCLB = db.Caulacbos.ToList();
+            var lstHlv = db.Huanluyenviens.ToList();
+            var lstSvd = db.Sanvandongs.ToList();
+            var objectModel = new
+            {
+                lstHlv,
+                lstSvd
+            };
+            return View(objectModel);
         }
 
         [Route("SVD")]
