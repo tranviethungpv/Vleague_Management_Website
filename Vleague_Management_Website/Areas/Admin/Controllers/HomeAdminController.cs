@@ -104,8 +104,12 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             };
             return View(objectModel);
         }
-
-
+        [Route("TinTuc")]
+        public IActionResult TinTuc()
+        {
+            var listTinTuc = db.TinTucs.Select(x => x).ToList();
+            return View(listTinTuc);
+        }
         [Route("Users")]
         public IActionResult Users()
         {

@@ -1,0 +1,74 @@
+﻿@{
+	ViewData["Title"] = "TinTuc";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title"> Quản lý bài đăng </h3>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Bài đăng</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Danh sách bài đăng</h4>
+					@*<p class="card-description">
+					Add class <code>.table-bordered</code>
+					</p>*@
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Ngày đăng</th>
+								<th>Tiêu đề</th>
+								<th>Người đăng</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="tbody-tintuc">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Bài đăng</h4>
+					<p class="card-description" id="card-action"></p>
+					<form class="forms-sample" id="form-tintuc" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="tintucid">Mã bài đăng</label>
+							<input type="text" class="form-control" id="tintucid" name="tintucid">
+						</div>
+						<div class="form-group">
+							<label for="tieude">Tiêu đề</label>
+							<input type="text" class="form-control" id="tieude" name="tieude">
+						</div>
+						<div class="form-group">
+							<label for="noidung">Nội dung</label>
+							<textarea class="form-control" id="noidung" rows="10" name="noidung"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="anhdaidien">Ảnh đại diện:</label>
+							<input type="file" id="anhdaidien" name="anhdaidien" required>
+						</div>
+						<button class="btn btn-gradient-primary me-2" onclick="InsertTinTuc()">Thêm</button>
+						<button class="btn btn-gradient-primary me-2" onclick="UpdateTinTuc()">Sửa</button>
+						<button class="btn btn-light" onclick="resetInput()">Cancel</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="~/Layout_Admin/assets/js/tintuc_admin.js"></script>
+
