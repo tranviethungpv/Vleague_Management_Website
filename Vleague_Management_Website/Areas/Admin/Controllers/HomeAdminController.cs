@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Vleague_Management_Website.Models;
 
 namespace Vleague_Management_Website.Areas.Admin.Controllers
 {
-    [Area("admin")]
-    [Route("admin")]
-    [Route("admin/homeadmin")]
-    public class HomeAdminController : Controller
-    {
-        QlbongDaContext db = new QlbongDaContext();
+    QlbongDaContext db = new QlbongDaContext();
         [Route("")]
         [Route("index")]
         public IActionResult Index()
@@ -58,5 +54,24 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             //var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
             return View();
         }
-    }
+                [Route("CLB")]
+        public IActionResult CLB()
+        {
+            //var lstCLB = db.Caulacbos.ToList();
+            var lstHlv = db.Huanluyenviens.ToList();
+            var lstSvd = db.Sanvandongs.ToList();
+            var objectModel = new
+            {
+                lstHlv,
+                lstSvd
+            };
+            return View(objectModel);
+        }
+
+        [Route("SVD")]
+        public IActionResult SVD()
+        {
+            var lstSVD = db.Sanvandongs.ToList();
+            return View(lstSVD);
+        }
 }
