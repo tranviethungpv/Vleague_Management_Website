@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "TranDauGhiBan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Danh sách bàn thắng </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cầu thủ bàn thắng</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Danh sách trận đấu</h4>
+                    @*<p class="card-description">
+                    Add class <code>.table-bordered</code>
+                    </p>*@
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Ngày thi đấu</th>
+                                <th>Đội khách</th>
+                                <th>Đội nhà</th>
+                                <th>Địa điểm</th>
+                                <th>Vòng</th>
+                                <th>Kết quả</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-ghiban">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Cầu thủ trận đấu</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Ảnh </th>
+                                <th> Họ Và Tên </th>
+                                <th> Câu lạc bộ </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-cauthutrandau">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Bàn thắng</h4>
+                    <p class="card-description" id="card-action"></p>
+                    <form class="forms-sample" id="form-banthang">
+                        <div class="form-group">
+                            <label for="TranDauId">Mã trận đấu</label>
+                            <input type="text" class="form-control" id="TranDauId" placeholder="Mã trận đấu">
+                        </div>
+                        <div class="form-group">
+                            <label for="BanThangId">Mã bàn thắng</label>
+                            <input type="text" class="form-control" id="BanThangId" placeholder="Mã bàn thắng">
+                        </div>
+                        <div class="form-group">
+                            <label for="ClbId">Mã câu lạc bộ</label>
+                            <input type="text" class="form-control" id="ClbId" placeholder="Mã câu lạc bộ">
+                        </div>
+                        <div class="form-group">
+                            <label for="CauThuId">Mã cầu thủ</label>
+                            <input type="text" class="form-control" id="CauThuId" placeholder="Mã cầu thủ">
+                        </div>
+                        <div class="form-group">
+                            <label for="ThoiDiemGhiBan">Thời điểm ghi bàn</label>
+                            <input type="text" class="form-control" id="ThoiDiemGhiBan" placeholder="Thời điểm ghi bàn">
+                        </div>
+                        <button class="btn btn-gradient-primary me-2" onclick="InsertTranDauGhiBan()">Thêm</button>
+                        <button class="btn btn-gradient-primary me-2" onclick="UpdateTranDauGhiBan()">Sửa</button>
+                        <button class="btn btn-gradient-danger me-2" onclick="DeleteTranDauGhiBan()">Xóa</button>
+                        <button class="btn btn-light" onclick="resetInput()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Layout_Admin/assets/js/trandauGhiBan.js"></script>
