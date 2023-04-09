@@ -4,12 +4,7 @@ using Vleague_Management_Website.Models;
 
 namespace Vleague_Management_Website.Areas.Admin.Controllers
 {
-    [Area("admin")]
-    [Route("admin")]
-    [Route("admin/homeadmin")]
-    public class HomeAdminController : Controller
-    {
-        QlbongDaContext db = new QlbongDaContext();
+    QlbongDaContext db = new QlbongDaContext();
         [Route("")]
         [Route("index")]
         public IActionResult Index()
@@ -42,8 +37,24 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             };
             return View(objectModel);
         }
-
-        [Route("CLB")]
+        [Route("CauThu")]
+        public IActionResult CauThu()
+        {
+            var listCLB = db.Caulacbos.ToList();
+            return View(listCLB);
+        }
+        [Route("HLV")]
+        public IActionResult HLV()
+        {
+            return View();
+        }
+        [Route("TranDauGhiBan")]
+        public IActionResult TranDauGhiBan()
+        {
+            //var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
+            return View();
+        }
+                [Route("CLB")]
         public IActionResult CLB()
         {
             //var lstCLB = db.Caulacbos.ToList();
@@ -63,5 +74,4 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             var lstSVD = db.Sanvandongs.ToList();
             return View(lstSVD);
         }
-    }
 }
