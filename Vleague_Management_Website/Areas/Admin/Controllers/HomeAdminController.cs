@@ -41,13 +41,15 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             };
             return View(objectModel);
         }
-
         [Route("HLV")]
         public IActionResult HLV()
         {
             return View();
         }
-
-
-    }
+        [Route("TranDauGhiBan")]
+        public IActionResult TranDauGhiBan()
+        {
+            //var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
+            return View();
+        }  
 }
