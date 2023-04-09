@@ -41,6 +41,12 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             };
             return View(objectModel);
         }
+        [Route("CauThu")]
+        public IActionResult CauThu()
+        {
+            var listCLB = db.Caulacbos.ToList();
+            return View(listCLB);
+        }
         [Route("HLV")]
         public IActionResult HLV()
         {
@@ -51,5 +57,6 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         {
             //var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
             return View();
-        }  
+        }
+    }
 }
