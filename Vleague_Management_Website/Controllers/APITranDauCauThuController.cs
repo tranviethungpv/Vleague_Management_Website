@@ -15,8 +15,7 @@ namespace Vleague_Management_Website.Controllers
     public class APITranDauCauThuController : ControllerBase
     {
         QlbongDaContext db = new QlbongDaContext();
-        [HttpPost]
-        
+        [HttpPost]   
         public IActionResult AddTranDauCauThu([FromBody] TranDauCauThuCreateInputModel input)
         {
             var trandaucheck = db.Trandaus.Where(x => x.TranDauId == input.TranDauId).ToList();
@@ -59,7 +58,26 @@ namespace Vleague_Management_Website.Controllers
             return Ok(record);
         }
         [HttpGet]
-       
+        [Route("getById_all")]
+        public IActionResult GetRecordByIdAll(string trandauid)
+        {
+            var record = (from a in db.TrandauCauthus
+                          join b in db.Cauthus on a.CauThuId equals b.CauThuId
+                          where a.TranDauId == trandauid
+                          select new
+                          {
+                              a.TranDauId,
+                              a.CauThuId,
+                              b.HoVaTen,
+                              a.ThoiGianBatDau,
+                              a.ThoiGianKetThuc,
+                              a.PhamLoi,
+                              a.TheVang,
+                              a.TheDo,
+                          }).ToList();
+            return Ok(record);
+        }
+        [HttpGet]
         public IActionResult GetAllTranDau([Range(1, 100)] int pageSize = 20,
             [Range(1, int.MaxValue)] int pageNumber = 1)
         {
@@ -94,14 +112,11 @@ namespace Vleague_Management_Website.Controllers
 
             return Ok();
         }
-
-
-
          [HttpPut]
-        public IActionResult Update([FromBody] TranDauCauThuUpdateInputModel input)
+        public IActionResult UpdateTranDauCauThu([FromBody] TranDauCauThuUpdateInputModel input)
         {
             var tranDauCauThu = (from a in db.TrandauCauthus 
-                                 where a.CauThuId == input.CauThuId && a.TranDauId == input.TranDauId
+                                 where a.CauThuId.Trim() == input.CauThuId.Trim() && a.TranDauId.Trim() == input.TranDauId.Trim()
                                  select a).FirstOrDefault();
             if(tranDauCauThu == null)
             {
@@ -116,8 +131,10 @@ namespace Vleague_Management_Website.Controllers
 
             db.TrandauCauthus.Update(tranDauCauThu);
             db.SaveChanges();
-            return Ok(tranDauCauThu);
-            
+
+            tranDauCauThu.TranDauId = tranDauCauThu.TranDauId?.Trim();
+            tranDauCauThu.TranDauId = tranDauCauThu.TranDauId?.Trim();
+            return Ok(tranDauCauThu);   
         }
     }
 }

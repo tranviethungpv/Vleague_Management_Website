@@ -76,36 +76,37 @@ namespace Vleague_Management_Website.Controllers
 		}
 
 		[HttpPut]
-        public IActionResult UpdateAccount([FromBody] TaiKhoan input)
-        {
-            if (input == null)
-            {
-                return BadRequest("Dữ liệu không hợp lệ");
-            }
+		public IActionResult UpdateAccount([FromBody] TaiKhoan input)
+		{
+			if (input == null)
+			{
+				return BadRequest("Dữ liệu không hợp lệ");
+			}
 
-            using (var db = new QlbongDaContext())
-            {
-                try
-                {
-                    var checkacc = db.TaiKhoans.FirstOrDefault(x => x.TenDangNhap == input.TenDangNhap);
-                    if (checkacc == null)
-                    {
-                        return BadRequest("Tài khoản không tồn tại !");
-                    }
-                    checkacc.MatKhau = input.MatKhau;
-                    checkacc.LoaiTaiKhoan = input.LoaiTaiKhoan;
-                    db.TaiKhoans.Update(checkacc);
-                    db.SaveChanges();
-                    return Ok(checkacc);
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý các lỗi khác nhau
-                    return StatusCode(500, "Lỗi hệ thống: " + ex.Message);
-                }
-            }
-        }
-        [HttpDelete]
+			using (var db = new QlbongDaContext())
+			{
+				try
+				{
+					var checkacc = db.TaiKhoans.FirstOrDefault(x => x.TenDangNhap == input.TenDangNhap);
+					if (checkacc == null)
+					{
+						return BadRequest("Tài khoản không tồn tại !");
+					}
+					checkacc.MatKhau = input.MatKhau;
+					checkacc.LoaiTaiKhoan = input.LoaiTaiKhoan;
+					db.TaiKhoans.Update(checkacc);
+					db.SaveChanges();
+					return Ok(checkacc); // Return updated account data
+				}
+				catch (Exception ex)
+				{
+					// Xử lý các lỗi khác nhau
+					return StatusCode(500, "Lỗi hệ thống: " + ex.Message);
+				}
+			}
+		}
+
+		[HttpDelete]
         public IActionResult DeleteAccount(string tendangnhap)
         {
             try

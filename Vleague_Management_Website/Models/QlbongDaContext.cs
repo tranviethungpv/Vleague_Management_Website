@@ -39,7 +39,7 @@ public partial class QlbongDaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=BUT;Initial Catalog=QLBongDa;Integrated Security=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=TVHUNG-PC;Initial Catalog=QLBongDa;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -62,7 +62,7 @@ public partial class QlbongDaContext : DbContext
 
         modelBuilder.Entity<Caulacbo>(entity =>
         {
-            entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB436C8AB9A9");
+            entity.HasKey(e => e.CauLacBoId).HasName("PK__CAULACBO__144BAB438A64A49C");
 
             entity.ToTable("CAULACBO");
 
@@ -136,7 +136,7 @@ public partial class QlbongDaContext : DbContext
 
         modelBuilder.Entity<Huanluyenvien>(entity =>
         {
-            entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB21F87EAD25");
+            entity.HasKey(e => e.HuanLuyenVienId).HasName("PK__HUANLUYE__8DF5FB21DD7059A0");
 
             entity.ToTable("HUANLUYENVIEN");
 

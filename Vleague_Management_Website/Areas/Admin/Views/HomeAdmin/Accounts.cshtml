@@ -59,12 +59,8 @@
 								<option value=1>1</option>
 							</select>
 						</div>
-
-
-
-
-						<button class="btn btn-gradient-primary me-2" onclick="Insert()">Thêm</button>
-						<button class="btn btn-gradient-primary me-2" onclick="Update()">Sửa</button>
+						<button class="btn btn-gradient-primary me-2" onclick="Insert(event)">Thêm</button>
+						<button class="btn btn-gradient-primary me-2" onclick="Update(event)">Sửa</button>
 						<button class="btn btn-light" onclick="resetInput()">Cancel</button>
 					</form>
 				</div>
@@ -79,11 +75,9 @@
 
 
 <script>
-
 	$(document).ready(function () {
 		getALLAcounts();
 	});
-
 	function getALLAcounts() {
 		$.ajax({
 			url: "https://localhost:7239/api/APIAccount?pageSize=10&pagenumber=1",
@@ -117,7 +111,6 @@
 			}
 		});
 	}
-
 	function deleteTranDau(id) {
 		var url = 'https://localhost:7239/api/APIAccount?tendangnhap=' + id;
 		$.ajax({
@@ -134,9 +127,8 @@
 			}
 		});
 	}
-
-
-	function Update() {
+	function Update(event) {
+		event.preventDefault();
 		var dataSend = {
 			TenDangNhap: $("#tendangnhap").val(),
 			MatKhau: $("#matkhau").val(),
@@ -150,23 +142,17 @@
 			contentType: 'application/json',
 			data: JSON.stringify(dataSend),
 			dataType: 'json',
-			error: function (response) {
+			error: function (data) {
 				alert("Cập nhật không thành công");
 			},
-			success: function (response) {
-				alert("Cập nhật thành công");
-				resetInput()
+			success: function (data) {
+				alert("Cập nhật thành công, hãy load lại trang!");
+				resetInput();
 				getAllTrandau();
 			}
 		});
 	}
-
-
-
-
 	function updateTranDauFill(tendangnhap) {
-		
-		
 		var url = 'https://localhost:7239/api/APIAccount/getByTDN?tendangnhap=' + tendangnhap;
 		$.ajax({
 			url: url,
@@ -197,17 +183,15 @@
         $("#tendangnhap:text").val("")
         $("#matkhau:text").val("")
         $("#loaitaikhoan").val("")
-	}
-        
-	function Insert() {
-		
+	} 
+	function Insert(event) {
+		event.preventDefault();
 		if(!checkPassword())
 			return false
 		var dataSend = {
 			TenDangNhap: $("#tendangnhap").val(),
 			MatKhau: $("#matkhau").val(),
 			LoaiTaiKhoan: $("#loaitaikhoan").val(),
-			
 		}
 		var url = 'https://localhost:7239/api/APIAccount';
 		$.ajax({
@@ -221,7 +205,7 @@
 			},
 			success: function (response) {
 				alert("Thêm mới thành công");
-				resetInput()
+				resetInput();
 				getALLAcounts(); //Gọi đến hàm lấy dữ liệu lên bảng
 			}
 		});

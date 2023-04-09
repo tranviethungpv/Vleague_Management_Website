@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Drawing.Printing;
 using Vleague_Management_Website.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -46,8 +47,37 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Route("TranDauCauThu")]
         public IActionResult TranDauCauThu()
         {
-            var listtrandauactive = db.Trandaus.Where(x => x.TrangThai == false);
-            return View(listtrandauactive);
+            var listTrandau = (from a in db.Trandaus
+                               join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
+                               join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+                               join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
+                               //where a.TrangThai == false
+                               orderby a.NgayThiDau descending
+                               select new
+                               {
+                                   a.TranDauId,
+                                   a.NgayThiDau,
+                                   clbkhach = b.TenClb,
+                                   clbnha = c.TenClb,
+                                   d.TenSan,
+                                   a.Vong,
+                                   a.HiepPhu,
+                                   a.KetQua,
+                                   a.TrangThai
+                               })
+                              .ToList();
+            var listCauThu = (from a in db.Cauthus
+                              select new
+                              {
+                                  a.CauThuId,
+                                  a.HoVaTen,
+                              }).ToList();
+            var objectModel = new
+            {
+                listCauThu,
+                listTrandau,
+            };
+            return View(objectModel);
         }
 
 

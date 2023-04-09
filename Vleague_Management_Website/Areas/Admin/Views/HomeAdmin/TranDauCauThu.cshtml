@@ -14,6 +14,15 @@
 		</nav>
 	</div>
 	<div class="row">
+        <div class="form-group">
+            <label for="TranDau">Trận đấu</label>
+            <select class="form-control form-control-lg" id="TranDau">
+                @foreach (var item in Model.listTrandau)
+                {
+                    <option value=@item.TranDauId>@item.TranDauId: @item.clbnha - @item.clbkhach - @item.NgayThiDau</option>
+                }
+            </select>
+        </div>
 		<div class="col-lg-12 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
@@ -49,34 +58,43 @@
 					<form class="forms-sample" id="form-trandaucauthu">
 						<div class="form-group">
 							<label for="TranDauId">Mã trận đấu</label>
-							<input type="text" class="form-control" id="trandauid" placeholder="Mã trận đấu">
+							<input type="text" class="form-control" id="trandauid" placeholder="Mã trận đấu" name="trandauid">
 						</div>
-						<div class="form-group">
+@*						<div class="form-group">
 							<label for="cauthu">Mã cầu thủ</label>
-							<input type="text" class="form-control" id="cauthuid" placeholder=cauthuid" />
-						</div>
+							<input type="text" class="form-control" id="cauthuid" placeholder="Cầu thủ ID" name="cauthuid">
+						</div>*@
+                        <div class="form-group">
+                            <label for="cauthuid">Cầu thủ</label>
+                            <select class="form-control form-control-lg" id="cauthuid" name="cauthuid">
+                                @foreach (var item in Model.listCauThu)
+                                {
+                                    <option value=@item.CauThuId>@item.HoVaTen</option>
+                                }
+                            </select>
+                        </div>
 						<div class="form-group">
 							<label for="thoigianbatdau"></label>
-							<input type="text" class="form-control" id="thoigianbatdau" placeholder=thoigianvaosan">
+							<input type="text" class="form-control" id="thoigianbatdau" placeholder="Thời gian vào sân" name="thoigianbatdau">
 						</div>
 						<div class="form-group">
 							<label for="thoigianketthuc"></label>
-							<input type="text" class="form-control" id="thoigianketthuc" placeholder="Out time">
+							<input type="text" class="form-control" id="thoigianketthuc" placeholder="Thời gian ra sân" name="thoigianketthuc">
 						</div>
 						<div class="form-group">
 							<label for="phamloi"></label>
-							<input type="text" class="form-control" id="phamloi" placeholder="SoLanPhamLoi">
+							<input type="text" class="form-control" id="phamloi" placeholder="Số lần phạm lỗi" name="phamloi">
 						</div>
 						<div class="form-group">
 							<label for="TheVang"></label>
-							<input type="text" class="form-control" id="thevang" placeholder="TheVang">
+							<input type="text" class="form-control" id="thevang" placeholder="Số thẻ vàng" name="thevang">
 						</div>
 						<div class="form-group">
 							<label for="TheDo"></label>
-							<input type="text" class="form-control" id="thedo" placeholder="TheDo">
+							<input type="text" class="form-control" id="thedo" placeholder="Số thẻ đỏ" name="thedo">
 						</div>
-						<button class="btn btn-gradient-primary me-2" onclick="InsertTranDauCauThu()">Thêm</button>
-						<button class="btn btn-gradient-primary me-2" onclick="Update()">Cập nhật</button>
+						<button class="btn btn-gradient-primary me-2" onclick="InsertTranDauCauThu(event)">Thêm</button>
+						<button class="btn btn-gradient-primary me-2" onclick="updateTranDauCauThu(event)">Cập nhật</button>
 
 					</form>
 				</div>
@@ -88,14 +106,19 @@
 
 
 <script>
-
     $(document).ready(function () {
-        getAllTrandaucauthu();
+        $(document).ready(function () {
+            $('#TranDau').on('change', function (event) {
+                event.preventDefault();
+                var id = $(this).val();
+                getAllTrandaucauthu(id);
+                $("#trandauid").val(id)
+            });
+        });
     });
-
-    function getAllTrandaucauthu() {
+    function getAllTrandaucauthu(id) {
             $.ajax({
-            url: "https://localhost:7239/api/APITranDauCauThu?pageSize=10&pagenumber=1",
+            url: "https://localhost:7239/api/APITranDauCauThu/getById_all?trandauid=" + id,
             method: 'GET',
             contentType: 'json',
             dataType: 'json',
@@ -108,7 +131,7 @@
                 for (var i = 0; i < len; ++i) {
                     table = table + '<tr>';
                     table = table + '<td>' + response[i].tranDauId.trim() + '</td>';
-                    table = table + '<td>' + response[i].cauThuId + '</td>';
+                    table = table + '<td>' + response[i].hoVaTen + '</td>';
                     table = table + '<td>' + response[i].thoiGianBatDau + '</td>';
                     table = table + '<td>' + response[i].thoiGianKetThuc + '</td>';
                     table = table + '<td>' + response[i].phamLoi + '</td>';
@@ -129,7 +152,6 @@
             }
         });
     }
-
     function deleteTranDau(trandauid, cauthuid) {
         var url = 'https://localhost:7239/api/APITranDauCauThu?trandauid=' + trandauid + '&cauthuid=' + cauthuid;
         $.ajax({
@@ -142,7 +164,9 @@
             },
             success: function (response) {
                 alert("Xóa thành công");
-                getAllTrandaucauthu();
+                resetInput();
+                var id = $("#TranDau").val();
+                getAllTrandaucauthu(id);
             }
         });
     }
@@ -167,44 +191,43 @@
             }
         });
     }
-
-
-    function Update() {
+    function updateTranDauCauThu(event) {
+        event.preventDefault();
         var dataSend = {
-            TranDauId: $("#trandauid").val(),
-            CauThuId: $("#cauthuid").val(),
-            ThoiGianBatDau: $("#thoigianbatdau").val(),
-            ThoiGianKetThuc: $("#thoigianketthuc").val(),
-            PhamLoi: $("#phamloi").val(),
+            TranDauId: $("#trandauid").val().trim(),
+            CauThuId: $("#cauthuid").val().trim(),
+            ThoiGianBatDau: parseInt($("#thoigianbatdau").val()),
+            ThoiGianKetThuc: parseInt($("#thoigianketthuc").val()),
+            PhamLoi: parseInt($("#phamloi").val()),
             TheVang: parseInt($("#thevang").val()),
             TheDo: parseInt($("#thedo").val())
-        }
-        var url = 'https://localhost:7239/api/APITranDauCauThu';
+        };
+
         $.ajax({
-            url: url,
-            method: 'PUT',
+            url: 'https://localhost:7239/api/APITranDauCauThu',
+            type: 'PUT',
             contentType: 'application/json',
             data: JSON.stringify(dataSend),
-            dataType: 'json',
-            error: function (response) {
-                alert("Cập nhật không thành công");
-            },
-            success: function (response) {
+            success: function (data) {
                 alert("Cập nhật thành công");
+                resetInput();
+                var id = $("#TranDau").val();
+                getAllTrandaucauthu(id);
                 
-                getAllTrandaucauthu();
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("Cập nhật không thành công: " + errorThrown);
             }
         });
     }
-
-    function InsertTranDauCauThu() {
-
+    function InsertTranDauCauThu(event) {
+        event.preventDefault();
         var dataSend = {
-            TranDauId: $("#trandauid").val(),
-            CauThuId: $("#cauthuid").val(),
-            ThoiGianBatDau: $("#thoigianbatdau").val(),
-            ThoiGianKetThuc: $("#thoigianketthuc").val(),
-            PhamLoi: $("#phamloi").val(),
+            TranDauId: $("#trandauid").val().trim(),
+            CauThuId: $("#cauthuid").val().trim(),
+            ThoiGianBatDau: parseInt($("#thoigianbatdau").val()),
+            ThoiGianKetThuc: parseInt($("#thoigianketthuc").val()),
+            PhamLoi: parseInt($("#phamloi").val()),
             TheVang: parseInt($("#thevang").val()),
             TheDo: parseInt($("#thedo").val())
         }
@@ -220,8 +243,9 @@
             },
             success: function (response) {
                 alert("Thêm mới thành công");
-                resetInput()
-                getAllTrandau(); //Gọi đến hàm lấy dữ liệu lên bảng
+                resetInput();
+                var id = $("#TranDau").val();
+                getAllTrandaucauthu(id);
             }
         });
     }
@@ -234,6 +258,4 @@
         $("#thevang:text").val("")
         $("#thedo:text").val("")
     }
-
 </script>
-

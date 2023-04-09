@@ -15,12 +15,10 @@ namespace ThucHanhWeb.Controllers
             if (HttpContext.Session.GetString("TenDangNhap") == null)
             {
                 return View();
-
             }
-
             else
             {
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index","Home");
             }
 
         }
@@ -35,8 +33,13 @@ namespace ThucHanhWeb.Controllers
                 {
                     HttpContext.Session.SetString("TenDangNhap", u.TenDangNhap.ToString());
                     if(u.LoaiTaiKhoan == 0)
-
-                        return RedirectToAction("Index", "Admin");
+                    {
+						return RedirectToAction("Index", "Admin");
+					}    
+                    else if(u.LoaiTaiKhoan == 1)
+                    {
+                        return RedirectToAction("Index", "HomeWriter");
+                    }
                 }
                 else
                 {
