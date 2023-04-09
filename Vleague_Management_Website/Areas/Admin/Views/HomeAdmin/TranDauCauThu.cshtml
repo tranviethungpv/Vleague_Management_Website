@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "TranDauCauThu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title"> Trận đấu cầu thủ </h3>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Trận đấu cầu thủ</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="row">
+        <div class="form-group">
+            <label for="TranDau">Trận đấu</label>
+            <select class="form-control form-control-lg" id="TranDau">
+                @foreach (var item in Model.listTrandau)
+                {
+                    <option value=@item.TranDauId>@item.TranDauId: @item.clbnha - @item.clbkhach - @item.NgayThiDau</option>
+                }
+            </select>
+        </div>
+		<div class="col-lg-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Danh sách thông số cầu thủ trong trận đấu</h4>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>ID trận đấu</th>
+								<th>ID cầu thủ </th>
+								<th>Thời gian bắt đầu</th>
+								<th>Thời gian kết thúc</th>
+								<th>Phạm lỗi</th>
+								<th>Thẻ vàng</th>
+								<th>Thẻ đỏ</th>
+
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="tbody-trandaucauthu">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Trận đấu - cầu thủ</h4>
+					<p class="card-description" id="card-action"></p>
+					<form class="forms-sample" id="form-trandaucauthu">
+						<div class="form-group">
+							<label for="TranDauId">Mã trận đấu</label>
+							<input type="text" class="form-control" id="trandauid" placeholder="Mã trận đấu" name="trandauid">
+						</div>
+@*						<div class="form-group">
+							<label for="cauthu">Mã cầu thủ</label>
+							<input type="text" class="form-control" id="cauthuid" placeholder="Cầu thủ ID" name="cauthuid">
+						</div>*@
+                        <div class="form-group">
+                            <label for="cauthuid">Cầu thủ</label>
+                            <select class="form-control form-control-lg" id="cauthuid" name="cauthuid">
+                                @foreach (var item in Model.listCauThu)
+                                {
+                                    <option value=@item.CauThuId>@item.HoVaTen</option>
+                                }
+                            </select>
+                        </div>
+						<div class="form-group">
+							<label for="thoigianbatdau"></label>
+							<input type="text" class="form-control" id="thoigianbatdau" placeholder="Thời gian vào sân" name="thoigianbatdau">
+						</div>
+						<div class="form-group">
+							<label for="thoigianketthuc"></label>
+							<input type="text" class="form-control" id="thoigianketthuc" placeholder="Thời gian ra sân" name="thoigianketthuc">
+						</div>
+						<div class="form-group">
+							<label for="phamloi"></label>
+							<input type="text" class="form-control" id="phamloi" placeholder="Số lần phạm lỗi" name="phamloi">
+						</div>
+						<div class="form-group">
+							<label for="TheVang"></label>
+							<input type="text" class="form-control" id="thevang" placeholder="Số thẻ vàng" name="thevang">
+						</div>
+						<div class="form-group">
+							<label for="TheDo"></label>
+							<input type="text" class="form-control" id="thedo" placeholder="Số thẻ đỏ" name="thedo">
+						</div>
+						<button class="btn btn-gradient-primary me-2" onclick="InsertTranDauCauThu(event)">Thêm</button>
+						<button class="btn btn-gradient-primary me-2" onclick="updateTranDauCauThu(event)">Cập nhật</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $('#TranDau').on('change', function (event) {
+                event.preventDefault();
+                var id = $(this).val();
+                getAllTrandaucauthu(id);
+                $("#trandauid").val(id)
+            });
+        });
+    });
+    function getAllTrandaucauthu(id) {
+            $.ajax({
+            url: "https://localhost:7239/api/APITranDauCauThu/getById_all?trandauid=" + id,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                console.log("error");
+            },
+            success: function (response) {
+                const len = response.length;
+                let table = '';
+                for (var i = 0; i < len; ++i) {
+                    table = table + '<tr>';
+                    table = table + '<td>' + response[i].tranDauId.trim() + '</td>';
+                    table = table + '<td>' + response[i].hoVaTen + '</td>';
+                    table = table + '<td>' + response[i].thoiGianBatDau + '</td>';
+                    table = table + '<td>' + response[i].thoiGianKetThuc + '</td>';
+                    table = table + '<td>' + response[i].phamLoi + '</td>';
+                    table = table + '<td>' + response[i].theVang + '</td>';
+                    table = table + '<td>' + response[i].theDo + '</td>';
+                    table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateTranDauFill(\'' + response[i].tranDauId.trim() + '\',\'' + response[i].cauThuId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
+
+                    table += '<td>' +
+                        '<button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" onclick="deleteTranDau(\'' + response[i].tranDauId.trim() + '\',\'' + response[i].cauThuId.trim() + '\')">' +
+                        '<i class="mdi mdi-delete-forever"></i>' +
+                        '</button>' +
+                        '</td>';
+                }
+                document.getElementById('tbody-trandaucauthu').innerHTML = table;
+            },
+            fail: function (response) {
+                console.log("fail");
+            }
+        });
+    }
+    function deleteTranDau(trandauid, cauthuid) {
+        var url = 'https://localhost:7239/api/APITranDauCauThu?trandauid=' + trandauid + '&cauthuid=' + cauthuid;
+        $.ajax({
+            url: url,
+            method: 'DELETE',
+            contentType: 'json',
+            dataType: 'text',
+            error: function (xhr, textStatus, errorThrown) {
+                alert("Xóa không thành công: " + xhr.responseText);
+            },
+            success: function (response) {
+                alert("Xóa thành công");
+                resetInput();
+                var id = $("#TranDau").val();
+                getAllTrandaucauthu(id);
+            }
+        });
+    }
+    function updateTranDauFill(trandauid, cauthuid) {
+        var url = 'https://localhost:7239/api/APITranDauCauThu/getById?trandauid='+  trandauid+ '&cauthuid=' + cauthuid;
+        $.ajax({
+            url: url,
+            method: 'GET',
+            contentType: 'json',
+            dataType: 'json',
+            error: function (response) {
+                alert("Cập nhật không thành công");
+            },
+            success: function (response) {
+                $("#trandauid").val(response.tranDauId)
+                $("#cauthuid:text").val(response.cauThuId)
+                $("#thoigianbatdau").val(response.thoiGianBatDau)
+                $("#thoigianketthuc").val(response.thoiGianKetThuc)
+                $("#phamloi").val(response.phamLoi)
+                $("#thevang").val(response.theVang)
+                $("#thedo").val(response.theDo)
+            }
+        });
+    }
+    function updateTranDauCauThu(event) {
+        event.preventDefault();
+        var dataSend = {
+            TranDauId: $("#trandauid").val().trim(),
+            CauThuId: $("#cauthuid").val().trim(),
+            ThoiGianBatDau: parseInt($("#thoigianbatdau").val()),
+            ThoiGianKetThuc: parseInt($("#thoigianketthuc").val()),
+            PhamLoi: parseInt($("#phamloi").val()),
+            TheVang: parseInt($("#thevang").val()),
+            TheDo: parseInt($("#thedo").val())
+        };
+
+        $.ajax({
+            url: 'https://localhost:7239/api/APITranDauCauThu',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(dataSend),
+            success: function (data) {
+                alert("Cập nhật thành công");
+                resetInput();
+                var id = $("#TranDau").val();
+                getAllTrandaucauthu(id);
+                
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("Cập nhật không thành công: " + errorThrown);
+            }
+        });
+    }
+    function InsertTranDauCauThu(event) {
+        event.preventDefault();
+        var dataSend = {
+            TranDauId: $("#trandauid").val().trim(),
+            CauThuId: $("#cauthuid").val().trim(),
+            ThoiGianBatDau: parseInt($("#thoigianbatdau").val()),
+            ThoiGianKetThuc: parseInt($("#thoigianketthuc").val()),
+            PhamLoi: parseInt($("#phamloi").val()),
+            TheVang: parseInt($("#thevang").val()),
+            TheDo: parseInt($("#thedo").val())
+        }
+        var url = 'https://localhost:7239/api/APITranDauCauThu';
+        $.ajax({
+            url: url,
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(dataSend),
+            dataType: 'json',
+            error: function (error) {
+                alert(JSON.stringify(error))
+            },
+            success: function (response) {
+                alert("Thêm mới thành công");
+                resetInput();
+                var id = $("#TranDau").val();
+                getAllTrandaucauthu(id);
+            }
+        });
+    }
+    function resetInput() {
+        $("#trandauid:text").val("")
+        $("#cauthuid:text").val("")
+        $("#thoigianbatdau:text").val("")
+        $("#thoigianketthuc:text").val("")
+        $("#phamloi:text").val("")
+        $("#thevang:text").val("")
+        $("#thedo:text").val("")
+    }
+</script>

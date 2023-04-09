@@ -1,0 +1,213 @@
+﻿@{
+	ViewData["Title"] = "Account";
+	Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title"> Quản lý tài khoản </h3>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Tài Khoản</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="col-lg-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Danh sách tài khoản</h4>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Tên đăng nhập</th>
+								<th>Mật khẩu</th>
+								<th>Loại tài khoản</th>
+						</thead>
+						<tbody id="tbody-taikhoan"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Người dùng</h4>
+					<p class="card-description" id="card-action"></p>
+					<form class="forms-sample" id="form-taikhoan">
+						<div class="form-group">
+							<label for="tendangnhap">Tên đăng nhập</label>
+							<input type="text" class="form-control" id="tendangnhap" placeholder="Tên đăng nhập">
+						</div>
+						<div class="form-group">
+							<label>Mật khẩu</label>
+							<input type="password" class="form-control" id="matkhau" placeholder="Mật khẩu">
+						</div>
+						<div class="form-group">
+							<label for="">Nhập lại mật khẩu</label>
+							<input type="password" class="form-control" id="nhaplaimatkhau" placeholder="Nhập lại mật khẩu">
+						</div>
+						<div class="form-group">
+							<label for="ClbNha">Loại tài khoản</label>
+							<select class="form-control form-control-lg" id="loaitaikhoan">
+								<option value=0>0</option>
+								<option value=1>1</option>
+							</select>
+						</div>
+						<button class="btn btn-gradient-primary me-2" onclick="Insert(event)">Thêm</button>
+						<button class="btn btn-gradient-primary me-2" onclick="Update(event)">Sửa</button>
+						<button class="btn btn-light" onclick="resetInput()">Cancel</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<script>
+	$(document).ready(function () {
+		getALLAcounts();
+	});
+	function getALLAcounts() {
+		$.ajax({
+			url: "https://localhost:7239/api/APIAccount?pageSize=10&pagenumber=1",
+			method: 'GET',
+			contentType: 'json',
+			dataType: 'json',
+			error: function (response) {
+				console.log("error");
+			},
+			success: function (response) {
+				const len = response.length;
+				let table = '';
+				for (var i = 0; i < len; ++i) {
+					table = table + '<tr>';
+					table = table + '<td>' + response[i].tenDangNhap.trim() + '</td>';
+					table = table + '<td>' + response[i].matKhau + '</td>';
+					table = table + '<td>' + response[i].loaiTaiKhoan + '</td>';
+					
+					table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateTranDauFill(\'' + response[i].tenDangNhap.trim()  + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
+
+					table += '<td>' +
+						'<button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" onclick="deleteTranDau(\'' + response[i].tenDangNhap.trim() + '\')">' +
+						'<i class="mdi mdi-delete-forever"></i>' +
+						'</button>' +
+						'</td>';
+				}
+				document.getElementById('tbody-taikhoan').innerHTML = table;
+			},
+			fail: function (response) {
+				console.log("fail");
+			}
+		});
+	}
+	function deleteTranDau(id) {
+		var url = 'https://localhost:7239/api/APIAccount?tendangnhap=' + id;
+		$.ajax({
+			url: url,
+			method: 'DELETE',
+			contentType: 'json/application',
+			dataType: 'text',
+			error: function (response) {
+				alert("Xóa không thành công");
+			},
+			success: function (response) {
+				alert("Xóa thành công");
+				getALLAcounts(); //Gọi đến hàm lấy dữ liệu lên bảng
+			}
+		});
+	}
+	function Update(event) {
+		event.preventDefault();
+		var dataSend = {
+			TenDangNhap: $("#tendangnhap").val(),
+			MatKhau: $("#matkhau").val(),
+			LoaiTaiKhoan: $("#loaitaikhoan").val(),
+			
+		}
+		var url = 'https://localhost:7239/api/APIAccount';
+		$.ajax({
+			url: url,
+			method: 'PUT',
+			contentType: 'application/json',
+			data: JSON.stringify(dataSend),
+			dataType: 'json',
+			error: function (data) {
+				alert("Cập nhật không thành công");
+			},
+			success: function (data) {
+				alert("Cập nhật thành công, hãy load lại trang!");
+				resetInput();
+				getAllTrandau();
+			}
+		});
+	}
+	function updateTranDauFill(tendangnhap) {
+		var url = 'https://localhost:7239/api/APIAccount/getByTDN?tendangnhap=' + tendangnhap;
+		$.ajax({
+			url: url,
+			method: 'GET',
+			contentType: 'json',
+			dataType: 'json',
+			error: function (response) {
+				alert("Cập nhật không thành công");
+			},
+			success: function (response) {
+				$("#tendangnhap").val(response.tenDangNhap)
+				$("#matkhau:text").val(response.matKhau)
+				$("#loaitaikhoan").val(response.loaiTaiKhoan).change()
+				
+			}
+		});
+	}
+	function checkPassword() {
+		const passwordInput = document.getElementById('matkhau');
+		const confirmPasswordInput = document.getElementById('nhaplaimatkhau');
+		if (passwordInput.value !== confirmPasswordInput.value) {
+			alert('Mật khẩu nhập lại không khớp.');
+			return false;
+		}
+		return true;
+	}
+	function resetInput() {
+        $("#tendangnhap:text").val("")
+        $("#matkhau:text").val("")
+        $("#loaitaikhoan").val("")
+	} 
+	function Insert(event) {
+		event.preventDefault();
+		if(!checkPassword())
+			return false
+		var dataSend = {
+			TenDangNhap: $("#tendangnhap").val(),
+			MatKhau: $("#matkhau").val(),
+			LoaiTaiKhoan: $("#loaitaikhoan").val(),
+		}
+		var url = 'https://localhost:7239/api/APIAccount';
+		$.ajax({
+			url: url,
+			method: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(dataSend),
+			dataType: 'json',
+			error: function (error) {
+				alert(JSON.stringify(error))
+			},
+			success: function (response) {
+				alert("Thêm mới thành công");
+				resetInput();
+				getALLAcounts(); //Gọi đến hàm lấy dữ liệu lên bảng
+			}
+		});
+	}
+</script>
