@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "CauThu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Cầu Thủ </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cầu Thủ</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Danh sách Cầu Thủ</h4>
+                    @*<p class="card-description">
+                    Add class <code>.table-bordered</code>
+                    </p>*@
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Họ Và Tên</th>
+                                <th>CLB ID</th>
+                                <th>Ngày Sinh</th>
+                                <th>Vị Trí</th>
+                                <th>Quốc Tịch</th>
+                                <th>Số Áo</th>
+                                <th>Cân Nặng</th>
+                                <th>Chiều Cao</th>
+                                <th>Ảnh Đại Diện</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-cauthu">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Cầu Thủ</h4>
+                    <p class="card-description" id="card-action"></p>
+                    <form class="forms-sample" id="form-cauthu">
+                        <div class="form-group">
+                            <label for="CauThuId">ID Cầu Thủ</label>
+                            <input type="text" class="form-control" id="CauThuId" placeholder="1234">
+                        </div>
+                        <div class="form-group">
+                            <label for="hoten">Họ & Tên</label>
+                            <input type="text" class="form-control" id="hoten" placeholder="La Cảnh Kỳ">
+                        </div>
+                        <div class="form-group">
+                            <label for="clbid">CLUB</label>
+                            <select class="form-control form-control-lg" id="clbid">
+                                @foreach (var item in Model)
+                                {
+                                    <option value=@item.CauLacBoId>@item.TenClb</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ngaysinh">Ngày Sinh</label>
+                            <input type="text" class="form-control" id="ngaysinh" placeholder="2002-09-08T08:00:00">
+                        </div>
+                        <div class="form-group">
+                            <label for="vitri">Vị Trí</label>
+                            <input type="text" class="form-control" id="vitri" placeholder="FW">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Quốc Tịch</label>
+                            <input type="text" class="form-control" id="country" placeholder="Việt Nam">
+                        </div>
+                        <div class="form-group">
+                            <label for="soao">Số Áo</label>
+                            <input type="text" class="form-control" id="soao" placeholder="8">
+                        </div>
+                        <div class="form-group">
+                            <label for="cannang">Cân Nặng</label>
+                            <input type="text" class="form-control" id="cannang" placeholder="63">
+                        </div>
+                        <div class="form-group">
+                            <label for="chieucao">Chiều Cao</label>
+                            <input type="text" class="form-control" id="chieucao" placeholder="172">
+                        </div>
+                        <div class="form-group">
+                            <label for="anhdaidien">Ảnh Đại Diện</label>
+                            <input type="text" class="form-control" id="anhdaidien" placeholder="LaCanhKy.png">
+                        </div>
+                        <button class="btn btn-gradient-primary me-2" onclick="InsertCauThu()">Thêm</button>
+                        <button class="btn btn-gradient-primary me-2" onclick="UpdateCauThu()">Sửa</button>
+                        <button class="btn btn-light" onclick="resetInput()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Layout_Admin/assets/js/cauthu.js"></script>

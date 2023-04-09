@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "CLB";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> CLB </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">CLB</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Danh sách CLB</h4>
+                    @*<p class="card-description">
+                    Add class <code>.table-bordered</code>
+                    </p>*@
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>CLB Id</th>
+                                <th>Tên CLB</th>
+                                <th>Tên Gọi</th>
+                                <th>Sân vận động</th>
+                                <th>HLV</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-CLB">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">CLB</h4>
+                    <p class="card-description" id="card-action"></p>
+                    <form class="forms-sample" id="form-CLB">
+                        <div class="form-group">
+                            <label for="CauLacBoId">CLB Id</label>
+                            <input type="text" class="form-control" id="CauLacBoId" placeholder="1234">
+                        </div>
+                        <div class="form-group">
+                            <label for="TenCLB">Tên CLB</label>
+                            <input type="text" class="form-control" id="TenCLB" placeholder="ManUtd">
+                        </div>
+                        <div class="form-group">
+                            <label for="TenGoi">Tên Gọi</label>
+                            <input type="text" class="form-control" id="TenGoi" placeholder="MUN">
+                        </div>
+                        <div class="form-group">
+                            <label for="TenSVD">Sân vận động</label>
+                            <select class="form-control form-control-lg" id="TenSVD">
+                                @foreach (var item in Model.lstSvd)
+                                {
+                                    <option value=@item.SanVanDongId.Trim()>@item.TenSan</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="TenHLV">Tên HLV</label>
+                            <select class="form-control form-control-lg" id="TenHLV">
+                                @foreach (var item in Model.lstHlv)
+                                {
+                                    <option value=@item.HuanLuyenVienId>@item.TenHlv</option>
+                                }
+                            </select>
+                        </div>
+                        <button class="btn btn-gradient-primary me-2" onclick="InsertCLB()">Thêm</button>
+                        <button class="btn btn-gradient-primary me-2" onclick="UpdateCLB()">Sửa</button>
+                        <button class="btn btn-light" onclick="resetInput()">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Layout_Admin/assets/js/clb.js"></script>
