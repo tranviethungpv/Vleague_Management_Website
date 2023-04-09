@@ -1,37 +1,35 @@
-﻿
-@{
-    ViewData["Title"] = "Home Page";
+﻿@{
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout_FootballLeague.cshtml";
 }
 
 @for (var i = 1; i < Model.Count; i++)
 {
-   
+
     <tr>
-            <td class="cmsmasters_table_cell_aligncenter">
-                @i
-            </td>
-            <td class="cmsmasters_table_cell_aligncenter">
-                @Model[i].TenClb
-            </td>
-            <td class="cmsmasters_table_cell_aligncenter">
-                @Model[i].SoTranThang
-            </td>
-            <td class="cmsmasters_table_cell_aligncenter">
-                @Model[i].SoTranHoa
-            </td>
-            <td class="cmsmasters_table_cell_aligncenter">
-                @Model[i].SoTranHoa
-            </td>
-            <td class="cmsmasters_table_cell_aligncenter">
-                @Model[i].Diem
-            </td>
-       </tr>
+        <td class="cmsmasters_table_cell_aligncenter">
+            @i
+        </td>
+        <td class="cmsmasters_table_cell_aligncenter">
+            @Model[i].TenClb
+        </td>
+        <td class="cmsmasters_table_cell_aligncenter">
+            @Model[i].SoTranThang
+        </td>
+        <td class="cmsmasters_table_cell_aligncenter">
+            @Model[i].SoTranHoa
+        </td>
+        <td class="cmsmasters_table_cell_aligncenter">
+            @Model[i].SoTranHoa
+        </td>
+        <td class="cmsmasters_table_cell_aligncenter">
+            @Model[i].Diem
+        </td>
+    </tr>
     if (i == 7)
     {
         break;
     }
-    
-    
+
+
 }
-													

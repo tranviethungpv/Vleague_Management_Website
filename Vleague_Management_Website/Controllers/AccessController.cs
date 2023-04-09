@@ -38,7 +38,7 @@ namespace ThucHanhWeb.Controllers
 					}    
                     else if(u.LoaiTaiKhoan == 1)
                     {
-                        return RedirectToAction("Index", "HomeWriter");
+                        return RedirectToAction("Index", "Writer");
                     }
                 }
                 else
