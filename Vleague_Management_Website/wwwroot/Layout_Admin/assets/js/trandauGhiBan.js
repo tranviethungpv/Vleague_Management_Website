@@ -15,7 +15,7 @@ function getAllMatchDone() {
             const len = response.length;
             let table = '';
             for (var i = 0; i < len; ++i) {
-                if (response[i].trangThai) {
+                if (response[i].trangThai === false) { // Only append the table row if trangThai is false
                     const date = new Date(response[i].ngayThiDau);
                     var day = date.getDate();
                     var month = date.getMonth() + 1;
@@ -30,8 +30,9 @@ function getAllMatchDone() {
                     table = table + '<td>' + response[i].tenSan + '</td>';
                     table = table + '<td>' + response[i].vong + '</td>';
                     table = table + '<td>' + (!!response[i].ketQua ? response[i].ketQua : "") + '</td>';
-                    table = table + '<td>' + (!!response[i].trangThai ? '<div class="mdi mdi mdi-check badge badge-success"> </div>' : '<div class="mdi mdi-close badge badge-danger"> </div>') + '</td>';
+                    table = table + '<td>' + '<div class="mdi mdi-close badge badge-danger"> </div>' + '</td>';
                     table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="getCauThuTranDau(\'' + response[i].tranDauId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
+                    table = table + '</tr>';
                 }
             }
             document.getElementById('tbody-ghiban').innerHTML = table;
@@ -41,6 +42,7 @@ function getAllMatchDone() {
         }
     });
 }
+
 
 $("#form-banthang").submit(function (e) {
     e.preventDefault();

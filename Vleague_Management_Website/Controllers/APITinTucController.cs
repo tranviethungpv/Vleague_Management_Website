@@ -15,7 +15,7 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult GetAllTinTuc()
         {
             var listTinTuc = (from a in db.TinTucs
-                              join b in db.NguoiDungs on a.NguoiDungId equals b.NguoiDungId
+                              join b in db.TaiKhoans on a.TenDangNhap equals b.TenDangNhap
                                orderby a.NgayTao descending
                                select new
                                {
@@ -23,7 +23,7 @@ namespace Vleague_Management_Website.Controllers
                                    a.NgayTao,
                                    a.TieuDe,
                                    a.NoiDung,
-                                   b.HoTen,
+                                   b.TenDangNhap,
                                    a.Anhdaidien
                                })
                               .ToList();
@@ -35,7 +35,7 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult GetTinTucById(string id)
         {
             var listTinTuc = (from a in db.TinTucs
-                              join b in db.NguoiDungs on a.NguoiDungId equals b.NguoiDungId
+                              join b in db.TaiKhoans on a.TenDangNhap equals b.TenDangNhap
                               where a.TinTucId == id
                               orderby a.NgayTao descending
                               select new
@@ -44,7 +44,7 @@ namespace Vleague_Management_Website.Controllers
                                   a.NgayTao,
                                   a.TieuDe,
                                   a.NoiDung,
-                                  b.HoTen,
+                                  b.TenDangNhap,
                                   a.Anhdaidien
                               })
                               .FirstOrDefault();
@@ -60,6 +60,11 @@ namespace Vleague_Management_Website.Controllers
             }
             // Upload the image to the server
             string fileName = await UploadImage(model.Image);
+            var username = HttpContext.Session.GetString("TenDangNhap");
+            var userid = (from a in db.TaiKhoans
+                          where a.TenDangNhap == username
+                          select a.TenDangNhap.ToString()).FirstOrDefault();
+            Console.WriteLine(userid);
             // Create a new TinTuc object with the form data
             var tinTuc = new TinTuc
             {
@@ -67,7 +72,8 @@ namespace Vleague_Management_Website.Controllers
                 NgayTao = model.NgayTao,
                 TieuDe = model.TieuDe,
                 NoiDung = model.NoiDung,
-                Anhdaidien = fileName
+                Anhdaidien = fileName,
+                TenDangNhap = userid
             };
             // Add the new TinTuc to the database
             db.TinTucs.Add(tinTuc);
@@ -95,6 +101,10 @@ namespace Vleague_Management_Website.Controllers
         [Route("capnhattintuc")]
         public async Task<IActionResult> UpdateTinTuc([FromForm] TinTucCreateInputModel model)
         {
+            var username = HttpContext.Session.GetString("TenDangNhap");
+            var userid = (from a in db.TaiKhoans
+                          where a.TenDangNhap == username
+                          select a.TenDangNhap.ToString()).FirstOrDefault();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -111,6 +121,7 @@ namespace Vleague_Management_Website.Controllers
             tinTuc.NgayTao = model.NgayTao;
             tinTuc.TieuDe = model.TieuDe;
             tinTuc.NoiDung = model.NoiDung;
+            tinTuc.TenDangNhap = userid;
 
             // Upload the image to the server and update the TinTuc object with the new image name
             if (model.Image != null)

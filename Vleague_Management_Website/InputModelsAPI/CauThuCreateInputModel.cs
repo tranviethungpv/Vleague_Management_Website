@@ -22,7 +22,7 @@ namespace Vleague_Management_Website.InputModelsAPI
 
         public double? ChieuCao { get; set; }
 
-        public string? Anhdaidien { get; set; }
+        public IFormFile? Image { get; set; }
 
         public virtual Caulacbo? CauLacBo { get; set; }
     }

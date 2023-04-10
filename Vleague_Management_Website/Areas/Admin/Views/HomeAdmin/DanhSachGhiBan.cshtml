@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "DanhSachGhiBan";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<div class="content-wrapper">
+	<div class="page-header">
+		<h3 class="page-title"> Trận đấu cầu thủ </h3>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Danh sách ghi bàn</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="row">
+		<div class="form-group">
+			<label for="TranDau">Trận đấu</label>
+			<select class="form-control form-control-lg" id="TranDau">
+				@foreach (var item in Model.listTrandau)
+				{
+					<option value=@item.TranDauId>@item.TranDauId: @item.clbnha - @item.clbkhach - @item.NgayThiDau</option>
+				}
+			</select>
+		</div>
+		<div class="col-lg-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Cầu thủ ghi bàn</h4>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Ảnh</th>
+								<th>Họ Và Tên</th>
+								<th>Câu lạc bộ</th>
+								<th>Thời điểm ghi bàn</th>
+							</tr>
+						</thead>
+						<tbody id="tbody-danhsachghiban">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="~/Layout_Admin/assets/js/danhsachghiban.js"></script>

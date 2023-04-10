@@ -23,6 +23,8 @@ namespace Vleague_Management_Website.Areas.Writer.Controllers
         [Authenciation_Writer]
         public IActionResult TinTuc()
         {
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
             var listTinTuc = db.TinTucs.Select(x => x).ToList();
             return View(listTinTuc);
         }

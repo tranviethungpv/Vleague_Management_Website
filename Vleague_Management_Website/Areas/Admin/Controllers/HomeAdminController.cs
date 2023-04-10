@@ -27,7 +27,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Authenciation_Admin]
         public IActionResult TranDau()
 		{
-			var listClb = db.Caulacbos.Select(x => x).ToList();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            var listClb = db.Caulacbos.Select(x => x).ToList();
 			var listSVD = db.Sanvandongs.Select(x => x).ToList();
 			var objectModel = new
 			{
@@ -41,7 +43,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Authenciation_Admin]
         public IActionResult SetKetQua()
 		{
-			var listClb = db.Caulacbos.Select(x => x).ToList();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            var listClb = db.Caulacbos.Select(x => x).ToList();
 			var listSVD = db.Sanvandongs.Select(x => x).ToList();
 			var objectModel = new
 			{
@@ -54,28 +58,36 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Authenciation_Admin]
         public IActionResult CauThu()
 		{
-			var listCLB = db.Caulacbos.ToList();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            var listCLB = db.Caulacbos.ToList();
 			return View(listCLB);
 		}
 		[Route("HLV")]
         [Authenciation_Admin]
         public IActionResult HLV()
 		{
-			return View();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            return View();
 		}
 		[Route("TranDauGhiBan")]
         [Authenciation_Admin]
         public IActionResult TranDauGhiBan()
 		{
-			//var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
-			return View();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            //var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
+            return View();
 		}
 		[Route("CLB")]
         [Authenciation_Admin]
         public IActionResult CLB()
 		{
-			//var lstCLB = db.Caulacbos.ToList();
-			var lstHlv = db.Huanluyenviens.ToList();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            //var lstCLB = db.Caulacbos.ToList();
+            var lstHlv = db.Huanluyenviens.ToList();
 			var lstSvd = db.Sanvandongs.ToList();
 			var objectModel = new
 			{
@@ -88,7 +100,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Authenciation_Admin]
         public IActionResult TranDauCauThu()
 		{
-			var listTrandau = (from a in db.Trandaus
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            var listTrandau = (from a in db.Trandaus
 							   join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
 							   join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
 							   join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
@@ -124,29 +138,58 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Authenciation_Admin]
         public IActionResult TinTuc()
 		{
-			var listTinTuc = db.TinTucs.Select(x => x).ToList();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            var listTinTuc = db.TinTucs.Select(x => x).ToList();
 			return View(listTinTuc);
-		}
-		[Route("Users")]
-        [Authenciation_Admin]
-        public IActionResult Users()
-		{
-			var user = db.NguoiDungs.Select(x => x).ToList();
-			return View(user);
 		}
 		[Route("Accounts")]
         [Authenciation_Admin]
         public IActionResult Accounts()
 		{
-
-			return View();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            return View();
 		}
 		[Route("SVD")]
         [Authenciation_Admin]
         public IActionResult SVD()
 		{
-			var lstSVD = db.Sanvandongs.ToList();
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+            var lstSVD = db.Sanvandongs.ToList();
 			return View(lstSVD);
 		}
-	}
+        [Route("GhiBan")]
+        [Authenciation_Admin]
+		public IActionResult DanhSachGhiBan()
+		{
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
+			var listTrandau = (from a in db.Trandaus
+							   join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
+							   join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+							   join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
+							   //where a.TrangThai == false
+							   orderby a.NgayThiDau descending
+							   select new
+							   {
+								   a.TranDauId,
+								   a.NgayThiDau,
+								   clbkhach = b.TenClb,
+								   clbnha = c.TenClb,
+								   d.TenSan,
+								   a.Vong,
+								   a.HiepPhu,
+								   a.KetQua,
+								   a.TrangThai
+							   })
+							  .ToList();
+			var objectModel = new
+			{
+				listTrandau,
+			};
+			return View(objectModel);
+        }
+    }
 }

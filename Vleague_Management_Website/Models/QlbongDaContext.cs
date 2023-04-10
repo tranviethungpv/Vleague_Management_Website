@@ -23,8 +23,6 @@ public partial class QlbongDaContext : DbContext
 
     public virtual DbSet<Huanluyenvien> Huanluyenviens { get; set; }
 
-    public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
-
     public virtual DbSet<Sanvandong> Sanvandongs { get; set; }
 
     public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
@@ -151,25 +149,6 @@ public partial class QlbongDaContext : DbContext
                 .HasColumnName("TenHLV");
         });
 
-        modelBuilder.Entity<NguoiDung>(entity =>
-        {
-            entity.ToTable("NguoiDung");
-
-            entity.Property(e => e.NguoiDungId)
-                .HasMaxLength(10)
-                .HasColumnName("NguoiDungID");
-            entity.Property(e => e.Email).HasMaxLength(50);
-            entity.Property(e => e.HoTen).HasMaxLength(50);
-            entity.Property(e => e.Sđt)
-                .HasMaxLength(50)
-                .HasColumnName("SĐT");
-            entity.Property(e => e.TenDangNhap).HasMaxLength(50);
-
-            entity.HasOne(d => d.TenDangNhapNavigation).WithMany(p => p.NguoiDungs)
-                .HasForeignKey(d => d.TenDangNhap)
-                .HasConstraintName("FK_NguoiDung_TaiKhoan");
-        });
-
         modelBuilder.Entity<Sanvandong>(entity =>
         {
             entity.HasKey(e => e.SanVanDongId).HasName("PK__SANVANDONG__7E6CC920");
@@ -206,14 +185,12 @@ public partial class QlbongDaContext : DbContext
                 .HasColumnName("TinTucID");
             entity.Property(e => e.Anhdaidien).HasMaxLength(200);
             entity.Property(e => e.NgayTao).HasColumnType("datetime");
-            entity.Property(e => e.NguoiDungId)
-                .HasMaxLength(10)
-                .HasColumnName("NguoiDungID");
+            entity.Property(e => e.TenDangNhap).HasMaxLength(50);
             entity.Property(e => e.TieuDe).HasMaxLength(200);
 
-            entity.HasOne(d => d.NguoiDung).WithMany(p => p.TinTucs)
-                .HasForeignKey(d => d.NguoiDungId)
-                .HasConstraintName("FK_TinTuc_NguoiDung");
+            entity.HasOne(d => d.TenDangNhapNavigation).WithMany(p => p.TinTucs)
+                .HasForeignKey(d => d.TenDangNhap)
+                .HasConstraintName("FK_TinTuc_TaiKhoan");
         });
 
         modelBuilder.Entity<Trandau>(entity =>

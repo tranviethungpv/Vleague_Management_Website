@@ -23,15 +23,10 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Họ Và Tên</th>
-                                <th>CLB ID</th>
                                 <th>Ngày Sinh</th>
                                 <th>Vị Trí</th>
                                 <th>Quốc Tịch</th>
-                                <th>Số Áo</th>
-                                <th>Cân Nặng</th>
-                                <th>Chiều Cao</th>
                                 <th>Ảnh Đại Diện</th>
                                 <th></th>
                                 <th></th>
@@ -91,8 +86,8 @@
                             <input type="text" class="form-control" id="chieucao" placeholder="172">
                         </div>
                         <div class="form-group">
-                            <label for="anhdaidien">Ảnh Đại Diện</label>
-                            <input type="text" class="form-control" id="anhdaidien" placeholder="LaCanhKy.png">
+                            <label for="anhdaidien">Ảnh đại diện:</label>
+                            <input type="file" id="avatar" name="anhdaidien" required>
                         </div>
                         <button class="btn btn-gradient-primary me-2" onclick="InsertCauThu()">Thêm</button>
                         <button class="btn btn-gradient-primary me-2" onclick="UpdateCauThu()">Sửa</button>

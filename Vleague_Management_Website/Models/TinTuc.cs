@@ -13,9 +13,9 @@ public partial class TinTuc
 
     public DateTime? NgayTao { get; set; }
 
-    public string? NguoiDungId { get; set; }
+    public string? TenDangNhap { get; set; }
 
     public string? Anhdaidien { get; set; }
 
-    public virtual NguoiDung? NguoiDung { get; set; }
+    public virtual TaiKhoan? TenDangNhapNavigation { get; set; }
 }

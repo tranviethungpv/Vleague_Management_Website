@@ -25,7 +25,7 @@ function getAllTinTuc() {
                 table = table + '<td>' + response[i].tinTucId.trim() + '</td>';
                 table = table + '<td>' + day + "/" + month + "/" + year + " " + hour + ':' + minute + '</td>';
                 table = table + '<td>' + response[i].tieuDe + '</td>';;
-                table = table + '<td>' + response[i].hoTen + '</td>';
+                table = table + '<td>' + response[i].tenDangNhap + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateTinTucFill(\'' + response[i].tinTucId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" onclick="deleteTinTuc(\'' + response[i].tinTucId.trim() + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
             }
@@ -53,7 +53,7 @@ function InsertTinTuc() {
     var ngaytao = new Date().toISOString();
     var tieude = $("#tieude").val();
     var noidung = $("#noidung").val();
-   
+    
     var formData = new FormData();
 
     formData.append("tinTucId", tintucid);

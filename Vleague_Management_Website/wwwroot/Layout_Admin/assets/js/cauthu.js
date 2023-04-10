@@ -22,16 +22,13 @@ function getAllCauThu() {
                 var hour = date.getHours();
                 var minute = date.getMinutes();
                 table = table + '<tr>';
-                table = table + '<td>' + response[i].cauThuId.trim() + '</td>';
                 table = table + '<td>' + response[i].hoVaTen.trim() + '</td>';
-                table = table + '<td>' + response[i].clbid.trim() + '</td>';
                 table = table + '<td>' + day + "/" + month + "/" + year + " " + hour + ':' + minute + '</td>';
                 table = table + '<td>' + response[i].viTri.trim() + '</td>';
                 table = table + '<td>' + response[i].quocTich.trim() + '</td>';
-                table = table + '<td>' + response[i].soAo + '</td>';
-                table = table + '<td>' + response[i].canNang + '</td>';
-                table = table + '<td>' + response[i].chieuCao + '</td>';
-                table = table + '<td>' + response[i].anhdaidien.trim() + '</td>';
+                table = table + `<td class="py-1">
+                    <img src="../../Images/Players/${!!response[i].anhdaidien ? response[i].anhdaidien.trim() : 'default-avatar.png'}" alt="image" />
+                </td>`
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon" onclick="updateCauThuFill(\'' + response[i].cauThuId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
                 table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon" onclick="deleteCauThu(\'' + response[i].cauThuId.trim() + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
             }
@@ -61,32 +58,44 @@ function resetInput() {
 }
 
 function InsertCauThu() {
+    var cauthuid = $("#CauThuId").val();
+    var hoten = $("#hoten").val();
+    var clbid = $("#clbid").val();
+    var ngaysinh = $("#ngaysinh").val();
+    var vitri = $("#vitri").val();
+    var quoctich = $("#country").val();
+    var soao = $("#soao").val();
+    var cannang = parseFloat($("#cannang").val());
+    var chieucao = parseFloat($("#chieucao").val());
+    var props = $('#avatar').prop('files'),
+        file = props[0]
 
-    var dataSend = {
-        cauThuId: $("#CauThuId").val(),
-        hoVaTen: $("#hoten").val(),
-        cauLacBoId: $("#clbid").val(),
-        ngaySinh: $("#ngaysinh").val(),
-        vitri: $("#vitri").val(),
-        quocTich: $("#country").val(),
-        soAo: $("#soao").val(),
-        canNang: parseFloat($("#cannang").val()),
-        ChieuCao: parseFloat($("#chieucao").val()),
-        anhDaiDien: $("#anhdaidien").val(),
-    }
-    var url = 'https://localhost:7239/api/APICauThu';
+    var formData = new FormData();
+
+    formData.append("cauThuId", cauthuid);
+    formData.append("hoVaTen", hoten);
+    formData.append("cauLacBoId", clbid);
+    formData.append("ngaySinh", ngaysinh);
+    formData.append("viTri", vitri);
+    formData.append("quocTich", quoctich);
+    formData.append("soAo", soao);
+    formData.append("canNang", cannang);
+    formData.append("chieuCao", chieucao);
+    formData.append("anhdaidien", $("#avatar")[0].files[0]);
+
+    var url = 'https://localhost:7239/api/APICauThu/themcauthu';
     $.ajax({
         url: url,
         method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(dataSend),
-        dataType: 'json',
+        processData: false,
+        contentType: false,
+        data: formData,
         error: function (error) {
-            alert(JSON.stringify(error))
+            alert("Có lỗi xảy ra");
         },
         success: function (response) {
             alert("Thêm mới thành công");
-            resetInput()
+            resetInput();
             getAllCauThu(); //Gọi đến hàm lấy dữ liệu lên bảng
         }
     });

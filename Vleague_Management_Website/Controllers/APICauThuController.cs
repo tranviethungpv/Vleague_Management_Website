@@ -18,18 +18,18 @@ namespace Vleague_Management_Website.Controllers
             var listCauThu = (from a in db.Cauthus
                               join b in db.Caulacbos on a.CauLacBoId equals b.CauLacBoId
                               select new
-                               {
-                                   a.CauThuId,
-                                   a.HoVaTen ,
-                                   clbid=b.CauLacBoId,
-                                   a.Ngaysinh,
-                                   a.ViTri,
-                                   a.QuocTich,
-                                   a.SoAo,
-                                   a.CanNang,
-                                   a.ChieuCao,
-                                   a.Anhdaidien
-                               })
+                              {
+                                  a.CauThuId,
+                                  a.HoVaTen,
+                                  b.CauLacBoId,
+                                  a.Ngaysinh,
+                                  a.ViTri,
+                                  a.QuocTich,
+                                  a.SoAo,
+                                  a.CanNang,
+                                  a.ChieuCao,
+                                  a.Anhdaidien
+                              })
                               .Skip((pageNumber - 1) * pageSize)
                               .Take(pageSize)
                               .ToList();
@@ -43,26 +43,33 @@ namespace Vleague_Management_Website.Controllers
             var CauThu = (from a in db.Cauthus
                           join b in db.Caulacbos on a.CauLacBoId equals b.CauLacBoId
                           where a.CauThuId == id
-                           select new
-                           {
-                               a.CauThuId,
-                               a.HoVaTen,
-                               b.CauLacBoId,
-                               a.Ngaysinh,
-                               a.ViTri,
-                               a.QuocTich,
-                               a.SoAo,
-                               a.CanNang,
-                               a.ChieuCao,
-                               a.Anhdaidien
-                           })
+                          select new
+                          {
+                              a.CauThuId,
+                              a.HoVaTen,
+                              b.CauLacBoId,
+                              a.Ngaysinh,
+                              a.ViTri,
+                              a.QuocTich,
+                              a.SoAo,
+                              a.CanNang,
+                              a.ChieuCao,
+                              a.Anhdaidien
+                          })
                               .FirstOrDefault();
             return Ok(CauThu);
         }
 
         [HttpPost]
-        public IActionResult AddCauThu([FromBody] CauThuCreateInputModel input)
+        [Route("themcauthu")]
+        public async Task<IActionResult> AddCauThu([FromForm] CauThuCreateInputModel input)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            // Upload the image to the server
+            string fileName = await UploadImage(input.Image);
             var cauthuCheck = db.Cauthus.Select(x => x.CauThuId).ToList();
             if (cauthuCheck.Any(x => x.Contains(input.CauThuId)))
             {
@@ -80,12 +87,29 @@ namespace Vleague_Management_Website.Controllers
                 SoAo = input.SoAo,
                 CanNang = input.CanNang,
                 ChieuCao = input.ChieuCao,
-                Anhdaidien = input.Anhdaidien
+                Anhdaidien = fileName,
             };
 
             db.Cauthus.Add(newCauThu);
             db.SaveChanges();
             return Ok(input);
+        }
+        private async Task<string> UploadImage(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return null;
+            }
+            // Get the file name and extension
+            string fileName = file.FileName;
+            // Set the file path
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "Players", fileName);
+            // Save the file to disk
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            return fileName;
         }
         [HttpPut]
         public IActionResult UpdateCauThu([FromBody] CauThuUpdateInputModel input)

@@ -40,7 +40,7 @@ namespace ThucHanhWeb.Controllers
                 {
                     HttpContext.Session.SetString("LoaiTaiKhoan",u.LoaiTaiKhoan.ToString());
                     HttpContext.Session.SetString("TenDangNhap", u.TenDangNhap.ToString());
-                    if(u.LoaiTaiKhoan == 0)
+                    if (u.LoaiTaiKhoan == 0)
                     {
 						return RedirectToAction("Index", "Admin");
 					}    

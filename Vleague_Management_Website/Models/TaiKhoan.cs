@@ -11,5 +11,5 @@ public partial class TaiKhoan
 
     public int? LoaiTaiKhoan { get; set; }
 
-    public virtual ICollection<NguoiDung> NguoiDungs { get; } = new List<NguoiDung>();
+    public virtual ICollection<TinTuc> TinTucs { get; } = new List<TinTuc>();
 }

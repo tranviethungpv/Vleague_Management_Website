@@ -20,17 +20,15 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult DetailNews (string Id)
         {
             var TinTuc = (from a in db.TinTucs
-                          join b in db.NguoiDungs on a.NguoiDungId equals b.NguoiDungId
+                          join b in db.TaiKhoans on a.TenDangNhap equals b.TenDangNhap
                           select new TinTucUser
                           {
                               TinTucId = a.TinTucId,
                               TieuDe = a.TieuDe,
                               NoiDung = a.NoiDung,
                               NgayTao = a.NgayTao,
-                              TenNguoiDung = b.HoTen,
+                              TenNguoiDung = b.TenDangNhap,
                               Anhdaidien = a.Anhdaidien,
-                              SDT = b.Sđt,
-                              Email = b.Email,
                           }).SingleOrDefault(x=>x.TinTucId==Id);
             ViewBag.Title = TinTuc.TieuDe;
             return View(TinTuc);
@@ -46,8 +44,6 @@ namespace Vleague_Management_Website.Controllers
             public DateTime? NgayTao { get; set; }
 
             public string? TenNguoiDung { get; set; }
-            public string? SDT { get; set; }
-            public string? Email { get; set; }
             public string? Anhdaidien { get; set; }
         }
     }

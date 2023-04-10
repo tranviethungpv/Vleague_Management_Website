@@ -116,8 +116,8 @@ namespace Vleague_Management_Website.Controllers
                 {
                     return BadRequest("Không có tên đăng nhập này");
                 }
-                var lstNguoiDung = db.NguoiDungs.Where(x=>x.TenDangNhap == tendangnhap);
-                db.NguoiDungs.RemoveRange(lstNguoiDung);
+                var lstNguoiDung = db.TaiKhoans.Where(x=>x.TenDangNhap == tendangnhap);
+                db.TaiKhoans.RemoveRange(lstNguoiDung);
                 db.TaiKhoans.Remove(acc); 
                 db.SaveChanges();
                 return Ok();
