@@ -81,6 +81,10 @@ namespace Vleague_Management_Website.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult noPremission()
+        {
+            return View();
+        }
     }
 }
 public class LeaderBoard // để hứng giá tri

@@ -18,9 +18,16 @@ namespace ThucHanhWeb.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Home");
+                if(HttpContext.Session.GetString("LoaiTaiKhoan") == "0")
+                {
+                    return RedirectToAction("Index", "Admin");
+                }   
+                else
+                {
+                    return RedirectToAction("Index", "Writer");
+                }
+                    
             }
-
         }
 
         [HttpPost]
@@ -31,6 +38,7 @@ namespace ThucHanhWeb.Controllers
                 var u = db.TaiKhoans.Where(x => x.TenDangNhap.Equals(user.TenDangNhap) && x.MatKhau.Equals(user.MatKhau)).FirstOrDefault();
                 if (u != null)
                 {
+                    HttpContext.Session.SetString("LoaiTaiKhoan",u.LoaiTaiKhoan.ToString());
                     HttpContext.Session.SetString("TenDangNhap", u.TenDangNhap.ToString());
                     if(u.LoaiTaiKhoan == 0)
                     {
@@ -54,6 +62,7 @@ namespace ThucHanhWeb.Controllers
         {
             HttpContext.Session.Clear();
             HttpContext.Session.Remove("TenDangNhap");
+            HttpContext.Session.Remove("LoaiTaiKhoan");
             return RedirectToAction("Index", "Home");
         }
     }

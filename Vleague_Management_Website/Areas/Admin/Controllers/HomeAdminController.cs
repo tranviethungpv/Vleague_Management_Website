@@ -3,6 +3,7 @@ using System.Drawing.Printing;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Vleague_Management_Website.Models;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Vleague_Management_Website.Models.Authenciation;
 
 namespace Vleague_Management_Website.Areas.Admin.Controllers
 {
@@ -14,13 +15,15 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 		QlbongDaContext db = new QlbongDaContext();
         [Route("")]
         [Route("index")]
+        [Authenciation_Admin]
         public IActionResult Index()
 		{
 			return View();
 		}
 
 		[Route("TranDau")]
-		public IActionResult TranDau()
+        [Authenciation_Admin]
+        public IActionResult TranDau()
 		{
 			var listClb = db.Caulacbos.Select(x => x).ToList();
 			var listSVD = db.Sanvandongs.Select(x => x).ToList();
@@ -33,7 +36,8 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 		}
 
 		[Route("SetKetQua")]
-		public IActionResult SetKetQua()
+        [Authenciation_Admin]
+        public IActionResult SetKetQua()
 		{
 			var listClb = db.Caulacbos.Select(x => x).ToList();
 			var listSVD = db.Sanvandongs.Select(x => x).ToList();
@@ -45,24 +49,28 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			return View(objectModel);
 		}
 		[Route("CauThu")]
-		public IActionResult CauThu()
+        [Authenciation_Admin]
+        public IActionResult CauThu()
 		{
 			var listCLB = db.Caulacbos.ToList();
 			return View(listCLB);
 		}
 		[Route("HLV")]
-		public IActionResult HLV()
+        [Authenciation_Admin]
+        public IActionResult HLV()
 		{
 			return View();
 		}
 		[Route("TranDauGhiBan")]
-		public IActionResult TranDauGhiBan()
+        [Authenciation_Admin]
+        public IActionResult TranDauGhiBan()
 		{
 			//var lstMatch = db.Trandaus.Where(x => x.TrangThai == true).ToList();
 			return View();
 		}
 		[Route("CLB")]
-		public IActionResult CLB()
+        [Authenciation_Admin]
+        public IActionResult CLB()
 		{
 			//var lstCLB = db.Caulacbos.ToList();
 			var lstHlv = db.Huanluyenviens.ToList();
@@ -75,7 +83,8 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			return View(objectModel);
 		}
 		[Route("TranDauCauThu")]
-		public IActionResult TranDauCauThu()
+        [Authenciation_Admin]
+        public IActionResult TranDauCauThu()
 		{
 			var listTrandau = (from a in db.Trandaus
 							   join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
@@ -110,25 +119,29 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			return View(objectModel);
 		}
 		[Route("TinTuc")]
-		public IActionResult TinTuc()
+        [Authenciation_Admin]
+        public IActionResult TinTuc()
 		{
 			var listTinTuc = db.TinTucs.Select(x => x).ToList();
 			return View(listTinTuc);
 		}
 		[Route("Users")]
-		public IActionResult Users()
+        [Authenciation_Admin]
+        public IActionResult Users()
 		{
 			var user = db.NguoiDungs.Select(x => x).ToList();
 			return View(user);
 		}
 		[Route("Accounts")]
-		public IActionResult Accounts()
+        [Authenciation_Admin]
+        public IActionResult Accounts()
 		{
 
 			return View();
 		}
 		[Route("SVD")]
-		public IActionResult SVD()
+        [Authenciation_Admin]
+        public IActionResult SVD()
 		{
 			var lstSVD = db.Sanvandongs.ToList();
 			return View(lstSVD);
