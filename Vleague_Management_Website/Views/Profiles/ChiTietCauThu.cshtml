@@ -1,4 +1,4 @@
-﻿@model Vleague_Management_Website.Models.Cauthu
+﻿@model Vleague_Management_Website.Controllers.CauthuClb
 
 @{
     ViewData["Title"] = "ChiTietCauThu";
@@ -23,15 +23,6 @@
 					</header>
 					<div class="profile_content with_sidebar">
 						<div class="cmsmasters_profile_content entry-content">
-							<style type="text/css">
-								#cmsmasters_row_6406e675563525_86936158 .cmsmasters_row_outer_parent {
-									padding-top: 40px;
-								}
-
-								#cmsmasters_row_6406e675563525_86936158 .cmsmasters_row_outer_parent {
-									padding-bottom: 50px;
-								}
-							</style>
 							<div id="cmsmasters_row_6406e675560680_31065285"
 								 class="cmsmasters_row cmsmasters_color_scheme_default">
 								<div class="cmsmasters_row_outer_parent">
@@ -75,7 +66,7 @@
 					</div>
 					<div class="profile_sidebar">
 						<div class="profile_details entry-meta">
-							<h2 class="profile_details_title">Profile details</h2>
+							<h2 class="profile_details_title">Hồ sơ Cầu thủ</h2>
 							<div class="profile_details_item">
 								<div class="profile_details_item_title">Vị Trí:</div>
 								<div class="profile_details_item_desc">@Model.ViTri</div>
@@ -91,8 +82,8 @@
 								</div>
 							</div>
 							<div class="profile_details_item">
-								<div class="profile_details_item_title">Clubs:</div>
-								<div class="profile_details_item_desc">@Model.CauLacBoId</div>
+								<div class="profile_details_item_title">Câu lạc bộ:</div>
+								<div class="profile_details_item_desc">@Model.CauLacBo</div>
 							</div>
 							<div class="profile_details_item">
 								<div class="profile_details_item_title">Cân nặng:</div>
@@ -108,7 +99,7 @@
 							</div>
 						</div>
 						<div class="profile_social_icons">
-							<h2 class="profile_social_icons_title">Socials</h2>
+							<h2 class="profile_social_icons_title">Mạng xã hội</h2>
 							<ul class="profile_social_icons_list">
 								<li><a href="#" class="cmsmasters-icon-instagramm" title=""></a></li>
 								<li><a href="#" class="cmsmasters-icon-skype" title=""></a></li>
@@ -129,3 +120,10 @@
 
 	</div>
 </div>
+<style>
+	.cmsmasters_img {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>

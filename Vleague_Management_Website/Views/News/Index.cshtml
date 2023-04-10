@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "News Page";
     Layout = "~/Views/Shared/_Layout_News.cshtml";
 }
@@ -11,7 +12,8 @@
              data-category="featured news" style="width: 298px; position: absolute; left: 0px; top: 0px;">
         <div class="cmsmasters_post_cont">
             <figure class="cmsmasters_img_wrap">
-                <a href="../wp-content/uploads/2015/04/1-1.jpg"
+                    <a asp-controller="News" asp-action="DetailNews"
+               asp-route-Id="@item.TinTucId"
                    title="Texas Rangers Finish In Second Place" rel="ilightbox[img_2965_6406e5d8cb416]"
                    class="cmsmasters_img_link preloader highImg">
                     <img width="860" height="574"
@@ -41,12 +43,18 @@
                 </div>
                 <div class="cmsmasters_post_content entry-content">
                 </div>
-                <a class="cmsmasters_post_read_more" href="../texas-rangers-under-21s-finish-in-second-place/index.html">
-                    Read
-                    More
+                    <a class="cmsmasters_post_read_more" asp-controller="News" asp-action="DetailNews"
+               asp-route-Id="@item.TinTucId">
+                    Chi tiết
                 </a>
             </div>
         </div>
     </article>
 }
-@Html.PagedListPager(Model, page=>Url.Action("News", new{page=page}))
+<div class="pagination justify-content-center w-100">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new{page = page}), new
+    X.PagedList.Web.Common.PagedListRenderOptions(){
+    LiElementClasses = new List<String> {"page-item"},
+    PageClasses = new List<String> {"page-link"}
+    })
+</div>

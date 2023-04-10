@@ -19,9 +19,36 @@ namespace Vleague_Management_Website.Controllers
         }
         public IActionResult DetailNews (string Id)
         {
-            var TinTuc = db.TinTucs.SingleOrDefault(x=>x.TinTucId==Id);
-            
+            var TinTuc = (from a in db.TinTucs
+                          join b in db.NguoiDungs on a.NguoiDungId equals b.NguoiDungId
+                          select new TinTucUser
+                          {
+                              TinTucId = a.TinTucId,
+                              TieuDe = a.TieuDe,
+                              NoiDung = a.NoiDung,
+                              NgayTao = a.NgayTao,
+                              TenNguoiDung = b.HoTen,
+                              Anhdaidien = a.Anhdaidien,
+                              SDT = b.Sđt,
+                              Email = b.Email,
+                          }).SingleOrDefault(x=>x.TinTucId==Id);
+            ViewBag.Title = TinTuc.TieuDe;
             return View(TinTuc);
+        }
+        public class TinTucUser
+        {
+            public string TinTucId { get; set; } = null!;
+
+            public string? TieuDe { get; set; }
+
+            public string? NoiDung { get; set; }
+
+            public DateTime? NgayTao { get; set; }
+
+            public string? TenNguoiDung { get; set; }
+            public string? SDT { get; set; }
+            public string? Email { get; set; }
+            public string? Anhdaidien { get; set; }
         }
     }
 }

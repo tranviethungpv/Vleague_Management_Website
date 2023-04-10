@@ -55,7 +55,8 @@
 						<div class="cmsmasters_slider_post_cont">
 							<div class="thumb_wrap">
 								<figure class="cmsmasters_img_wrap">
-									<a href="eagles-suffer-1-0-defeat-to-beavers-despite-dominating-performance/index.html"
+									<a asp-controller="News" asp-action="DetailNews"
+								   asp-route-Id="@item.TinTucId"
 									   title="Eagles Suffer 1-0 Defeat to Beavers Despite Dominating Performance!"
 									   class="cmsmasters_img_link preloader">
 										<img width="300" height="300"
@@ -80,7 +81,8 @@
 										</abbr>
 									</span>
 									<h4 class="cmsmasters_slider_post_title entry-title">
-										<a href="eagles-suffer-1-0-defeat-to-beavers-despite-dominating-performance/index.html">
+										<a asp-controller="News" asp-action="DetailNews"
+									   asp-route-Id="@item.TinTucId">
 											@item.TieuDe
 										</a>
 									</h4>
@@ -105,7 +107,8 @@
 								</div>
 								<footer class="cmsmasters_slider_post_footer entry-meta">
 									<a class="cmsmasters_post_read_more"
-									   href="eagles-suffer-1-0-defeat-to-beavers-despite-dominating-performance/index.html">
+								   asp-controller="News" asp-action="DetailNews"
+								   asp-route-Id="@item.TinTucId">
 										Read
 										More
 									</a>

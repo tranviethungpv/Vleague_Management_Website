@@ -1,9 +1,8 @@
 ﻿@{
-    ViewData["Title"] = "DetailNews Page";
+    ViewData["Title"] = @ViewBag.Title;
     Layout = "~/Views/Shared/_Layout_DetailNews.cshtml";
 }
-@model Vleague_Management_Website.Models.TinTuc
-
+@model Vleague_Management_Website.Controllers.NewsController.TinTucUser
 <!-- Start Middle -->
 <div id="middle">
     <div class="headline cmsmasters_color_scheme_default">
@@ -46,7 +45,7 @@
                                         <a href="../author/cmsmasters/index.html"
                                            title="Posts by cmsmasters"
                                            class="vcard author"
-                                           rel="author"><span class="fn">@Model.NguoiDung</span></a>
+                                           rel="author"><span class="fn">@Model.TenNguoiDung</span></a>
                                     </span><span>In</span>
                                     <div class="cmsmasters_post_category">
                                         <a href="../category/events/index.html" rel="category tag">Events</a>
@@ -74,45 +73,27 @@
                         </div>
                     </article>
                     <!-- Finish Image Article -->
-
-                    <aside class="share_posts">
-                        <h2 class="share_posts_title">Share this post?</h2>
-                        <div class="share_posts_inner">
-                            <a href="https://www.facebook.com/sharer/sharer.php?display=popup&amp;u=https%3A%2F%2Fsports-club.cmsmasters.net%2Ftexas-rangers-under-21s-finish-in-second-place%2F">Facebook</a>
-                            <a href="https://twitter.com/intent/tweet?text=Check+out+%27Texas+Rangers+Finish+In+Second+Place%27+on+Sports+Club+website&amp;url=https%3A%2F%2Fsports-club.cmsmasters.net%2Ftexas-rangers-under-21s-finish-in-second-place%2F">Twitter</a>
-                            <a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fsports-club.cmsmasters.net%2Ftexas-rangers-under-21s-finish-in-second-place%2F&amp;media=https%3A%2F%2Fsports-club.cmsmasters.net%2Fwp-content%2Fuploads%2F2015%2F04%2F1-1.jpg&amp;description=Texas%20Rangers%20Finish%20In%20Second%20Place">Pinterest</a>
-                        </div>
-                    </aside>
-                    <aside class="about_author"><h2 class="about_author_title">About author</h2><div class="about_author_inner"><figure class="alignleft"><img alt='' src='https://secure.gravatar.com/avatar/cec22fb290043e2c1b9972d9bc2f0cfb?s=130&amp;d=mm&amp;r=g' srcset='https://secure.gravatar.com/avatar/cec22fb290043e2c1b9972d9bc2f0cfb?s=260&#038;d=mm&#038;r=g 2x' class='avatar avatar-130 photo' height='130' width='130' loading='lazy' /></figure><div class="ovh"><h3 class="vcard author"><span class="fn" rel="author">cmsmasters</span></h3><p>Cmsmasters Studio is a union of 11 people who are completely into innovative website design and progressive website development. Yes, we believe we can make the world be more beautiful. And as we specialize on WordPress themes and HTML templates we try to do our job the best way it can be done. Welcome to our website.</p></div></div></aside>	<div id="respond" class="comment-respond">
-                        <h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Cancel Reply</a></small></h3><form action="https://sports-club.cmsmasters.net/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
-                            <p class="comment-notes">Your email address will not be published.</p>
-                            <p class="comment-form-comment"><textarea name="comment" id="comment" cols="60" rows="4" placeholder="Comment"></textarea></p><div class="form_wrapper">
-                                <p class="comment-form-author">
-                                    <input type="text" id="author" name="author" placeholder="Your name" value="" size="45" />
-                                    <label for="author">Your name <span class="color_2">*</span></label>
+                    <aside class="about_author">
+                        <h2 class="about_author_title">Người đăng</h2>
+                        <div class="about_author_inner">
+                            <figure class="alignleft">
+                                <img alt=''
+                                     src='https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'
+                                     srcset='https://static.vecteezy.com/system/resources/previews/001/840/618/original/picture-profile-icon-male-icon-human-or-people-sign-and-symbol-free-vector.jpg'
+                                     class='avatar avatar-130 photo' height='130' width='130' loading='lazy' />
+                            </figure>
+                            <div class="ovh">
+                                <h3 class="vcard author"><span class="fn" rel="author">@Model.TenNguoiDung</span></h3>
+                                <p>
+                                    @Model.SDT
                                 </p>
-
-                                <p class="comment-form-email">
-                                    <input type="text" id="email" name="email" placeholder="Email" value="" size="45" />
-                                    <label for="email">Email <span class="color_2">*</span></label>
-                                </p>
-
-                                <p class="comment-form-url">
-                                    <input type="text" id="url" name="url" placeholder="Website" value="" size="45" />
-                                    <label for="url">Website</label>
+                                <p>
+                                    @Model.Email
                                 </p>
                             </div>
-
-                            <p class="comment-form-cookies-consent">
-                                <input type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes" />
-                                <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
-                            </p>
-
-                            <p class="form-submit">
-                                <input name="submit" type="submit" id="submit" class="submit" value="Send comment" /> <input type='hidden' name='comment_post_ID' value='2965' id='comment_post_ID' />
-                                <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                            </p>
-                        </form>
+                        </div>
+                    </aside>
+                    <div id="respond" class="comment-respond">
                     </div><!-- #respond -->
                 </div>
             </div>

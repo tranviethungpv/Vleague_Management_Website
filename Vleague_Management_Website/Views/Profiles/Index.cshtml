@@ -85,7 +85,7 @@
 
 							<div id="cmsmasters_heading_6406e5eba22244_64979632"
 								 class="cmsmasters_heading_wrap cmsmasters_heading_align_left">
-								<h1 class="cmsmasters_heading">Profiles Horizontal Layout</h1>
+								<h1 class="cmsmasters_heading">Danh sách cầu thủ</h1>
 							</div>
 							<div id="6406e5eba22443_02447938" class="cmsmasters_profile horizontal">
 
@@ -142,6 +142,13 @@
 								<!-- Finish Horizontal Profile -->
 
 							</div>
+							<div class="pagination justify-content-center w-100">
+								@Html.PagedListPager(Model, page => Url.Action("Index", new{page = page}), new
+								X.PagedList.Web.Common.PagedListRenderOptions(){
+								LiElementClasses = new List<String> {"page-item"},
+								PageClasses = new List<String> {"page-link"}
+								})
+							</div>
 						</div>
 					</div>
 				</div>
@@ -166,12 +173,7 @@
 	</div>
 	<div class="cl"></div>
 	<div class="content_wrap fullwidth">
-
 		<div class="middle_content entry" role="main"></div>
 		<!-- Finish Content -->
-
 	</div>
 </div>
-@*<div class="pagination d-flex justify-content-center">
-	@Html.PagedListPager(Model, page=> Url.Action("Index",new{page=page}))
-</div>*@
