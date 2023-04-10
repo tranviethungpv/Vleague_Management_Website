@@ -18,7 +18,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
         [Authenciation_Admin]
         public IActionResult Index()
 		{
-			return View();
+			string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+			ViewBag.TenDangNhap = TenDangNhap;
+            return View();
 		}
 
 		[Route("TranDau")]

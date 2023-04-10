@@ -15,6 +15,8 @@ namespace Vleague_Management_Website.Areas.Writer.Controllers
         [Authenciation_Writer]
         public IActionResult Index()
         {
+            string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
+            ViewBag.TenDangNhap = TenDangNhap;
             return View();
         }
         [Route("TinTuc")]
