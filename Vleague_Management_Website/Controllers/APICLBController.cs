@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 using Vleague_Management_Website.InputModelsAPI;
 using Vleague_Management_Website.Models;
+using System.Drawing.Printing;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Vleague_Management_Website.Controllers
 {
@@ -12,8 +14,39 @@ namespace Vleague_Management_Website.Controllers
     {
         QlbongDaContext db = new QlbongDaContext();
         [HttpGet]
-        public IActionResult GetAllCLB([Range(1, 100)] int pageSize = 20,
-            [Range(1, int.MaxValue)] int pageNumber = 1)
+        public IActionResult GetAllCLB()
+        {
+            var query = (from a in db.Caulacbos
+                           join b in db.Huanluyenviens on a.HuanLuyenVienId equals b.HuanLuyenVienId
+                           join c in db.Sanvandongs on a.SanVanDongId equals c.SanVanDongId
+                           select new
+                           {
+                               a.CauLacBoId,
+                               a.TenClb,
+                               a.TenGoi,
+                               c.TenSan,
+                               b.TenHlv,
+                               //a.AnhDaiDien
+                           });
+            var totalCount = query.Count();
+            //var pageCount = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var listCLB = query
+                .ToList();
+
+            var result = new
+            {
+                TotalCount = totalCount,
+                //PageCount = pageCount,
+                Items = listCLB
+            };
+
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("getPagination")]
+        public IActionResult GetAllCLBPagination([Range(1, 100)] int pageSize,
+            [Range(1, int.MaxValue)] int pageNumber)
         {
             var listCLB = (from a in db.Caulacbos
                            join b in db.Huanluyenviens on a.HuanLuyenVienId equals b.HuanLuyenVienId
@@ -30,7 +63,12 @@ namespace Vleague_Management_Website.Controllers
                               .Skip((pageNumber - 1) * pageSize)
                               .Take(pageSize)
                               .ToList();
-            return Ok(listCLB);
+            var result = new
+            {
+                Items = listCLB
+            };
+
+            return Ok(result);
         }
         [Route("getById")]
         [HttpGet]

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using Vleague_Management_Website.InputModelsAPI;
 using Vleague_Management_Website.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Vleague_Management_Website.Controllers
 {
@@ -12,8 +13,36 @@ namespace Vleague_Management_Website.Controllers
     {
         QlbongDaContext db = new QlbongDaContext();
         [HttpGet]
-        public IActionResult GetAllHLV([Range(1, 100)] int pageSize = 20,
-            [Range(1, int.MaxValue)] int pageNumber = 1)
+        public IActionResult GetAllHLV()
+        {
+            var query = (from a in db.Huanluyenviens
+                           orderby a.NamSinh descending
+                           select new
+                           {
+                               a.HuanLuyenVienId,
+                               a.TenHlv,
+                               a.NamSinh,
+                               a.QuocTich,
+                           });
+            var totalCount = query.Count();
+            //var pageCount = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var listHLV = query
+                .ToList();
+
+            var result = new
+            {
+                TotalCount = totalCount,
+                //PageCount = pageCount,
+                Items = listHLV
+            };
+
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("getPagination")]
+        public IActionResult GetAllHLVPagination([Range(1, 100)] int pageSize,
+            [Range(1, int.MaxValue)] int pageNumber)
         {
             var listHLV = (from a in db.Huanluyenviens
                            orderby a.NamSinh descending
@@ -27,7 +56,12 @@ namespace Vleague_Management_Website.Controllers
                               .Skip((pageNumber - 1) * pageSize)
                               .Take(pageSize)
                               .ToList();
-            return Ok(listHLV);
+            var result = new
+            {
+                Items = listHLV
+            };
+
+            return Ok(result);
         }
         [Route("getById")]
         [HttpGet]

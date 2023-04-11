@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing.Printing;
 using Vleague_Management_Website.InputModelsAPI;
 using Vleague_Management_Website.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Vleague_Management_Website.Controllers
 {
@@ -12,8 +14,43 @@ namespace Vleague_Management_Website.Controllers
     {
         QlbongDaContext db = new QlbongDaContext();
         [HttpGet]
-        public IActionResult GetAllCauThu([Range(1, 100)] int pageSize = 20,
-            [Range(1, int.MaxValue)] int pageNumber = 1)
+        public IActionResult GetAllCauThu()
+        {
+            var query = (from a in db.Cauthus
+                         join b in db.Caulacbos on a.CauLacBoId equals b.CauLacBoId
+                         select new
+                         {
+                             a.CauThuId,
+                             a.HoVaTen,
+                             b.CauLacBoId,
+                             a.Ngaysinh,
+                             a.ViTri,
+                             a.QuocTich,
+                             a.SoAo,
+                             a.CanNang,
+                             a.ChieuCao,
+                             a.Anhdaidien
+                         });
+            var totalCount = query.Count();
+            //var pageCount = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var listTranDau = query
+                .ToList();
+
+            var result = new
+            {
+                TotalCount = totalCount,
+                //PageCount = pageCount,
+                Items = listTranDau
+            };
+
+            return Ok(result);
+
+        }
+        [HttpGet]
+        [Route("getPagination")]
+        public IActionResult GetAllCauThuPagination([Range(1, 100)] int pageSize,
+            [Range(1, int.MaxValue)] int pageNumber)
         {
             var listCauThu = (from a in db.Cauthus
                               join b in db.Caulacbos on a.CauLacBoId equals b.CauLacBoId
@@ -33,7 +70,11 @@ namespace Vleague_Management_Website.Controllers
                               .Skip((pageNumber - 1) * pageSize)
                               .Take(pageSize)
                               .ToList();
-            return Ok(listCauThu);
+            var result = new
+            {
+                Items = listCauThu
+            };
+            return Ok(result);
         }
 
         [Route("getById")]

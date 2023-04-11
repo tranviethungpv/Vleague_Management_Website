@@ -13,32 +13,96 @@ namespace Vleague_Management_Website.Controllers
     {
         QlbongDaContext db = new QlbongDaContext();
         [HttpGet]
-        public IActionResult GetAllTranDau([Range(1, 100)] int pageSize = 20,
-            [Range(1, int.MaxValue)] int pageNumber = 1)
+        public IActionResult GetAllTranDau()
+        {
+            var query = from a in db.Trandaus
+                        join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
+                        join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+                        join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
+                        orderby a.NgayThiDau descending
+                        select new
+                        {
+                            a.TranDauId,
+                            a.NgayThiDau,
+                            clbkhach = b.TenClb,
+                            clbnha = c.TenClb,
+                            d.TenSan,
+                            a.Vong,
+                            a.HiepPhu,
+                            a.KetQua,
+                            a.TrangThai
+                        };
+
+            var totalCount = query.Count();
+            //var pageCount = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var listTranDau = query
+                .ToList();
+
+            var result = new
+            {
+                TotalCount = totalCount,
+                //PageCount = pageCount,
+                Items = listTranDau
+            };
+
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("getPagination")]
+        public IActionResult GetAllTranDauPagination([Range(1, 100)] int pageSize, [Range(1, int.MaxValue)] int pageNumber)
         {
             var listTranDau = (from a in db.Trandaus
                                join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
                                join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
                                join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
                                orderby a.NgayThiDau descending
-                              select new
-                              {
-                                  a.TranDauId,
-                                  a.NgayThiDau,
-                                  clbkhach = b.TenClb,
-                                  clbnha = c.TenClb,
-                                  d.TenSan,
-                                  a.Vong,
-                                  a.HiepPhu,
-                                  a.KetQua,
-                                  a.TrangThai
-                              })
+                               select new
+                               {
+                                   a.TranDauId,
+                                   a.NgayThiDau,
+                                   clbkhach = b.TenClb,
+                                   clbnha = c.TenClb,
+                                   d.TenSan,
+                                   a.Vong,
+                                   a.HiepPhu,
+                                   a.KetQua,
+                                   a.TrangThai
+                               })
                               .Skip((pageNumber - 1) * pageSize)
                               .Take(pageSize)
                               .ToList();
-            return Ok(listTranDau);
-        }
+            var result = new
+            {
+                Items = listTranDau
+            };
 
+            return Ok(result);
+        }
+        [HttpGet]
+        [Route("getTranDauNotDone")]
+        public IActionResult GetAllTranDauNotDone()
+        {
+            var query = from a in db.Trandaus
+                        join b in db.Caulacbos on a.Clbnha equals b.CauLacBoId
+                        join c in db.Caulacbos on a.Clbkhach equals c.CauLacBoId
+                        join d in db.Sanvandongs on a.SanVanDongId equals d.SanVanDongId
+                        where a.TrangThai == false
+                        orderby a.NgayThiDau descending
+                        select new
+                        {
+                            a.TranDauId,
+                            a.NgayThiDau,
+                            clbkhach = b.TenClb,
+                            clbnha = c.TenClb,
+                            d.TenSan,
+                            a.Vong,
+                            a.HiepPhu,
+                            a.KetQua,
+                            a.TrangThai
+                        };
+            return Ok(query);
+        }
         [Route("getById")]
         [HttpGet]
         public IActionResult GetTranDauById(string id)

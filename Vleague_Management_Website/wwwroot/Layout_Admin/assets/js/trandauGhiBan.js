@@ -4,7 +4,7 @@
 
 function getAllMatchDone() {
     $.ajax({
-        url: "https://localhost:7239/api/APILichThiDau?pageSize=10&pagenumber=1",
+        url: "https://localhost:7239/api/APILichThiDau/getTranDauNotDone",
         method: 'GET',
         contentType: 'json',
         dataType: 'json',

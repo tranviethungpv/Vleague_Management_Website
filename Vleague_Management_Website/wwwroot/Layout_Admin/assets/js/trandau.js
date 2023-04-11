@@ -2,9 +2,10 @@
     getAllTrandau();
 });
 
+
 function getAllTrandau() {
     $.ajax({
-        url: "https://localhost:7239/api/APILichThiDau?pageSize=10&pagenumber=1",
+        url: `https://localhost:7239/api/APILichThiDau`,
         method: 'GET',
         contentType: 'json',
         dataType: 'json',
@@ -12,32 +13,26 @@ function getAllTrandau() {
             console.log("error");
         },
         success: function (response) {
-            const len = response.length;
-            let table = '';
-            for (var i = 0; i < len; ++i) {
-                const date = new Date(response[i].ngayThiDau);
-                var day = date.getDate();
-                var month = date.getMonth() + 1;
-                var year = date.getFullYear();
-                var hour = date.getHours();
-                var minute = date.getMinutes();
-                table = table + '<tr>';
-                table = table + '<td>' + response[i].tranDauId.trim() + '</td>';
-                table = table + '<td>' + day + "/" + month + "/" + year + " " + hour + ':' + minute + '</td>';
-                table = table + '<td>' + response[i].clbnha + '</td>';;
-                table = table + '<td>' + response[i].clbkhach + '</td>';
-                table = table + '<td>' + response[i].tenSan + '</td>';
-                table = table + '<td>' + response[i].vong + '</td>';
-                table = table + '<td>' + (!!response[i].ketQua ? response[i].ketQua : "") + '</td>';
-                table = table + '<td>' + (!!response[i].trangThai ? '<div class="mdi mdi mdi-check badge badge-success"> </div>' : '<div class="mdi mdi-close badge badge-danger"> </div>') + '</td>';
-                table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon' + (!!response[i].trangThai ? ' disabled' : '') + '" onclick="updateTranDauFill(\'' + response[i].tranDauId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
-                table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon' + (!!response[i].trangThai ? ' disabled' : '') + '" onclick="deleteTranDau(\'' + response[i].tranDauId.trim() + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
-            }
-            document.getElementById('tbody-trandau').innerHTML = table;
+            var count = parseInt(response.totalCount);
+            const pageNumber = 1;
+            const pageSize = 20;
+            $.ajax({
+                url: `https://localhost:7239/api/APILichThiDau/getPagination?pageSize=${pageSize}&pagenumber=${pageNumber}`,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                    console.log("error");
+                },
+                success: function (response) {
+                    renderTable(response);
+                    renderPagination(Math.ceil(count / pageSize), pageNumber);
+                },
+                fail: function (response) {
+                    console.log("fail");
+                }
+            });
         },
-        fail: function (response) {
-            console.log("fail");
-        }
     });
 }
 
@@ -145,4 +140,57 @@ function deleteTranDau(id) {
             getAllTrandau(); //Gọi đến hàm lấy dữ liệu lên bảng
         }
     });
+}
+
+function renderPagination(totalPages, currentPage) {
+    let pagination = '';
+    for (let i = 1; i <= totalPages; i++) {
+        pagination += `<button class="btn ${i === currentPage ? 'btn-primary' : 'btn-outline-primary'}" onclick="setPage(${i})">${i}</button> `;
+    }
+    document.getElementById('pagination_trandau').innerHTML = pagination;
+}
+
+function setPage(pageNumber) {
+    const pageSize = 20;
+    document.getElementById('page-number').innerHTML = pageNumber;
+    $.ajax({
+        url: `https://localhost:7239/api/APILichThiDau/getPagination?pageSize=${pageSize}&pagenumber=${pageNumber}`,
+        method: 'GET',
+        contentType: 'json',
+        dataType: 'json',
+        error: function (response) {
+            console.log("error");
+        },
+        success: function (response) {
+            renderTable(response);
+        },
+        fail: function (response) {
+            console.log("fail");
+        }
+    });
+}
+
+function renderTable(response) {
+    const len = response.items.length;
+    let table = '';
+    for (var i = 0; i < len; ++i) {
+        const date = new Date(response.items[i].ngayThiDau);
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        table = table + '<tr>';
+        table = table + '<td>' + response.items[i].tranDauId.trim() + '</td>';
+        table = table + '<td>' + day + "/" + month + "/" + year + " " + hour + ':' + minute + '</td>';
+        table = table + '<td>' + response.items[i].clbnha + '</td>';;
+        table = table + '<td>' + response.items[i].clbkhach + '</td>';
+        table = table + '<td>' + response.items[i].tenSan + '</td>';
+        table = table + '<td>' + response.items[i].vong + '</td>';
+        table = table + '<td>' + (!!response.items[i].ketQua ? response.items[i].ketQua : "") + '</td>';
+        table = table + '<td>' + (!!response.items[i].trangThai ? '<div class="mdi mdi mdi-check badge badge-success"> </div>' : '<div class="mdi mdi-close badge badge-danger"> </div>') + '</td>';
+        table = table + '<td>' + ' <button type="button" class="btn btn-gradient-info btn-rounded btn-icon' + (!!response.items[i].trangThai ? ' disabled' : '') + '" onclick="updateTranDauFill(\'' + response.items[i].tranDauId.trim() + '\')"><i class="mdi mdi-table-edit"></i></button> ' + '</td>';
+        table = table + '<td>' + ' <button type="button" class="btn btn-gradient-danger btn-rounded btn-icon' + (!!response.items[i].trangThai ? ' disabled' : '') + '" onclick="deleteTranDau(\'' + response.items[i].tranDauId.trim() + '\')"><i class="mdi mdi-delete-forever"></i></button> ' + '</td>';
+    }
+    document.getElementById('tbody-trandau').innerHTML = table;
 }
