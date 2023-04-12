@@ -15,7 +15,8 @@ namespace Vleague_Management_Website.Controllers
 			{
                 var lstTranDau = (from a in db.Trandaus
                                   where
-                                    a.Clbnha == item.CauLacBoId &&
+                                    (a.Clbnha == item.CauLacBoId  || a.Clbkhach == item.CauLacBoId)
+									&&
                                     a.TrangThai == true
                                   select a
                                   ).ToList();
