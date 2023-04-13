@@ -23,9 +23,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View();
 		}
 
-		[Route("TranDau")]
+		[Route("DSTDau")]
         [Authenciation_Admin]
-        public IActionResult TranDau()
+        public IActionResult DSTDau()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
             ViewBag.TenDangNhap = TenDangNhap;
@@ -71,9 +71,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             ViewBag.TenDangNhap = TenDangNhap;
             return View();
 		}
-		[Route("TranDauGhiBan")]
+		[Route("GhiBanTranDau")]
         [Authenciation_Admin]
-        public IActionResult TranDauGhiBan()
+        public IActionResult GhiBanTranDau()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
             ViewBag.TenDangNhap = TenDangNhap;
@@ -96,9 +96,9 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			};
 			return View(objectModel);
 		}
-		[Route("TranDauCauThu")]
+		[Route("CauThuTran")]
         [Authenciation_Admin]
-        public IActionResult TranDauCauThu()
+        public IActionResult CauThuTran()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
             ViewBag.TenDangNhap = TenDangNhap;
@@ -160,7 +160,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             var lstSVD = db.Sanvandongs.ToList();
 			return View(lstSVD);
 		}
-        [Route("GhiBan")]
+        [Route("DanhSachGhiBan")]
         [Authenciation_Admin]
 		public IActionResult DanhSachGhiBan()
 		{
