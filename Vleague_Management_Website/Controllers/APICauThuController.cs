@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.Drawing.Printing;
@@ -13,6 +14,7 @@ namespace Vleague_Management_Website.Controllers
     public class APICauThuController : ControllerBase
     {
         QlbongDaContext db = new QlbongDaContext();
+        //[Authorize]
         [HttpGet]
         public IActionResult GetAllCauThu()
         {

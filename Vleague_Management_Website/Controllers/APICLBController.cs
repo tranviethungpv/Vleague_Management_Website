@@ -5,6 +5,7 @@ using Vleague_Management_Website.InputModelsAPI;
 using Vleague_Management_Website.Models;
 using System.Drawing.Printing;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Vleague_Management_Website.Controllers
 {
@@ -13,6 +14,7 @@ namespace Vleague_Management_Website.Controllers
     public class APICLBController : ControllerBase
     {
         QlbongDaContext db = new QlbongDaContext();
+        //[Authorize]
         [HttpGet]
         public IActionResult GetAllCLB()
         {
