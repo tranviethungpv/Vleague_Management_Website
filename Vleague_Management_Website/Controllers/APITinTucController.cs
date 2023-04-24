@@ -14,20 +14,43 @@ namespace Vleague_Management_Website.Controllers
         [HttpGet]
         public IActionResult GetAllTinTuc()
         {
-            var listTinTuc = (from a in db.TinTucs
-                              join b in db.TaiKhoans on a.TenDangNhap equals b.TenDangNhap
-                               orderby a.NgayTao descending
-                               select new
-                               {
-                                   a.TinTucId,
-                                   a.NgayTao,
-                                   a.TieuDe,
-                                   a.NoiDung,
-                                   b.TenDangNhap,
-                                   a.Anhdaidien
-                               })
+            var userName = HttpContext.Session.GetString("TenDangNhap");
+            var userId = db.TaiKhoans.FirstOrDefault(x => x.TenDangNhap == userName);
+            if (userId.LoaiTaiKhoan == 0)
+            {
+                var listTinTuc = (from a in db.TinTucs
+                                  join b in db.TaiKhoans on a.TenDangNhap equals b.TenDangNhap
+                                  orderby a.NgayTao descending
+                                  select new
+                                  {
+                                      a.TinTucId,
+                                      a.NgayTao,
+                                      a.TieuDe,
+                                      a.NoiDung,
+                                      b.TenDangNhap,
+                                      a.Anhdaidien
+                                  })
                               .ToList();
-            return Ok(listTinTuc);
+                return Ok(listTinTuc);
+            }
+            else
+            {
+                var listTinTuc = (from a in db.TinTucs
+                                  join b in db.TaiKhoans on a.TenDangNhap equals b.TenDangNhap
+                                  where a.TenDangNhap == userName
+                                  orderby a.NgayTao descending
+                                  select new
+                                  {
+                                      a.TinTucId,
+                                      a.NgayTao,
+                                      a.TieuDe,
+                                      a.NoiDung,
+                                      b.TenDangNhap,
+                                      a.Anhdaidien
+                                  })
+                              .ToList();
+                return Ok(listTinTuc);
+            }
         }
 
         [Route("getById")]
@@ -121,7 +144,7 @@ namespace Vleague_Management_Website.Controllers
             tinTuc.NgayTao = model.NgayTao;
             tinTuc.TieuDe = model.TieuDe;
             tinTuc.NoiDung = model.NoiDung;
-            tinTuc.TenDangNhap = userid;
+            //tinTuc.TenDangNhap = userid;
 
             // Upload the image to the server and update the TinTuc object with the new image name
             if (model.Image != null)
@@ -140,8 +163,8 @@ namespace Vleague_Management_Website.Controllers
         public IActionResult DeleteTinTuc(string input)
         {
             var tintucCheck = (from a in db.TinTucs
-                                where a.TinTucId == input
-                                select a).FirstOrDefault();
+                               where a.TinTucId == input
+                               select a).FirstOrDefault();
 
             if (tintucCheck == null)
             {
