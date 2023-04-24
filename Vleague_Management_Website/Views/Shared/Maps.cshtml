@@ -1,0 +1,194 @@
+﻿
+<div id='map' style='width: 100%; height: 60vh;'></div>
+
+
+<ul class="geo-data">
+    <li>Full Address: <span id="location"></span></li>
+    <li>Postal Code: <span id="postal_code"></span></li>
+    <li>Country: <span id="country"></span></li>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude: <span id="lon"></span></li>
+</ul>
+<ul id="buttons" style="display: inline">
+    <li id="button-fr" class="button">French</li>
+    <li id="button-ru" class="button">Russian</li>
+    <li id="button-de" class="button">German</li>
+    <li id="button-es" class="button">Spanish</li>
+    <li id="button-vi" class="button">VietNam</li>
+</ul>
+
+<script>
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYnV0dHR0dCIsImEiOiJjbGZxbWoxbG8wMHRrM29wcGo4eHhjaXZlIn0.B4Q3rzrDnF9D7F0SHejlMw';
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center: [105.85, 21.0], //Tọa độ lãnh thổ Việt Nam
+        zoom: 5, // starting zoom
+    });
+    var marker = new mapboxgl.Marker({
+        color: "red", //Màu của Marker là đỏ
+        draggable: true,
+        anchor: 'bottom', //Nhãn Hà Nội nằm dưới Marker
+    }).setLngLat([105.85, 21.0]) //Thiết lập Marker tại hà Nội
+        .addTo(map);
+    map.addControl(new mapboxgl.NavigationControl());
+
+    //vị trí
+    map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+            enableHighAccuracy: true
+        },
+        trackUserLocation: true
+    }));
+
+    //full screen
+    map.addControl(new mapboxgl.FullscreenControl());
+    // ngon ngu~
+    document.getElementById('buttons').addEventListener('click', (event) => {
+        const language = event.target.id.substr('button-'.length);
+        // Use setLayoutProperty to set the value of a layout property in a style layer.
+        // The three arguments are the id of the layer, the name of the layout property,
+        // and the new property value.
+        map.setLayoutProperty('country-label', 'text-field', [
+            'get',
+            `name_${language}`
+        ]);
+    });
+    //them marker khi click
+
+    var marker = null; // Biến lưu trữ đối tượng Marker hiện tại
+
+    map.on('contextmenu', function (e) {
+        // Xóa Marker trước đó (nếu có)
+        if (marker) {
+            marker.remove();
+        }
+
+        // Lấy tọa độ của vị trí click
+        var coordinates = e.lngLat;
+
+        // Tạo đối tượng Marker và thêm vào bản đồ
+        marker = new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .addTo(map);
+    });
+
+
+    // chỉ đường
+    // Khởi tạo đối tượng MapboxDirections
+    var directions = new MapboxDirections({
+        accessToken: mapboxgl.accessToken,
+        unit: 'metric',
+        profile: 'mapbox/driving-traffic',
+        interactive: true,
+    });
+
+    // Thêm đối tượng MapboxDirections vào bản đồ
+    map.addControl(directions, 'bottom-left');
+    directions.setOrigin([longitude1, latitude1]);
+    directions.setDestination([longitude2, latitude2]);
+
+</script>
+<script>
+    var geocoder = new MapboxGeocoder({
+        accessToken: 'pk.eyJ1IjoiYnV0dHR0dCIsImEiOiJjbGZxbWoxbG8wMHRrM29wcGo4eHhjaXZlIn0.B4Q3rzrDnF9D7F0SHejlMw', // Thay thế bằng access token của bạn
+        mapboxgl: mapboxgl, // Tham chiếu đến đối tượng mapboxgl
+        marker: false, // Tắt hiển thị đánh dấu lên bản đồ khi tìm kiếm
+    });
+
+    // Thêm control tìm kiếm vào bản đồ
+    map.addControl(geocoder, "top-left");
+
+
+
+
+
+
+
+
+    geocoder.on('result', function (e) {
+        // Lấy thông tin địa chỉ đầy đủ từ kết quả đảo ngược địa chỉ
+        var fullAddress = e.result.place_name;
+        var postalCode = e.result.context.find(c => c.id.startsWith('postcode'));
+        var country = e.result.context.find(c => c.id.startsWith('country'));
+        var longitude = e.result.center[0];
+        var latitude = e.result.center[1];
+
+        // Kiểm tra và in thông tin địa chỉ lên console
+        console.log('Full Address:', fullAddress);
+        document.getElementById('location').innerHTML = fullAddress;
+        if (postalCode) {
+            console.log('Postal Code:', postalCode.text);
+            document.getElementById('postal_code').innerHTML = postalCode.text;
+        }
+        if (country) {
+            console.log('Country:', country.text);
+            document.getElementById('country').innerHTML = country.text;
+        }
+        console.log('Latitude:', latitude);
+        document.getElementById('lat').innerHTML = latitude;
+        console.log('Longitude:', longitude);
+        document.getElementById('lon').innerHTML = longitude;
+    });
+
+
+
+
+
+
+
+
+    map.on('contextmenu', function (e) {
+        // Lấy tọa độ từ sự kiện click trên bản đồ
+        var coordinates = e.lngLat;
+
+        // Gửi yêu cầu API của Mapbox để lấy thông tin địa chỉ dựa trên tọa độ
+
+        document.getElementById('postal_code').innerHTML = ""
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coordinates.lng},${coordinates.lat}.json?access_token=pk.eyJ1IjoiYnV0dHR0dCIsImEiOiJjbGZxbWoxbG8wMHRrM29wcGo4eHhjaXZlIn0.B4Q3rzrDnF9D7F0SHejlMw`)
+            .then(response => response.json())
+            .then(data => {
+                // Lấy kết quả trả về
+                var features = data.features;
+                if (features && features.length > 0) {
+                    var result = features[0];
+
+                    // Lấy thông tin postal code và các thông tin khác từ kết quả
+
+                    var fullAddress = result.place_name;
+
+                    var postalCode = null;
+                    var country = '';
+
+                    if (result.context) {
+                        var postalCodeContext = result.context.find(c => c.id.startsWith('postcode'));
+                        if (postalCodeContext) {
+                            postalCode = postalCodeContext.text;
+                        }
+
+                        var countryContext = result.context.find(c => c.id.startsWith('country'));
+                        if (countryContext) {
+                            country = countryContext.text;
+                        }
+                    }
+
+                    var longitude = result.center[0];
+                    var latitude = result.center[1];
+
+                    // In thông tin địa chỉ lên console
+                    console.log('Full Address:', fullAddress);
+                    document.getElementById('location').innerHTML = fullAddress
+                    console.log('Country:', country);
+                    document.getElementById('country').innerHTML = country
+                    console.log('Latitude:', latitude);
+                    document.getElementById('lat').innerHTML = latitude
+                    console.log('Longitude:', longitude);
+                    document.getElementById('lon').innerHTML = longitude
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
