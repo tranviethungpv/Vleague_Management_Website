@@ -14,7 +14,7 @@ namespace Vleague_Management_Website.Controllers
     public class APICauThuController : ControllerBase
     {
         QlbongDaContext db = new QlbongDaContext();
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public IActionResult GetAllCauThu()
         {
@@ -49,6 +49,7 @@ namespace Vleague_Management_Website.Controllers
             return Ok(result);
 
         }
+        [Authorize]
         [HttpGet]
         [Route("getPagination")]
         public IActionResult GetAllCauThuPagination([Range(1, 100)] int pageSize,

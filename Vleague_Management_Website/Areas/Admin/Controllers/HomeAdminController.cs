@@ -15,7 +15,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 		QlbongDaContext db = new QlbongDaContext();
         [Route("")]
         [Route("index")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult Index()
 		{
 			string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -24,7 +24,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 		}
 
 		[Route("DSTDau")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult DSTDau()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -40,7 +40,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 		}
 
 		[Route("SetKetQua")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult SetKetQua()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -55,7 +55,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			return View(objectModel);
 		}
 		[Route("CauThu")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult CauThu()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -64,7 +64,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			return View(listCLB);
 		}
 		[Route("HLV")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult HLV()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -72,7 +72,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View();
 		}
 		[Route("GhiBanTranDau")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult GhiBanTranDau()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -81,7 +81,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
             return View();
 		}
 		[Route("CLB")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult CLB()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");
@@ -97,7 +97,7 @@ namespace Vleague_Management_Website.Areas.Admin.Controllers
 			return View(objectModel);
 		}
 		[Route("CauThuTran")]
-        [Authenciation_Admin]
+        //[Authenciation_Admin]
         public IActionResult CauThuTran()
 		{
             string TenDangNhap = HttpContext.Session.GetString("TenDangNhap");

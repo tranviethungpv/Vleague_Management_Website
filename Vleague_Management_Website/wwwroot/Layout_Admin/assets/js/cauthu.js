@@ -2,12 +2,17 @@
     getAllCauThu();
 });
 
-function getAllCauThu() {
+/*function getAllCauThu() {
+
+    var token = "Bearer " + localStorage.getItem("token");
+    console.log(token)
+
     $.ajax({
         url: `https://localhost:7239/api/APILichThiDau`,
         method: 'GET',
-        contentType: 'json',
+        contentType: 'application/json',
         dataType: 'json',
+        headers: { "Authorization": localStorage.getItem('token') },
         error: function (response) {
             console.log("error");
         },
@@ -18,8 +23,43 @@ function getAllCauThu() {
             $.ajax({
                 url: `https://localhost:7239/api/APICauThu/getPagination?pageSize=${pageSize}&pagenumber=${pageNumber}`,
                 method: 'GET',
-                contentType: 'json',
                 dataType: 'json',
+                error: function (response) {
+                    console.log("error");
+                },
+                success: function (response) {
+                    renderTable(response);
+                    renderPagination(Math.ceil(count / pageSize), pageNumber);
+                },
+                fail: function (response) {
+                    console.log("fail");
+                }
+            });
+        },
+    })
+}*/
+function getAllCauThu() {
+    var token = "Bearer " + localStorage.getItem("token");
+    console.log(token)
+
+    $.ajax({
+        url: `https://localhost:7239/api/APILichThiDau`,
+        method: 'GET',
+        contentType: 'application/json',
+        dataType: 'json',
+        headers: { "Authorization": token },
+        error: function (response) {
+            console.log("error");
+        },
+        success: function (response) {
+            var count = parseInt(response.totalCount);
+            const pageNumber = 1;
+            const pageSize = 20;
+            $.ajax({
+                url: `https://localhost:7239/api/APICauThu/getPagination?pageSize=${pageSize}&pagenumber=${pageNumber}`,
+                method: 'GET',
+                dataType: 'json',
+                headers: { "Authorization": token },
                 error: function (response) {
                     console.log("error");
                 },

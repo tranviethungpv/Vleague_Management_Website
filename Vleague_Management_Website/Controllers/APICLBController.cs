@@ -45,6 +45,7 @@ namespace Vleague_Management_Website.Controllers
 
             return Ok(result);
         }
+        [Authorize]
         [HttpGet]
         [Route("getPagination")]
         public IActionResult GetAllCLBPagination([Range(1, 100)] int pageSize,
